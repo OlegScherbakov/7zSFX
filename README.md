@@ -9,4 +9,6 @@ Direct link: https://raw.githubusercontent.com/OlegScherbakov/7zSFX/master/files
 
 Direct link: https://raw.githubusercontent.com/OlegScherbakov/7zSFX/master/files/7zsd_chm_140_1501_eng.7z
 
+Direct link: https://raw.githubusercontent.com/OlegScherbakov/7zSFX/master/files/7zsd_chm_170_3900_polish.7z
+
 Direct link: https://raw.githubusercontent.com/OlegScherbakov/7zSFX/master/files/7z_splitter_1017.7z
