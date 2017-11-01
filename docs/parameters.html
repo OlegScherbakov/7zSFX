@@ -1,0 +1,602 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Configuration file parameters</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link href="common/styles.css" type="text/css" rel=stylesheet>
+		<script language="javascript" src="common/scripts.js" type="text/javascript"></script>
+		<script language="javascript" src="misc/menu.js" type="text/javascript"></script>
+	</head>
+
+<body onLoad="OnLoadBody(1)">
+
+<h2>Configuration file parameters</h2><br>
+
+<table class="main"><tbody>
+	<tr>
+		<th class="main" width="20%"><p>Parameter="Value"</p></th>
+		<th class="main"><p>Parameter description and allowed values</p></th>
+	</tr>
+
+	<tr>
+		<th class="main" colspan="2"><p>Extraction and execution (commands and paths)</p></th>
+	</tr>
+
+	<tr id="AutoInstall">
+		<td class="main">
+			<p><b><tt>AutoInstall</tt>="command_auto_install"</b></p>
+		</td>
+		<td class="main">
+			<p>Execution command (multiple instances are allowed). There are two modes: the usual '<tt>RunProgram</tt>'
+			   or '<tt>ExecuteFile</tt>' mode, and automated '<tt>AutoInstall</tt>' mode.</p>
+			<p>AUTOMATED installation mode will be invoked if you:</p>
+			<ul>
+				<li>Specify <a href="switches.html#ai">'-ai'</a> command line switch</li>
+				<li>Click "Yes/OK" in '<tt>BeginPrompt</tt>' dialog window (if it was specified)
+				    WHILE HOLDING DOWN the [SHIFT] key</li>
+			</ul>
+			<p>If you do not do anything mentioned above, '<tt>RunProgram</tt>' or '<tt>ExecuteFile</tt>'
+			   will be used as a default command.</p>
+			<p>Environment <a href="configinfo.html#vars" class="int">variables</a> supported by the module
+			   are allowed as well as <a href="configinfo.html#paths" class="int">relative</a> paths.
+			   The syntax is the same as for '<tt>RunProgram'</tt>.</p>
+		</td>
+	</tr>
+
+	<tr id="AutoInstallX">
+		<td class="main">
+			<p><b><tt>AutoInstallX</tt>="command_auto_install"</b></p>
+		</td>
+		<td class="main">
+			<p>Where X is the scenario number (from 0 to 9) you wish to complete. You can have up to 10
+			   scenarios for automated installations. You can select one of them from the command line
+			   ONLY with <a href="switches.html#aiX">'-aiX'</a> switch.</p>
+			<p>If you are planning to use several automated scenarios, you do not have to follow a numeric
+			   order than setting the X in '<tt>AutoInstallX</tt>' parameters. You can have multiple
+			   instances of each '<tt>AutoInstallX</tt>' command. For example, for a specific scenario you
+			   may need to complete three tasks for '<tt>AutoInstall3</tt>':</p>
+<blockquote><pre>
+AutoInstall3="setup.exe"
+AutoInstall3="regedit /s cleanup.reg"
+AutoInstall3="cleanup.cmd"
+AutoInstall7="setup.exe"
+AutoInstall7="regedit /s tweaks.reg"
+</pre></blockquote>
+			<p>While for '<tt>AutoInstall7</tt>' you may need only the first two commands.</p>
+			<p>Environment <a href="configinfo.html#vars" class="int">variables</a> supported by the module
+			   are allowed as well as <a href="configinfo.html#paths" class="int">relative</a> paths.
+			   The syntax is the same as for '<tt>RunProgram'.</tt></p>
+		</td>
+	</tr>
+
+	<tr id="Delete">
+		<td class="main">
+			<p><b><tt>Delete</tt>="file_or_folder_name"</b></p>
+		</td>
+		<td class="main">
+			<p>Deletes the specified file or folder AFTER the installation.</p>
+			<p>If the folder name is specified, the entire folder is deleted including all subfolders and
+			   their content.</p>
+			<p>ATTENTION! Make sure you don't specify something like "C:\Windows"
+			   <img src="misc/wink.gif" alt="" class="inlineimg"></p>
+			<p>Environment <a href="configinfo.html#vars" class="int">variables</a> supported by the module
+			   are allowed as well as <a href="configinfo.html#paths" class="int">relative</a> paths.
+			   For this command the current directory is the one where the SFX resides (for other commands
+			   that would be the extraction directory).</p>
+			<p>You can specify as many '<tt>Delete</tt>' strings as you wish. They will be processed in the
+			   order listed in the config file.</p>
+		</td>
+	</tr>
+
+	<tr id="Directory">
+		<td class="main">
+			<p><b><tt>Directory</tt>="path_to_command"</b></p>
+		</td>
+		<td class="main">
+			<p>The path to the '<tt>RunProgram</tt>' execution folder (do not confuse with the current
+			   folder). <em>Native 7-zip SFX parameter.</em></p>
+
+			<p>Can be used for the first '<tt>RunProgram</tt>' only. Environment
+			   <a href="configinfo.html#vars" class="int">variables</a> supported by the module are allowed
+			   as well as <a href="configinfo.html#paths" class="int">relative</a> paths. This is an
+			   optional parameter, because both the path and the command can be specified within
+			   '<tt>RunProgram</tt>' value. For example,</p>
+<blockquote><pre>
+RunProgram="notepad.exe"
+Directory="C:\\Windows\\system32\\"
+</pre></blockquote>
+			<p>is equivalent to</p>
+<blockquote><pre>
+RunProgram="C:\\Windows\\system32\\notepad.exe"
+</pre></blockquote>
+		</td>
+	</tr>
+
+	<tr id="ExecuteFile">
+		<td class="main">
+			<p><b><tt>ExecuteFile</tt>="command_for_executing"</b></p>
+		</td>
+		<td class="main">
+			<p>Execution command. <em>Native 7-zip SFX parameter.</em></p>
+			<p>Environment <a href="configinfo.html#vars" class="int">variables</a> supported by the module
+			   are allowed as well as <a href="configinfo.html#paths" class="int">relative</a> paths.
+			   The syntax is the same as for '<tt>RunProgram</tt>', with the exeption of the switches
+			   (they are not allowed). If needed, you can substitute the switches for the executable
+			   into '<tt>ExecuteParameters</tt>'.</p>
+		</td>
+	</tr>
+
+	<tr id="ExecuteParameters">
+		<td class="main">
+			<p><b><tt>ExecuteParameters</tt>="keys_command"</b></p>
+		</td>
+		<td class="main">
+			<p>Execution command. <em>Native 7-zip SFX parameter.</em></p>
+			<p>This is an optional parameter. You use it whenever you need to pass a parameter to
+			   '<tt>ExecuteFile</tt>' via the command line.</p>
+		</td>
+	</tr>
+
+	<tr id="InstallPath">
+		<td class="main">
+			<p><b><tt>InstallPath</tt>="path_to_extract"</b></p>
+		</td>
+		<td class="main">
+			<p>Sets the extraction path. The extraction folder will not be deleted after the extraction.</p>
+			<p>If the '<tt>InstallPath</tt>' value is not present in the config file or the path was deleted
+			   from the interactive extraction dialog, the archive will be extracted to a temporary folder.
+			   This temporary folder will be deleted after the extraction and execution of all commands.</p>
+			<p>Environment <a href="configinfo.html#vars" class="int">variables</a> are allowed (with the
+			   exception of %%T and variables defined in '<tt>SetEnvironment</tt>', if %%T is used in any
+			   of them). You MUST use DOUBLE backslashes in paths. For example:</p>
+				<blockquote><pre>InstallPath="C:\\Windows\\system32\\test"</pre></blockquote>
+				or
+				<blockquote><pre>InstallPath="%PROGRAMFILES%\\test"</pre></blockquote>
+			<p><a href="configinfo.html#paths" class="int">Relative</a> paths are allowed. The current
+			   folder is the one from which the program launching SFX archive was executed. For example,</p>
+				<blockquote><pre>InstallPath="test"</pre></blockquote>
+			<p>creates a folder with the name of "test" in the folder from which the program launching SFX
+			   archive was executed. All files will be extracted to the "test" folder. On the other hand,</p>
+				<blockquote><pre>InstallPath="."</pre></blockquote>
+			<p>extracts the archive content to the folder from which the program launching SFX archive was
+			   executed. Also, </p>
+				<blockquote><pre>InstallPath="%%S"</pre></blockquote>
+			<p>extracts the archive content to the folder where the SFX is located.</p>
+			<p>If all you need is to extract the archive content to a certain folder, you need to specify
+			   a value for '<tt>InstallPath</tt>' in the config file. In this case you should not specify
+			   '<tt>RunProgram</tt>' or '<tt>ExecuteFile</tt>' in the config file. '<tt>AutoInstall</tt>'
+			   or '<tt>AutoInstallX</tt>' may be specified in the config file, but should not be invoked
+			   via the command line or with the [SHIFT] key. If you specify '<tt>RunProgram</tt>' or
+			   '<tt>ExecuteFile</tt>' or invoke '<tt>AutoInstall</tt>' and '<tt>AutoInstallX</tt>', the
+			   specified executable will be launched after the extraction.</p>
+		</td>
+	</tr>
+
+	<tr id="OverwriteMode">
+		<td class="main">
+			<p><b><tt>OverwriteMode</tt>="x"</b></p>
+		</td>
+		<td class="main">
+			<p>Where x = 0, 1 or 2 (must be enclosed in quotes)</p>
+			<ul>
+				<li>0 - overwrite all files (default mode)</li>
+				<li>1 - do not overwrite the existing files</li>
+				<li>2 - overwrite only the older files</li>
+			</ul>
+			<p>You can alter the config file parameter from the command line by using
+			   <a href="switches.html#omX">'-omX'</a> switch.</p>
+		</td>
+	</tr>
+
+	<tr id="RunProgram">
+		<td class="main">
+			<p><b><tt>RunProgram</tt>="command_executing"</b></p>
+		</td>
+		<td class="main">
+			<p>Execution command (multiple instances are allowed). <em>Native 7-zip SFX parameter.</em></p>
+			<p>Contains the executable file name. Can also contain: the executable file path (environment
+			<a href="configinfo.html#vars" class="int">variables</a> supported by the module are allowed
+			as well as <a href="configinfo.html#paths" class="int">relative</a> paths), prefixes and
+			switches for the executable file.</p>
+			<p>For example,</p>
+<blockquote><pre>
+RunProgram="notepad.exe"
+RunProgram="C:\\Windows\\system32\\notepad.exe"
+RunProgram="%Path%\\notepad.exe"
+RunProgram="fm0:nowait:7z_EN.chm"
+RunProgram="\"%%T\\Reader7Rus.msi\" /qn"
+RunProgram="hidcon:fm0:\"%%S\\install.cmd\" /Q"
+</pre></blockquote>
+			<p>In the last two cases the <b>executable file path and name</b> are enclosed in additional
+			   quotes because of the switches for the executable file. Prefixes and switches do not need
+			   to be enclosed in additional quotes.</p>
+		</td>
+	</tr>
+
+	<tr id="SelfDelete">
+		<td class="main">
+			<p><b><tt>SelfDelete</tt>="1"</b></p>
+		</td>
+		<td class="main">
+			<p>Deletes the SFX when the process is over.</p>
+			<p>"1" is the only acceptable value; others will be ignored. This function works IF AND ONLY IF
+			   the SFX was launched from the hard drive. The function will not work if the SFX was launched
+			   from other devices (CD-ROM, Floppy, Flash, Network drive, etc).</p>
+			<p>You can alter the config file parameter from the command line by using
+			   <a href="switches.html#sdX">'-sdX'</a> switch.</p>
+		</td>
+	</tr>
+
+	<tr id="SetEnvironment">
+		<td class="main">
+			<p><b><tt>SetEnvironment</tt>="<tt>variable</tt>=<tt>string</tt>"</b></p>
+		</td>
+		<td class="main">
+			<p>Environment variable creation command (multiple instances are allowed).</p>
+			<p><b>'<tt>variable</tt>'</b> -  variable name. It should not match the
+			   <a class="int" href="configinfo.html#vars">variables</a> already supported by the module.
+			   Variable names are NOT case sensitive.</p>
+			<p><b>'<tt>string</tt>'</b> - variable value. Environment
+			   <a class="int" href="configinfo.html#vars">variables</a> already supported by the module
+			   can be used as a part of '<tt>string</tt>'.</p><br>
+			   <p>Examples:</p>
+<blockquote><pre>
+SetEnvironment="Var1=E:\\totalcmd"
+SetEnvironment="Var2=E:\\totalcmd\\\"
+SetEnvironment="Var3=\"E:\\totalcmd\""
+SetEnvironment="Var4=\"E:\\totalcmd\\\""
+SetEnvironment="TC=\"%ProgramFiles%\\totalcmd\""
+SetEnvironment="Var5=%%S\\TOOLS\\Total Commander"
+SetEnvironment="PathTC=%ProgramFiles%\\totalcmd"
+SetEnvironment="Var7=%PathTC%\\"
+SetEnvironment="Var8=\"%PathTC%\""
+SetEnvironment="Timer=30"
+</pre></blockquote>
+			<p>After creating a variable, it can be used in the following ways:</p>
+<blockquote><pre>
+AutoInstall="hidcon:cmd /c copy rdm.txt %Var2%DOC"
+RunProgram="cmd /c xcopy \"%%T\" %TC% /s /e /i /y"
+RunProgram="fm%timer%:hidcon:cmd /c echo"
+AutoInstall2="cmd /c xcopy Lang \"%Var8%Lang\" /s"
+AutoInstall2="hidcon:cmd /c copy ReadMe.txt %Var9%"
+AutoInstall2="hidcon:cmd /c copy Hist.txt %VAR9%"
+AutoInstall2="hidcon:cmd /c copy Keyb.txt %var9%"
+</pre></blockquote>
+			<p>The variables created with '<tt>SetEnvironment</tt>' parameter can be used in other module
+			   parameters as well as in programs (.cmd, .bat files) launched from the module.</p>
+		</td>
+	</tr>
+
+	<tr id="Shortcut">
+		<td class="main">
+			<p><b><tt>Shortcut</tt>="<tt>type</tt>,{<tt>src_file_path</tt>},<br>
+				{<tt>command_line_for_file</tt>},<br>
+				{<tt>folder_for_shortcut</tt>},{<tt>description</tt>},<br>
+				{<tt>shortcut_name</tt>},{<tt>working_directory</tt>},<br>
+				{<tt>icon_file</tt>},{<tt>icon_index</tt>}"</b></p>
+		</td>
+		<td class="main">
+			<p>Shortcut creation command (multiple instances are allowed).</p>
+			<p>Each value (except for '<tt>type</tt>') must be enclosed in curly brackets aka braces.
+			   The values are separated by commas. The required values are 'type' and 'src_file_path'.
+			   Use the empty braces '{}' for the values you don't need, although you can omit all empty
+			   braces after the last value specified.</p>
+			<p>If you need to include braces in the text (e.g. in the shortcut description), use double
+			   braces. For example, {"This is a description {{with braces}}"} results in "This is a
+			   description {with braces}".</p>
+			<p>Paths '<tt>src_file_path</tt>' and  '<tt>icon_file</tt>' parameters do not need to be
+			   enclosed in quotes; however, remember about double backslashes.</p>
+			<p><b>'<tt>type</tt>'</b> - one or two symbol field that can take the following values:</p>
+			<ul>
+				<li>D - Creates shortcut on the Desktop</li>
+				<li>S - Creates shortcut in the "Start" menu</li>
+				<li>P - Creates shortcut in the "Start-&gt;Programs" menu</li>
+				<li>T - Creates shortcut in the "Startup" folder</li>
+			</ul>
+			<p>The shortcuts are created for ALL USERS. In order to create a shortcut for the current user
+			   only, add 'u' to the values listed above. For example, Shortcut="Du, {cmd.exe}" creates
+			   shortcut on the current user's Desktop only.</p>
+			<p><b>'<tt>src_file_path</tt>'</b> - name (and may be the path) of the file for which the
+			   shortcut is created. Do not forget to use DOUBLE backslashes when specifying the path.</p>
+			<p><b>'<tt>command_line_for_file</tt>'</b> - command line parameters for the file.</p>
+			<p><b>'<tt>folder_for_shortcut</tt>'</b> - folder in which the shortcut is created.
+			   Shortcut="Pu, {cmd.exe}, {/?}, {test}" creates the shortcut by the name of "cmd.lnk" and
+			   the parameters "cmd.exe /?" in the "test" folder of the current user's "Start-&gt;Programs"
+			   menu.</p>
+			<p><b>'<tt>description</tt>'</b> - shortcut description.</p>
+			<p><b>'<tt>shortcut_name</tt>'</b>- the shortcut name WITHOUT EXTENSION. If the value is not
+			   specified, the source file name is used and the 'lnk' extension is added to it. For example,
+			   Shortcut="P, {cmd.exe}, {/?}, {test}, {Run cmd}, {Run Command Line Help}" creates the
+			   shortcut by the name of "Run Command Line Help.lnk" and the command line parameter
+			   "cmd.exe /?" in the "test" folder of All Users' Start/Programs menu.</p>
+			<p><b>'<tt>working_directory</tt>'</b>- fills in the shortcut's "Start in:" field.</p>
+			<p><b>'<tt>icon_file</tt>'</b> - path and name of the file containing the shortcut icon.</p>
+			<p><b>'<tt>icon_index</tt>'</b> - icon number in file specified in '<tt>icon_file</tt>'.</p>
+			<p>You can specify as many '<tt>Shortcut</tt>' strings as you wish. They will be processed in
+			   the order of appearance in the config file.</p>
+		</td>
+	</tr>
+
+	<tr>
+		<th class="main" colspan="2"><p>Appearance</p></th>
+	</tr>
+
+	<tr id="ExtractDialogWidth">
+		<td class="main">
+			<p><b><tt>ExtractDialogWidth</tt>="x"</b></p>
+		</td>
+		<td class="main">
+			<p>Specifies the MINIMUM extraction dialog window width, where "x" is the window width in pixels.</p>
+		</td>
+	</tr>
+
+	<tr id="ExtractPathWidth">
+		<td class="main">
+			<p><b><tt>ExtractPathWidth</tt>="x"</b></p>
+		</td>
+		<td class="main">
+			<p>Specifies the MINIMUM width for the extraction path dialog windows (stand-alone
+			   <a href="#ExtractPath" class="int">'ExtractPath'</a> and combined
+			   <a href="#ExtractPathText" class="int">'BeginPrompt' + 'ExtractPath'</a>), where "x" is the
+			   window width in pixels. If after text formatting the window width is smaller than the
+			   specified value, the width is adjusted according to the value.</p>
+		</td>
+	</tr>
+
+	<tr id="GUIFlags">
+		<td class="main">
+			<p><b><tt>GUIFlags</tt>="x"</b></p>
+		</td>
+		<td class="main">
+			<p>A set of flags for changing the extraction dialog appearance, where "x" is a sum of the
+			   numeric values or a summation expression like "2+4+128+1024". You can use any order of
+			   numeric values in the summation expression. The numeric values define the following
+			   properties:</p>
+			<ul>
+				<li>1 - display the extraction percentage on the right of the window title (it is on the
+					left by default)</li>
+				<li>2 - do not display the extraction percentage in the window title</li>
+				<li>4 - display the extraction percentage under the Progress bar</li>
+				<li>8 - use Windows XP styles</li>
+				<li>16 - use bold font for the percentage indicator (works only if displayed under the
+					Progress bar, i.e. flag 4 is present)</li>
+				<li>32 - display the icon in the extraction dialog window</li>
+				<li>64 - use combined dialog <a href="#ExtractPathText" class="int">'BeginPrompt' + 'ExtractPath'</a>
+					for displaying the extraction path (the flag overrides flags 128 and 1024)</li>
+				<li>128 - use separate dialog <a href="#ExtractPath" class="int">'ExtractPath'</a> for
+					displaying the extraction path (works only if flag 64 is present).
+					This flag overrides flag 1024. </li>
+				<li>256 - confirm canceling installation/extraction process (the dialog text can be
+					customized with <a href="#CancelPrompt">'CancelPrompt'</a> parameter)</li>
+				<li>512 - do not display the icon in all windows (including the [ALT]+[TAB] window)</li>
+				<li>1024 - display the icon in the extraction path dialog (works only for the separate dialog
+					<a href="#ExtractPath" class="int">'ExtractPath'</a>, i.e. flag 64 is not present while
+					flag 128 is present)</li>
+				<li>2048 - display the icon in both <a href="#BeginPrompt">'BeginPrompt'</a> and combined
+					<a href="#ExtractPathText" class="int">'BeginPrompt' + 'ExtractPath'</a> dialog windows
+					instead of the "question mark" system icon. The flag is ignored, if '<tt>BeginPrompt</tt>'
+					parameter is not present in the config file.</li>
+				<li>4096 - change the button titles in both <a href="#BeginPrompt">'BeginPrompt'</a> dialog
+					and combined <a href="#ExtractPathText" class="int">'BeginPrompt' + 'ExtractPath'</a>
+					dialog from "Yes" - "No" to "OK" - "Cancel". The flag is ignored, if '<tt>BeginPrompt</tt>'
+					parameter is not present in the config file.</li>
+			</ul>
+			<p>For example, in order to display the extraction percentage under the progress bar instead of
+			   the window title, display the extraction path in a separate dialog window and display the
+			   icon in this window, you need to specify GUIFlags="2+4+128+1024" or GUIFlags="1158"
+			   (because 2+4+128+1024=1158).</p>
+			<p>Attempts to add an already set filag are ignored. For example, if you try to specify </p>
+			<p>GUIFlags="137+1" ("1+8+128+1") </p>
+			<p>that will not make GUIFlags="138". Instead, the last "+1" will be ignored, because flag 1
+			   has already been set.</p>
+			<p>This parameter can be altered from the command line with
+			   <a href="switches.html#gfX">'-gfX'</a> switch.</p>
+		</td>
+	</tr>
+
+	<tr id="GUIMode">
+		<td class="main">
+			<p><b><tt>GUIMode</tt>="x"</b></p>
+		</td>
+		<td class="main">
+			<p>Where x = 1 or 2 (always in double quotes, i.e. GUIMode="2")</p>
+			<ul>
+				<li>1 - shows the extraction process, but hides the "Cancel" button and disables the
+					"Close" button (in the window title bar) and [ESC] key on the keyboard.</li>
+				<li>2 - hides the extraction dialog completely (silent mode)</li>
+			</ul>
+			<p>You can override this parameter from the command line by specifying the
+			   <a href="switches.html#gmX">'-gmX'</a> switch.</p>
+		</td>
+	</tr>
+
+	<tr id="Progress">
+		<td class="main">
+			<p><b><tt>Progress</tt>="x"</b></p>
+		</td>
+		<td class="main">
+			<p>Where x = "yes" or "no" (must be enclosed in quotes, i. e. Progress="no").
+			   <em>Native 7-zip SFX parameter.</em></p>
+			<p>Progress="no" is equivalent to GUIMode="2". If the config file contains '<tt>GUIMode</tt>'
+			   (or '<tt>-gmX</tt>' is used in the command line) along with '<tt>Progress</tt>', the latter
+			   will be ignored. This is because '<tt>GUIMode</tt>' and '<tt>-gmX</tt>' override
+			   <tt>'Progress</tt>' parameter.</p>
+		</td>
+	</tr>
+
+	<tr>
+		<th class="main" colspan="2"><p>Text</p></th>
+	</tr>
+
+	<tr id="Title">
+		<td class="main">
+			<p><b><tt>Title</tt>="new_title"</b></p>
+		</td>
+		<td class="main">
+			<p>Changes the default title ("7-zip SFX") for the following dialog windows '<tt>BeginPrompt</tt>',
+			   '<tt>CancelPrompt</tt>', '<tt>FinishMessage</tt>' and '<tt>HelpText</tt>'.
+			   <em>Native 7-zip SFX parameter.</em></p>
+			<p>If this parameter is missing, the SFX archive name without extension is displayed instead.
+			   If the SFX archive name can not be determined, the default value is displayed.</p>
+		</td>
+	</tr>
+
+	<tr id="BeginPrompt">
+		<td class="main">
+			<p><b><tt>BeginPrompt</tt>="some_text"</b><br>&nbsp;</p><img alt="BeginPrompt" src="misc/beginprompt1.png">
+		</td>
+		<td class="main">
+			<p>Displays a message in a dialog window when SFX is launched.
+			   <em>Native 7-zip SFX parameter.</em></p>
+			<p>Depending on the presence of flag 64 in '<tt>GUIFlags</tt>' parameter the window may look
+			   differently. The screen shot on the left is taken with flag 64 absent.</p>
+			<p>If flag 64 is present, the '<tt>BeginPrompt</tt>' dialog window is combined with the editable
+			   extraction path field, as shown on the screen shot below.</p>
+			<p>You can suppress this window (if specified) with the following command line switches:
+			   <a href="switches.html#ai">'-ai'</a>, <a href="switches.html#aiX">'-aiX'</a> and
+			   <a href="switches.html#y">'-y'</a>.</p>
+		</td>
+	</tr>
+
+	<tr id="ExtractPathText">
+		<td class="main">
+			<p><b><tt>ExtractPathText</tt>="some_text"</b><br>&nbsp;</p><img alt="BeginPrompt with ExtractPath" src="misc/beginprompt2.png">
+		</td>
+		<td class="main">
+			<p>The text above the editable extraction path field  (which is "Extraction path:" by defult).</p>
+			<p>The screen shot on the left demonstrates the combined '
+			   <tt>BeginPrompt</tt>' + '<b>ExtractPath</b>' dialog window (flag 128 of '<tt>GUIFlags</tt>'
+			   parameter is absent).</p>
+			<p>The path in the extraction field is retrieved from
+			   <a href="#InstallPath">'InstallPath'</a> parameter, but it can be altered by user. If the
+			   '<tt>InstallPath</tt>' value is not present in the config file or the path was deleted by
+			   user  from the interactive extraction dialog, the archive will be extracted to a temporary
+			   folder. This temporary folder will be deleted after the extraction and execution of all
+			   commands.</p>
+		</td>
+	</tr>
+
+	<tr id="ExtractPath">
+		<td class="main">
+			<p><b><tt>ExtractPathTitle</tt>="title_text"</b><br>&nbsp;</p><img alt="ExtractPath" src="misc/extractpath.png">
+		</td>
+		<td class="main">
+			<p>Changes the extraction path dialog window title (which is "Extraction path" by defult).
+			   This parameter is used only for the stand-alone extraction path dialog window (invoked with
+			   flag 128 of '<tt>GUIFlags</tt>' parameter) for specifying the extraction path, as shown on
+			   the left. If flag 128 is absent, '<tt>ExtractPathTitle</tt>' parameter will be ignored.</p>
+			<p>For the combined dialog window (flag 64 of '<tt>GUIFlags</tt>' parameter) the value is
+			   retrieved from '<tt>Title</tt>' parameter, as shown on the screen shot above.</p>
+			<p>Flag 1024 of '<tt>GUIFlags</tt>' parameter forces the icon appearance in the extraction path
+			   dialog window, as shown on the left. It only works together with flag 128. If flag 128 is
+			   absent, flag 1024 is ignored.</p>
+		</td>
+	</tr>
+
+	<tr id="ExtractTitle">
+		<td class="main">
+			<p><b><tt>ExtractTitle</tt>="new_title"</b><br>&nbsp;</p><img alt="Progress" src="misc/extractdialog.png">
+		</td>
+		<td class="main">
+			<p>Changes the extraction dialog window title (which is "Extracting" by default). You can
+			   specify something like "Preparing the installation". Flag 32 of '<tt>GUIFlags</tt>' parameter
+			   forces the icon appearance in the extraction dialog window, as shown on the left.</p>
+			<p>By specifying GUIMode="1" you can hide the "Cancel" button and disable the "Close" button
+			   (in the window title bar).</p>
+			<p>By specifying GUIMode="2" you can completely hide the extraction window.</p>
+		</td>
+	</tr>
+
+	<tr id="ExtractDialogText">
+		<td class="main">
+			<p><b><tt>ExtractDialogText</tt>="text"</b></p>
+		</td>
+		<td class="main">
+			<p>Displays the specified text ABOVE the extraction progress indicator (Progress Bar).
+			   If this parameter is not specified, the text will not be displayed.<br></p>
+		</td>
+	</tr>
+
+	<tr id="ExtractCancelText">
+		<td class="main">
+			<p><b><tt>ExtractCancelText</tt>="button_text"</b></p>
+		</td>
+		<td class="main">
+			<p>Changes the button text in the extraction dialog window from "Cancel" (default) to the
+			   specified one.<br><b>Note</b>. You can hide this button by specifying GUIMode="1".</p>
+		</td>
+	</tr>
+
+	<tr id="CancelPrompt">
+		<td class="main">
+			<p><b><tt>CancelPrompt</tt>="cancel_dialog_text"</b><br>&nbsp;</p><img alt="Cancel" src="misc/cancelprompt.png">
+		</td>
+		<td class="main">
+			<p>Displays a dialog window with the text of your choice (by default: "Really cancel installation?")
+			   in order to confirm the cancellation from any dialog window. If flag 256 of
+			   <a href="#GUIFlags">'GUIFlags'</a> parameter is absent, '<tt>CancelPrompt</tt>' parameter is
+			   ignored and the window is not displayed. Otherwise, the window is displayed with the text
+			   specified in '<tt>CancelPrompt</tt>' or default text.</p>
+			<p>You can suppress the window from the command line with <a href="switches.html#y">'-y'</a> switch.</p>
+		</td>
+	</tr>
+
+	<tr id="ErrorTitle">
+		<td class="main">
+			<p><b><tt>ErrorTitle</tt>="title_for_errors_windows"</b><br>&nbsp;</p><img alt="Error" src="misc/errortitle.png">
+		</td>
+		<td class="main">
+			<p>The error window title. Hopefully, you won't see any <img src="misc/wink.gif" alt="" class="inlineimg">.
+			   The default title is "7-Zip SFX: error".</p>
+			<p>If this parameter is not specified, the SFX archive name (without the extension) is displayed
+			   with ":error" appended to it. If the SFX archive name can not be determined, the default
+			   value is displayed.</p>
+			<p>The actual text of error messages is defined by the module itself.</p>
+		</td>
+	</tr>
+
+	<tr id="FinishMessage">
+		<td class="main">
+			<p><b><tt>FinishMessage</tt>="finish_message"</b><br>&nbsp;</p><img alt="Finish" src="misc/finishmessage.png">
+		</td>
+		<td class="main">
+			<p>After finishing all operations (extraction, program execution, file deletion, shortcut
+			   creation, etc) a dialog window with '<tt>FinishMessage</tt>' text is displayed. Note that
+			   invoking any automated installation ('<tt>AutoInstall</tt>' or '<tt>AutoInstallX</tt>')
+			   automatically (this module is very unattended-oriented <img src="misc/wink.gif" alt="" class="inlineimg">)
+			   blocks the completion message.</p>
+			<p>You can force the '<tt>FinishMessage</tt>' appearance from the command line with two
+			   switches: '<tt>-fm1</tt>' or '<tt>-fmN</tt>'. You can suppress the window with
+			   <a href="switches.html#fmX">-'fm0'</a> or <a href="switches.html#y">'-y'</a> switch.</p>
+			<p>Also, for a specific scenario (for example, for a certain '<tt>AutoInstall</tt>',
+			  '<tt>RunProgram</tt>' or '<tt>ExecuteFile</tt>' parameter) you can use
+			  <a href="prefixes.html#fmXp">'fmX'</a> prefix. For instance,</p>
+				<blockquote><pre>AutoInstall="hidcon:fm1:install.bat"</pre></blockquote>
+			<p>displays the message, even though this is an automated installation. On the other hand,</p>
+				<blockquote><pre>RunProgram="nowait:fm0:setup.exe"</pre></blockquote>
+			<p>blocks the '<tt>FinishMessage</tt>' appearance.</p>
+			<p>Command line switches override the config file parameters.</p>
+			<p>You can substitute a number 2...999 instead of X y into the '<tt>-fmX</tt>' switch or
+			  '<tt>fmX</tt>' prefix. The countdown is displayed on the "OK" button. When time expires,
+			  the window closes and the module finishes its operation.</p>
+		</td>
+	</tr>
+
+	<tr id="HelpText">
+		<td class="main">
+			<p><tt><b>HelpText</b></tt><b>="some_text"</b><br>&nbsp;</p><img alt="Help" src="misc/helptext.png">
+		</td>
+		<td class="main">
+			<p>Lets you specify the help text that can be displayed by invoking the SFX archive with
+			   <a href="switches.html#h">'-h'</a> or <a href="switches.html#h">'-?'</a> switches.</p>
+			<p>The dialog window with the '<tt>HelpText</tt>' and the "OK" button appears. Closing the
+			   window completes the module operation (i.e. nothing will be unpacked or executed). </p>
+			<p>You can use this message for listing the installation scenarios, command line switches
+			   and any other information.</p>
+		</td>
+	</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+</body>
+</html>

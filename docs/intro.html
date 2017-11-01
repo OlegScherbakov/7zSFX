@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>General information about the modified module</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link href="common/styles.css" type="text/css" rel=stylesheet>
+		<script language="javascript" src="common/scripts.js" type="text/javascript"></script>
+		<script language="javascript" src="misc/menu.js" type="text/javascript"></script>
+	</head>
+
+<body onLoad="OnLoadBody()">
+
+<h2>General information about the modified module</h2>
+<ul>
+	<li>Author: Oleg Scherbakov </li>
+	<li>The module is distributed under the terms of <a href="http://www.gnu.org/" target="_blank" class="ext">GNU LGPL</a></li>
+</ul>
+
+<!--p> Throughout the documentation whenever you hover over an external link, it will change its color to red. All other links are local.</p-->
+
+<p>There are four modules in the archive. There is a specific module for three compression methods
+   (LZMA, Deflate, PPMd), and the fourth one compatible with all these methods. All modules have identical
+   features.</p>
+
+<p>The modified module provides a lot of options for creating SFX archives (SFX stands for self=extracting).
+   This is what you can do with this module:</p>
+
+<ul>
+	<li>specify the path to extract</li>
+	<li>use absolute and relatives paths</li>
+	<li>select between interactive, silent and hidden extraction</li>
+	<li>control the appearance of dialog prompts and text</li>
+	<li>configure different installation options for packaged applications, and use command line
+		switches for choosing the required installation scenario</li>
+	<li>simply extract the archive to the specified folder</li>
+	<li>consequently run several files (.exe, .msi, .reg and so on) after the extraction to install
+		configured applications</li>
+	<li>replace .bat and .cmd files and eliminate the need in supplementary utilities like "StartX.exe",
+		"msistub.exe" and so on</li>
+	<li>create shortcuts for programs with the icons of your choice</li>
+	<li>use archives with different compression methods (LZMA, Deflate, PPMd) supported by 7-zip archiver</li>
+	<li>delete temporary files after use as well as the SFX archive</li>
+	<li>and many more...</li>
+</ul>
+
+<p>Typically, you use the <a href="configinfo.html" class="int">configuration file</a> to create installation
+   scenarios by specifying various <a href="parameters.html" class="int">parameters</a> (and in some cases
+   <a href="prefixes.html" class="int">prefixes</a>). These scenarios can be later selected with the command
+   line <a href="switches.html" class="int">switches</a> supported by the module (you can configure a swtichless
+   scenario as well). Check out the <a href="examples.html" class="int">usage examples</a> and see how you can
+   benefit from using the module.</p>
+
+<!--p>If this is the first time you create an SFX archive, read this guide, please: ??Íó íàäî íàïèñàòü åãî...</p-->
+
+<p>The module has been developed according to the feature requests from Russian speaking unattended
+   community at <a href="http://forum.oszone.net/" target="_blank" class="ext">Forum.OSZone.net</a>.
+   Therefore many functions focus on unattended installation scenarios.</p>
+
+<p>Starting with version 1.1 beta the module requires Windows 2000 or later.
+   Windows 95, Windows 98 and Windows Me are no longer supported.</p>
+
+<p>The module development is an ongoing process. It keeps gaining new features, as you can see in the
+   <a href="history.html" class="int">History of changes</a>. Meanwhile some bugs are possible, and you can report
+   them using the contact information at the top of the page.</p>
+
+<p>There is no built-in functionality for replacing the SFX archive icon <img src="misc/sad.gif" alt="" class="inlineimg">,
+   but you can easily do this yourself. See <a href="icon.html" class="int">Replacing 7z
+   sfx archive icon</a> for instructions.</p>
+
+<p><b>Important!</b> You CAN NOT change icons for modules compressed with UPX utility.</p>
+
+<p>&nbsp;</p>
+<p>Credits:</p>
+<ul>
+	<li>Igor Pavlov (<a href="http://7-zip.org/" target="_blank" class="ext">7-Zip archiver</a>)</li>
+	<li>Vadim Sterkin aka <a href="http://www.msfn.org/board/index.php?showuser=14702" target="_blank" class="ext">Vadikan</a>
+		(help with documentation and its translation to English)</li>
+	<li><a href="http://forum.oszone.net/member.php?userid=8802" target="_blank" class="ext">gora</a>
+		(help with updating documentation)</li>
+	<li><a href="http://forum.oszone.net/" target="_blank" class="ext">Forum.OSZone.net</a> members
+		(testing and valuable input)</li>
+</ul>
+
+<p>&nbsp;</p>
+</body>
+</html>

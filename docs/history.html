@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>History of changes</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link href="common/styles.css" type="text/css" rel=stylesheet>
+		<script language="javascript" src="common/scripts.js" type="text/javascript"></script>
+		<script language="javascript" src="misc/menu.js" type="text/javascript"></script>
+	</head>
+
+<body onLoad="OnLoadBody()">
+
+<h2>History of changes</h2>
+<table><tbody>
+	<tr>
+		<th class="hist">#</th>
+		<td class="hist">- changed</td>
+	</tr>
+
+	<tr>
+		<th class="hist">*</th>
+		<td class="hist">- fixed</td>
+	</tr>
+
+	<tr>
+		<th class="hist">+</th>
+		<td class="hist">- added</td>
+	</tr>
+
+	<tr>
+		<th class="hist">-</th>
+		<td class="hist">- removed</td>
+	</tr>
+
+	<TR><TH class="hist" colSpan=2><P><br>1.2 RC1 (build 715) July 14, 2007</P></TH></TR>
+	<tr><TD class="hist">#</TD><TD class="hist">The source code of 7-Zip version 4.49 beta (July 11, 2007) is used</TD></tr>
+
+	<TR><TH class="hist" colSpan=2><P><br>1.2 (build 704) July 3, 2007</P></TH></TR>
+	<tr><TD class="hist">#</TD><TD class="hist">Decreased the module size thanks to the text data optimization.</TD></tr>
+
+	<TR><TH class="hist" colSpan=2><P><br>1.2 RC1 (build 702) July 1, 2007</P></TH></TR>
+	<tr><TD class="hist">#</TD><TD class="hist">Automatic user and system language detection</TD></tr>
+
+	<TR><TH class="hist" colSpan=2><P><br>1.2 beta (build 699) June 28, 2007</P></TH></TR>
+	<tr><TD class="hist">#</TD><TD class="hist">The source code of 7-Zip version 4.48 beta  (June 26, 2007) is used.</TD></tr>
+	<tr><TD class="hist">+</TD><TD class="hist">"Copy" method for uncompressed files (gora:forum.oszone.net)</TD></tr>
+
+	<TR><TH class="hist" colSpan=2><P><br>1.2 beta (build 687) June 16, 2007</P></TH></TR>
+	<tr><TD class="hist">#</TD><TD class="hist">The source code of 7-Zip version 4.47 beta  (May 27, 2007) is used.</TD></tr>
+
+	<TR><TH class="hist" colSpan=2><P><br>1.2 beta (build 643) June 3, 2007</P></TH></TR>
+	<tr><TD class="hist">#</TD><TD class="hist">The source code of 7-Zip version 4.45 beta (17 april 2007) is used</TD></tr>
+	<tr><TD class="hist">*</TD><TD class="hist">Memory leak (especilly noticebale with archives containing many files) </TD></tr>
+
+	<TR><TH class="hist" colSpan=2><P><br>1.2 beta (build 571) February 20, 2007</P></TH></TR>
+	<tr><TD class="hist">*</TD><TD class="hist">Missing '<tt>GUIFlags</tt>' in the config files caused incorrect dialog display (gora:forum.oszone.net)</TD></tr>
+	<tr><TD class="hist">*</TD><TD class="hist">'<tt>SelfDelete</tt>' didn't work on "read only" SFX archives  (SAOPP:forum.oszone.net)</TD></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.2 beta (build 552) February 1, 2007</p></th></tr>
+	<tr><td class="hist">*</td><td class="hist">Extraction path interactively specified by user would not work (SAOPP:forum.oszone.net)</td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.2 beta (build 551) January 31, 2007</p></th></tr>
+	<tr><td class="hist">*</td><td class="hist">Environment variables would not expand in '<tt>Directory</tt>' parameter</td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.2 beta (build 549) January 29, 2007</p></th></tr>
+	<tr><td class="hist">#</td><td class="hist">The source code of 7-Zip version 4.44 beta (January 20, 2007) is used</td></tr>
+	<tr><td class="hist">#</td><td class="hist">'<tt>CancelPrompt</tt>' dialog window has "No" as default button</td></tr>
+	<tr><td class="hist">#</td><td class="hist">Dialog windows appearance completely rewritten</td></tr>
+	<tr><td class="hist">#</td><td class="hist">[Esc] key works in all dialog windows as "No" or "Cancel"</td></tr>
+	<tr><td class="hist">#</td><td class="hist">Only '<tt>CancelPrompt</tt>', '<tt>Error</tt>' and '<tt>FinishMessage</tt>' dialog windows have sounds</td></tr>
+	<tr><td class="hist">*</td><td class="hist">'<tt>FinishMessage</tt>' malfunctions when '<tt>-y</tt>' switch is specified</td></tr>
+	<tr><td class="hist">*</td><td class="hist">'<tt>CancelPrompt</tt>' malfunctions when '<tt>-y</tt>' switch is specified</td></tr>
+	<tr><td class="hist">*</td><td class="hist">Windows Vista compatibility</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Language for all default module messages is based on the OS user interface (Russian language for Russian UI and English language  for all other UIs)</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Batch mode for automated installations (<tt>'-aiX</tt>' switch) (gora:forum.oszone.net)</td></tr>
+	<tr><td class="hist">+</td><td class="hist">'<tt>SetEnvironment</tt>' parameter for the config file (gora:forum.oszone.net)</td></tr>
+	<tr><td class="hist">+</td><td class="hist">'<tt>-sfxconfig</tt>' switch (gora:forum.oszone.net)</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Time in '<tt>FinishMessage</tt>'</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Displaying the module icon in stand-alone '<tt>BeginPrompt</tt>' and combined '<tt>BeginPrompt</tt>'+'<tt>ExtractPath</tt>' dialog windows</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Ability to choose between "Yes" - "No" and  "OK" - "Cancel" button combinations in '<tt>BeginPrompt</tt>' dialog window</td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.1 beta (build 516) December 27, 2006</p></th></tr>
+	<tr><td class="hist">#</td><td class="hist">'<tt>Directory</tt>' parameter works for the first '<tt>RunProgram</tt>' only</td></tr>
+	<tr><td class="hist">+</td><td class="hist">'<tt>-sfxversion</tt>' switch</td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.1 beta (build 513) December 24, 2006</p></th></tr>
+	<tr><td class="hist">*</td><td class="hist"> '<tt>-?</tt>' ('<tt>-h</tt>') switches are ignored if '<tt>HelpText</tt>' is absent from the config file (gora:forum.oszone.net)</td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.1 beta (build 499) December 10, 2006</p></th></tr>
+	<tr><td class="hist">#</td><td class="hist">'<tt>nowait</tt>' prefix is ignored when unpacking to a temp folder</td></tr>
+	<tr><td class="hist">#</td><td class="hist">'<tt>-y</tt>' switch suppresses all dialog windows except for error messages and extraction dialog window (if used)</td></tr>
+	<tr><td class="hist">#</td><td class="hist">'<tt>ExecuteFile</tt>' and '<tt>ExecuteParameters</tt>' can not be used multiple times in the config file</td></tr>
+	<tr><td class="hist">*</td><td class="hist">'<tt>-nr</tt>' switch did not function</td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.1 beta (build 463) November 4, 2006</p></th></tr>
+	<tr><td class="hist">#</td><td class="hist">Managing '<tt>FinishMessage</tt>' from the command line or with a prefix in the config file</td></tr>
+	<tr><td class="hist">#</td><td class="hist">Prefixes can be listed in any order within a value for the executable command</td></tr>
+	<tr><td class="hist">*</td><td class="hist">"setup.exe" would not launch if unpacked into a temp folder and '<tt>RunProgram</tt>', '<tt>ExecuteFile</tt>' or '<tt>AutoInstall</tt>' were not specified (gora:forum.oszone.net)</td></tr>
+	<tr><td class="hist">*</td><td class="hist">'<tt>ExtractPathText</tt>' incorrectly displayed when more than two lines of text are used along with the icon (gora:forum.oszone.net)</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Several flags to '<tt>GUIFlags</tt>'</td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.1 beta (build 457) October 29, 2006</p></th></tr>
+	<tr><td class="hist">*</td><td class="hist">%%S variable did not work in '<tt>InstallPath</tt>' (gora:forum.oszone.net)</td></tr>
+	<tr><td class="hist">+</td><td class="hist">'<tt>FinishMessage</tt>' parameter (neitral72:forum.oszone.net)</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Support for the new parameters of the original module: '<tt>ExecuteFile</tt>', '<tt>ExecuteParameters</tt>', '<tt>Progress</tt>' and  '<tt>Directory'</tt></td></tr>
+	<tr><td class="hist">+</td><td class="hist">'<tt>RunProgram</tt>', '<tt>ExecuteFile</tt>' and  '<tt>AutoInstall</tt>' can be used multiple times in the config file</td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.1 beta (build 301) June 1, 2006</p></th></tr>
+	<tr><td class="hist">#</td><td class="hist">The source code of 7-Zip version 4.42 (May 14, 2006) is used</td></tr>
+	<tr><td class="hist">*</td><td class="hist">Browse button incorrectly displayed when XP styles are used</td></tr>
+	<tr><td class="hist">*</td><td class="hist">'<tt>ExtractDialogText</tt>' incorrectly displayed when more than two lines of text are used along with the icon (gora:forum.oszone.net)</td></tr>
+	<tr><td class="hist">*</td><td class="hist">Default beep (standard Windows sound) when displaying extraction dialog window (gora:forum.oszone.net)</td></tr>
+	<tr><td class="hist">*</td><td class="hist">Command line switches are passed incorrectly to the executable inside the archive (vampik:forum.oszone.net)</td></tr>
+	<tr><td class="hist">*</td><td class="hist">Paths with spaces are passed incorrectly via %%T variable (melato:forum.oszone.net)</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Displaying icon in the extraction path dialog window (via '<tt>GUIFlags</tt>')</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Disallow running  '<tt>RunProgram</tt>' and '<tt>AutoInstall</tt>' by using the command line('<tt>-nr</tt>' switch)</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Variable %%S is the full path to the SFX folder (vampik:forum.oszone.net)</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Setting shortcut icon with '<tt>Shortcut</tt>' parameter (YuriPet:forum.oszone.net)</td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.1 beta (build 258) April 13, 2006</p></th></tr>
+	<tr><td class="hist">*</td><td class="hist">Default beep (standard Windows sound) when displaying extraction dialog window without the icon (gora:forum.oszone.net)</td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.1 beta (build 257) April 12, 2006</p></th></tr>
+	<tr><td class="hist">*</td><td class="hist">Slow extraction (gora:forum.oszone.net)</td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.1 beta (build 255) April 10, 2006</p></th></tr>
+	<tr><td class="hist">#</td><td class="hist">The source code of 7-Zip version 4.30 beta (18 March, 2006) is used</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Overwrite files modes ('<tt>OverwriteMode</tt>' in the config file and  '<tt>-omX</tt>' in the command line)</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Ability to confirm canceling the extraction/installation process</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Allow user to edit/specify the extraction path</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Displaying '<tt>HelpText</tt>' with command line switches '<tt>-h</tt>' or '<tt>-?</tt>'</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Prevent icon appearance in dialog windows (via '<tt>GUIFlags</tt>') (gora:forum.oszone.net)</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Additional environment variables (%UserDesktop%, %MyDocuments%, etc ) during module operation</td></tr>
+	<tr><td class="hist">+</td><td class="hist">'<tt>nowait</tt>' prefix '<tt>RunProgram</tt>' and '<tt>AutoInstall</tt>' parameters</td></tr>
+	<tr><td class="hist">-</td><td class="hist">Support for ANSI operating systems (Win95, Win98, WinMe)<br></td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.0.0.51123 (build 117) November 23, 2005</p></th></tr>
+	<tr><td class="hist">#</td><td class="hist">The source code of 7-Zip version 4.30 beta (November 18, 2005) is used</td></tr>
+	<tr><td class="hist">+</td><td class="hist">The new '<tt>-!</tt>' command line switch</td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.0.0.51028 (build 91) October 28, 2005</p></th></tr>
+	<tr><td class="hist">#</td><td class="hist">The extraction folder is the current one for the '<tt>Delete</tt>' command</td></tr>
+	<tr><td class="hist">*</td><td class="hist">'<tt>RunProgram</tt>' and all '<tt>AutoInstall</tt>' parameters did not expand environment variables (Vadikan:forum.oszone.net)</td></tr>
+	<tr><td class="hist">+</td><td class="hist">The '<tt>Shortcut</tt>' and '<tt>Delete</tt>' parameters now expand '%%T' to the extraction folder path (used to work for '<tt>RunProgram</tt>' and all '<tt>AutoInstall</tt>' only)</td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.0.0.51017 (build 80) October 17, 2005</p></th></tr>
+	<tr><td class="hist">#</td><td class="hist">The display/position/centering of the extraction dialog elements</td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.0.0.51015 (build 78) October 15, 2005</p></th></tr>
+	<tr><td class="hist">*</td><td class="hist">Silent mode with hidden "Cancel" button and blocked "Close" button (GuiMode="1") could be interrupted from the keyboard with [Esc] or [Alt]+[F4] keys (Debby:forum.oszone.net)</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Bold font for the percentage indicator (via '<tt>GUIFlags</tt>') (Debby:forum.oszone.net)</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Windows XP visual styles support (via '<tt>GUIFlags</tt>')</td></tr>
+	<tr><td class="hist">+</td><td class="hist">Icon in the extraction dialog (via '<tt>GUIFlags</tt>')</td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.0.0.51012 (build 75) October 12, 2005</p></th></tr>
+	<tr><td class="hist">*</td><td class="hist">Clicking "Yes" while holding down the [SHIFT] button at the '<tt>BeginPrompt</tt>' dialog window did not work (command line was ok, though) (zvezduk:forum.oszone.net)</td></tr>
+	<tr><td class="hist">+</td><td class="hist">The shortcut's "Start in:" field now can be configured with the '<tt>Shortcut</tt>' parameter (zvezduk:forum.oszone.net)</td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.0.0.51011 (build 74) October 11, 2005</p></th></tr>
+	<tr><td class="hist">*</td><td class="hist">A combination of specified '<tt>InstallPath</tt>' and missing '<tt>RunProgram</tt>' or '<tt>AutoInstall</tt>' caused abnormal program termination with "Memory cannot be read" error (HWG:forum.oszone.net)</td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.0.0.51010 (build 73) October 10, 2005</p></th></tr>
+	<tr><td class="hist">*</td><td class="hist">Extracting the SFX into the drive root caused error (HWG:forum.oszone.net)</td></tr>
+	<tr><td class="hist">+</td><td class="hist">'<tt>SelfDelete</tt>' parameter and <tt>-sdX</tt> switch (HWG:forum.oszone.net)</td></tr>
+
+	<tr><th class="hist" colspan="2"><p><br>1.0.0.51007 October 7, 2005</p></th></tr>
+	<tr><td class="hist"> </td><td class="hist">The first public release</td></tr>
+
+</tbody></table>
+
+<p>&nbsp;</p>
+</body>
+</html>

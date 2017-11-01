@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Prefixes for execution commands</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link href="common/styles.css" type="text/css" rel=stylesheet>
+		<script language="javascript" src="common/scripts.js" type="text/javascript"></script>
+		<script language="javascript" src="misc/menu.js" type="text/javascript"></script>
+	</head>
+
+<body onLoad="OnLoadBody()">
+
+<h2>Prefixes for the execution commands</h2>
+
+<ul>
+	<li>All prefixes can be used only with the execution parameters, namely:
+		<a href="parameters.html#RunProgram">'RunProgram'</a>,
+		<a href="parameters.html#ExecuteFile">'ExecuteFile'</a>,
+		<a href="parameters.html#AutoInstall">'AutoInstall'</a> or
+		<a href="parameters.html#AutoInstallX">'AutoInstallX'</a>.</li>
+	<li>Multiple prefixes can be listed in an arbitrary order for any of the above parameters.</li>
+	<li>The prefixes are NOT case sensitive.</li>
+	<li>The prefixes are separated from each other and from the parameter with a colon (<b>:</b>). For example:</li>
+</ul>
+
+<blockquote><pre>
+RunProgram="hidcon:fm0:nowait:install.cmd"
+RunProgram="NoWait:HidCon:fM0:install.cmd"
+</pre></blockquote>
+
+<ul>
+	<li>If the file path and name have to be enclosed in double quotes, the prefixes SHOULD NOT be included
+		in the part of the string enclosed in double quotes. For example</li>
+</ul>
+
+<blockquote><pre>
+RunProgram="nowait:hidcon:\"%ProgramFiles%\\install.cmd\""
+</pre></blockquote>
+<br>
+
+<table class="main"><tbody>
+	<tr>
+		<th class="main" width="73"><p>Prefix</p></th>
+		<th class="main"><p>Description</p></th>
+	</tr>
+
+	<tr id="fmXp">
+		<td class="main"><tt><b>fmX</b></tt></td>
+		<td class="main">
+			<p>Appearance mode and display duration for
+			   <a href="parameters.html#FinishMessage">'FinishMessage'</a>
+			   dialog window, where X is:</p>
+				<ul>
+					<li>0 - do not display the windows</li>
+					<li>1 - display the window</li>
+					<li>N (N= 2...999) - display the window for N seconds. The countdown is displayed on the
+						"OK" button. When time expires, the window closes and the module finishesits operation.</li>
+				</ul>
+			<p>You can force '<tt>FinishMessage</tt>' window appearance ('<tt>fm1</tt>', '<tt>fmN</tt>'
+			   switches) or block it with '<tt>fm0</tt>' switch (if '<tt>FinishMessage</tt>' is present
+			   in the config file) by specifying the corresponding prefix before the command you need
+			   to execute. For example,</p>
+<blockquote><pre>
+RunProgram="fm0:setup.exe"
+AutoInstall="fm1:setup.exe"
+AutoInstall3="fm20:setup.exe"
+</pre></blockquote>
+			<p>executes "setup.exe" and hides '<tt>FinishMessage</tt>' window in the first case (standard
+			   mode), but displays it in the second and third cases, even though an automated scenario
+			   (<a href="parameters.html#AutoInstall">'AutoInstall'</a> or
+			   <a href="parameters.html#AutoInstallX">'AutoInstallX'</a>) blocks '<tt>FinishMessage</tt>'
+			   window by default.</p>
+			<p>For multiple instances of '<tt>RunProgram</tt>', '<tt>AutoInstall</tt>', and
+			   '<tt>AutoInstallX</tt>' parameters only the first '<tt>fmX</tt>' prefix found in
+			   the parameter value is used. It does not have to be in the first string of the
+			   installation scenario. For example, for </p>
+<blockquote><pre>
+RunProgram="setup1.exe"
+RunProgram="fm0:setup2.exe"
+RunProgram="fm1:setup3.exe"
+</pre></blockquote>
+			<p>'<tt>fm0</tt>' prefix is used while '<tt>fm1</tt>' prefix is ignored.</p>
+			<p>If '<tt>FinishMessage</tt>' parameter is not present in the config file, all prefixes are ignored.</p>
+			<p>These prefixes can be OVERRIDDEN from the command line with
+			   <a href="switches.html#fmX">'-fmX'</a> switch.</p>
+		</td>
+	</tr>
+
+	<tr id="hidcon">
+		<td class="main"><tt><b>hidcon</b></tt></td>
+		<td class="main">
+			<p>Hides console windows. For example,</p>
+				<blockquote><pre>RunProgram="hidcon:install.cmd"</pre></blockquote>
+			<p>executes "install.cmd" and completely hides its console window.</p>
+		</td>
+	</tr>
+
+	<tr id="nowait">
+		<td class="main"><tt><b>nowait</b></tt></td>
+		<td class="main">
+			<p>Forces not to wait until an execution command completes its operation.</p>
+			<p>By default the execution commands within every installation scenario are processed according
+			   to the order of appearance in the config file, and the next command waits until the previous
+			   command is complete. If '<tt>nowait</tt>' prefix is used, the commands that appear after the
+			   command with this prefix are executed immediately (i.e. launching the next executable,
+			   deleting folders, creating shortcuts, etc).</p>
+			<p>This prefix is disabled when the SFX archive is extracted to a temporary folder.</p>
+		</td>
+	</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,120 @@
+body
+	{
+	font-family:	Verdana, Arial, Helvetica, sans-serif;
+	margin:	10px;
+	background-image:	url(img/fon.gif);
+	background-attachment:	FIXED;
+	}
+h2
+	{
+	font-size:	16px;
+	font-family:	Arial, serif;
+	color:	#a82323;
+	text-align:	center;
+	}
+p
+	{
+	color:	#333333;
+	font-size:	12px;
+	margin:	0px;
+/*				T	R	B	L	*/
+	padding:	4px	0px	0px	0px;
+	}
+tt
+	{
+	font-family:	Verdana, Arial, Helvetica, sans-serif;
+	color:	#990000;
+	font-size:	12px;
+	}
+table
+	{
+	font-size:	12px;
+	vertical-align:	middle;
+	border-collapse:	collapse;
+	}
+.main
+	{
+	border-style:	solid;
+	border-width:	2;
+	border-color:	#999999;
+	}
+th.main
+	{
+	background:	#cccccc;
+	text-align:	center;
+	padding:	5px
+	}
+td.main
+	{
+	padding:	10px;
+	}
+.hist
+	{
+	vertical-align:	top;
+/*				T	R	B	L	*/
+	padding:	2px 0px 0px 10px;
+	text-align:	left;
+	}
+.form
+	{
+	vertical-align:	top;
+/*				T	R	B	L	*/
+	padding:	5px	10px 10px 0px;
+	text-align:	left;
+	}
+.inlineimg
+	{
+	vertical-align: middle;
+	}
+ul
+	{
+	color:	#333333;
+	font-size:	12px;
+	}
+
+a
+	{
+	text-decoration:	none;
+	}
+a:link
+	{	
+	color:	#33F;
+	}
+a:hover
+	{	
+	color:	red;
+	}
+a.ext:hover
+	{
+	color:	red;
+	}
+a.int:hover
+	{
+	color:	red;
+	}
+.example_code {
+	font-size:	12px;
+	border: 2px inset;
+	PADDING-LEFT: 2px;
+	MARGIN: 0px;
+	OVERFLOW: auto;
+}
+
+.pre40{
+	color:	#333333;
+	font-size:	12px;
+	padding-left:	40px;
+}
+
+pre{
+	color:	#333333;
+	font-size:	12px;
+}
+
+.menu {
+	font-size:	8pt;
+	padding:0;
+	margin:0;
+	vertical-align:	top;
+}
+
