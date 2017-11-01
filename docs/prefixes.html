@@ -1,114 +1,116 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-	<head>
-		<title>Prefixes for execution commands</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<link href="common/styles.css" type="text/css" rel=stylesheet>
-		<script language="javascript" src="common/scripts.js" type="text/javascript"></script>
-		<script language="javascript" src="misc/menu.js" type="text/javascript"></script>
-	</head>
+<HTML><HEAD><TITLE>Ïðåôèêñû êîìàíä çàïóñêà</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=Windows-1251">
+<LINK href="misc/styles.css" type="text/css" rel=stylesheet>
+</HEAD>
+<BODY>
 
-<body onLoad="OnLoadBody()">
-
-<h2>Prefixes for the execution commands</h2>
-
+<H2>Ïðåôèêñû êîìàíä çàïóñêà</H2>
 <ul>
-	<li>All prefixes can be used only with the execution parameters, namely:
-		<a href="parameters.html#RunProgram">'RunProgram'</a>,
-		<a href="parameters.html#ExecuteFile">'ExecuteFile'</a>,
-		<a href="parameters.html#AutoInstall">'AutoInstall'</a> or
-		<a href="parameters.html#AutoInstallX">'AutoInstallX'</a>.</li>
-	<li>Multiple prefixes can be listed in an arbitrary order for any of the above parameters.</li>
-	<li>The prefixes are NOT case sensitive.</li>
-	<li>The prefixes are separated from each other and from the parameter with a colon (<b>:</b>). For example:</li>
+	<li>Ëþáûå ïðåôèêñû èñïîëüçóþòñÿ òîëüêî â êîìàíäàõ çàïóñêà (<a href="parameters.html#RunProgram">'RunProgram'</a>, <a href="parameters.html#ExecuteFile">'ExecuteFile'</a>, <a href="parameters.html#AutoInstall"> 'AutoInstall'</a> èëè <a href="parameters.html#AutoInstallX">'AutoInstallX'</a>).
+	<li>Ïðåôèêñîâ â ëþáîé êîìàíäå çàïóñêà ìîæåò áûòü íåñêîëüêî è èõ ìîæíî óêàçûâàòü â ëþáîé ïîñëåäîâàòåëüíîñòè.
+	<li>Ïðåôèêñû ÍÅ çàâèñÿò îò ðåãèñòðà.
+	<li>Ïðåôèêñû îòäåëÿþòñÿ îò êîìàíäû è äðóã îò äðóãà äâîåòî÷èåì (<b>:</b>). Íàïðèìåð:
 </ul>
-
-<blockquote><pre>
-RunProgram="hidcon:fm0:nowait:install.cmd"
-RunProgram="NoWait:HidCon:fM0:install.cmd"
-</pre></blockquote>
-
+<pre class="pre40">RunProgram="hidcon:fm0:nowait:install.cmd"
+RunProgram="NoWait:HidCon:fM0:install.cmd"</pre>
 <ul>
-	<li>If the file path and name have to be enclosed in double quotes, the prefixes SHOULD NOT be included
-		in the part of the string enclosed in double quotes. For example</li>
+	<li>Åñëè èñïîëüçóþòñÿ ïðåôèêñû, à èìÿ è ïóòü ê èñïîëíÿåìîìó ôàéëó ÄÎËÆÍÛ ÁÛÒÜ ÇÀÊËÞ×ÅÍÛ â äîïîëíèòåëüíûå êàâû÷êè, òî ïðåôèêñû â äîïîëíèòåëüíûå êàâû÷êè ÍÅ ÂÊËÞ×ÀÞÒÑß. Íàïðèìåð:</li>
 </ul>
-
-<blockquote><pre>
-RunProgram="nowait:hidcon:\"%ProgramFiles%\\install.cmd\""
-</pre></blockquote>
-<br>
-
-<table class="main"><tbody>
-	<tr>
-		<th class="main" width="73"><p>Prefix</p></th>
-		<th class="main"><p>Description</p></th>
-	</tr>
-
-	<tr id="fmXp">
-		<td class="main"><tt><b>fmX</b></tt></td>
-		<td class="main">
-			<p>Appearance mode and display duration for
-			   <a href="parameters.html#FinishMessage">'FinishMessage'</a>
-			   dialog window, where X is:</p>
-				<ul>
-					<li>0 - do not display the windows</li>
-					<li>1 - display the window</li>
-					<li>N (N= 2...999) - display the window for N seconds. The countdown is displayed on the
-						"OK" button. When time expires, the window closes and the module finishesits operation.</li>
-				</ul>
-			<p>You can force '<tt>FinishMessage</tt>' window appearance ('<tt>fm1</tt>', '<tt>fmN</tt>'
-			   switches) or block it with '<tt>fm0</tt>' switch (if '<tt>FinishMessage</tt>' is present
-			   in the config file) by specifying the corresponding prefix before the command you need
-			   to execute. For example,</p>
-<blockquote><pre>
-RunProgram="fm0:setup.exe"
+<pre class="pre40">RunProgram="nowait:hidcon:\"%ProgramFiles%\\install.cmd\""</pre>
+<TABLE><TBODY class="main">
+	<TR>
+		<TH class="main" width="85"><P>Ïðåôèêñ</P></TH>
+		<TH class="main"><P>Îïèñàíèå</P></TH></TR>
+	<TR id="delX">
+		<TD class="main"><tt><B>delX</B></tt></TD>
+		<TD class="main"><p>Ðåæèì îáðàáîòêè ïàðàìåòðîâ <A href="parameters.html#Delete">'Delete'</A> è <A href="parameters.html#DeleteX">'DeleteX'</A>. Ãäå X ìîæåò ïðèíèìàòü çíà÷åíèå 0 è 1, îñòàëüíûå çíà÷åíèÿ èãíîðèðóþòñÿ.</p>
+<UL>
+	<LI>0 - îòêëþ÷àåò âûïîëíåíèå ïàðàìåòðà '<tt>Delete</tt>' äàæå ïðè îòñóòñòâèè ëèòåðíîãî '<tt>DeleteX</tt>'
+	<LI>1 - äîáàâëÿåò ê âûïîëíåíèþ ïàðàìåòðà '<tt>Delete</tt>' âûïîëíåíèå ëèòåðíîãî '<tt>DeleteX</tt>'
+</UL>
+		<p>Åñëè íå óêàçàí ëèòåðíûé ïàðàìåòð '<tt>DeleteX</tt>', òî èñïîëüçóåòñÿ îáû÷íûé '<tt>Delete</tt>' (äëÿ îáðàòíîé ñîâìåñòèìîñòè), à ïðåôèêñû '<tt>del0</tt>' èëè '<tt>del1</tt>' ïðîñòî ïðèíóäèòåëüíî îòêëþ÷àþò èëè âêëþ÷àþò åãî ('<tt>Delete</tt>') âûïîëíåíèå.</p>
+		<p>Åñëè óêàçàíî íåñêîëüêî ïðåôèêñîâ '<tt>delX</tt>' (â ïðåäåëàõ îäíîãî òèïà êîìàíä çàïóñêà), òî ñðàáîòàåò òîëüêî ïîñëåäíèé. Íàïðèìåð, ñîçäàí SFX àðõèâ ñ ôàéëîì êîíôèãóðàöèè, ñîäåðæàùèì ñëåäóþùèå çàïèñè:</p>
+<pre class="pre40">RunProgram="del0:setup.exe"
+AutoInstall="setup.exe /S"
+AutoInstall1="setup1.exe /S"
+AutoInstall1="del1:setup11.exe /S"
+AutoInstall1="del0:setup12.exe /S"
+AutoInstall2="del0:setup2.exe /S"
+AutoInstall2="setup21.exe /S"
+AutoInstall2="del1:setup22.exe /S"
+AutoInstall3="del0:setup3.exe /S"
+AutoInstall3="del2:setup31.exe /S"
+AutoInstall3="setup32.exe /S"
+Delete="%%T\\Help_en.chm"
+Delete1="%%T\\Help_ru.chm"
+Delete2="%%T\\Help_ua.chm"</pre>
+		<P>Ïîñëå çàïóñêà ýòîãî SFX àðõèâà:</P>
+<UL>
+	<LI>áåç êëþ÷åé - íè îäèí èç ïàðàìåòðîâ '<tt>Delete</tt>' ÍÅ ñðàáîòàåò
+	<LI>áåç êëþ÷åé ñ óäåðæèâàíèåì êëàâèøè [Shift] - ñðàáîòàåò ïàðàìåòð '<tt>Delete</tt>'
+	<LI>ñ êëþ÷îì '<tt>-ai1</tt>' - ñðàáîòàåò ïàðàìåòð '<tt>Delete1</tt>'
+	<LI>ñ êëþ÷îì '<tt>-ai2</tt>' - ñðàáîòàþò ïàðàìåòðû '<tt>Delete</tt>' è '<tt>Delete2</tt>'
+	<LI>ñ êëþ÷îì '<tt>-ai3</tt>' - ñðàáîòàåò ïàðàìåòð '<tt>Delete</tt>'. Ïðåôèêñ '<tt>del2</tt>' èìååò íåäîïóñòèìîå çíà÷åíèå 2 è, ïîýòîìó, èãíîðèðóåòñÿ, à çàîäíî è îòìåíÿåò äåéñòâèå ïðåäûäóùåãî ïðåôèêñà '<tt>del0</tt>'.
+	<LI>ñ êëþ÷îì '<tt>-ai12</tt>' - ñðàáîòàþò ïàðàìåòðû '<tt>Delete</tt>', '<tt>Delete1</tt>' è '<tt>Delete2</tt>'
+	<LI>ñ êëþ÷îì '<tt>-ai21</tt>' - ñðàáîòàåò ïàðàìåòð '<tt>Delete1</tt>' è '<tt>Delete2</tt>'
+	<LI>ñ êëþ÷îì '<tt>-ai31</tt>' - ñðàáîòàåò ïàðàìåòð '<tt>Delete1</tt>'
+	<LI>ñ êëþ÷îì '<tt>-ai132</tt>' - ñðàáîòàþò ïàðàìåòðû '<tt>Delete</tt>', '<tt>Delete1</tt>' è '<tt>Delete2</tt>'
+</UL></TD></TR>
+	<TR id="fmXp">
+		<TD class="main"><tt><B>fmX</B></tt></TD>
+		<TD class="main"><P>Ðåæèì/âðåìÿ îòîáðàæåíèÿ îêíà <A href="parameters.html#FinishMessage">'FinishMessage'</A>, ãäå X:</P>
+<UL>
+	<LI>0 - íå îòîáðàæàòü îêíî
+	<LI>1 - îòîáðàæàòü îêíî
+	<LI>N (N= 2...999) - îòîáðàæàòü îêíî â òå÷åíèå N ñåêóíä; îáðàòíûé îòñ÷åò âðåìåíè îòîáðàæàåòñÿ íà êíîïêå "OK", è ïî åãî èñòå÷åíèè îêíî '<tt>FinishMessage</tt>' çàêðûâàåòñÿ è ðàáîòà ìîäóëÿ ïðåêðàùàåòñÿ
+</UL>
+		<p>Ìîæíî óêàçàòü ïðèíóäèòåëüíîå îòîáðàæåíèå ('<tt>fm1</tt>', '<tt>fmN</tt>') èëè áëîêèðîâàíèå ('<tt>fm0</tt>') îêíà '<tt>FinishMessage</tt>' (åñëè êîíå÷íî '<tt>FinishMessage</tt>' èìååòñÿ â ôàéëå êîíôèãóðàöèè) óêàçàíèåì ñîîòâåòñòâóþùåãî ïðåôèêñà ïåðåä êîìàíäîé, êîòîðóþ õîòèòå âûïîëíèòü. Íàïðèìåð:</p>
+<pre class="pre40">RunProgram="fm0:setup.exe"
 AutoInstall="fm1:setup.exe"
-AutoInstall3="fm20:setup.exe"
-</pre></blockquote>
-			<p>executes "setup.exe" and hides '<tt>FinishMessage</tt>' window in the first case (standard
-			   mode), but displays it in the second and third cases, even though an automated scenario
-			   (<a href="parameters.html#AutoInstall">'AutoInstall'</a> or
-			   <a href="parameters.html#AutoInstallX">'AutoInstallX'</a>) blocks '<tt>FinishMessage</tt>'
-			   window by default.</p>
-			<p>For multiple instances of '<tt>RunProgram</tt>', '<tt>AutoInstall</tt>', and
-			   '<tt>AutoInstallX</tt>' parameters only the first '<tt>fmX</tt>' prefix found in
-			   the parameter value is used. It does not have to be in the first string of the
-			   installation scenario. For example, for </p>
-<blockquote><pre>
-RunProgram="setup1.exe"
+AutoInstall3="fm20:setup.exe"</pre>
+		<p>âûïîëíèò "setup.exe" è ñîîòâåòñòâåííî ñêðîåò îêíî '<tt>FinishMessage</tt>' â ïåðâîì ñëó÷àå (îáû÷íûé ðåæèì), íî ïîêàæåò âî âòîðîì è òðåòüåì (àâòîìàòè÷åñêèé ðåæèì), õîòÿ àâòîìàòè÷åñêèé ðåæèì (<A href="parameters.html#AutoInstall">'AutoInstall'</A> èëè <A href="parameters.html#AutoInstallX">'AutoInstallX'</A>) ïîäàâëÿåò âûâîä îêíà '<tt>FinishMessage</tt>' ïî óìîë÷àíèþ.</p>
+		<p>Ïðè ìíîæåñòâåííûõ '<tt>RunProgram</tt>' è '<tt>AutoInstall</tt>'-àõ èñïîëüçóþòñÿ òîëüêî ïåðâûé ïðåôèêñ '<tt>fmX</tt>', âñòðåòèâøèéñÿ âíóòðè èñïîëíÿåìîãî òèïà ïàðàìåòðà ('<tt>RunProgram</tt>', '<tt>AutoInstall</tt>' è '<tt>AutoInstallX</tt>'). Îí íåîáÿçàòåëüíî äîëæåí áûòü â ïåðâîé ñòðîêå âíóòðè èñïîëíÿåìîãî òèïà. Íàïðèìåð:</p>
+<pre class="pre40">RunProgram="setup1.exe"
 RunProgram="fm0:setup2.exe"
-RunProgram="fm1:setup3.exe"
-</pre></blockquote>
-			<p>'<tt>fm0</tt>' prefix is used while '<tt>fm1</tt>' prefix is ignored.</p>
-			<p>If '<tt>FinishMessage</tt>' parameter is not present in the config file, all prefixes are ignored.</p>
-			<p>These prefixes can be OVERRIDDEN from the command line with
-			   <a href="switches.html#fmX">'-fmX'</a> switch.</p>
-		</td>
-	</tr>
-
-	<tr id="hidcon">
-		<td class="main"><tt><b>hidcon</b></tt></td>
-		<td class="main">
-			<p>Hides console windows. For example,</p>
-				<blockquote><pre>RunProgram="hidcon:install.cmd"</pre></blockquote>
-			<p>executes "install.cmd" and completely hides its console window.</p>
-		</td>
-	</tr>
-
-	<tr id="nowait">
-		<td class="main"><tt><b>nowait</b></tt></td>
-		<td class="main">
-			<p>Forces not to wait until an execution command completes its operation.</p>
-			<p>By default the execution commands within every installation scenario are processed according
-			   to the order of appearance in the config file, and the next command waits until the previous
-			   command is complete. If '<tt>nowait</tt>' prefix is used, the commands that appear after the
-			   command with this prefix are executed immediately (i.e. launching the next executable,
-			   deleting folders, creating shortcuts, etc).</p>
-			<p>This prefix is disabled when the SFX archive is extracted to a temporary folder.</p>
-		</td>
-	</tr>
-</tbody></table>
-
-<p>&nbsp;</p>
-</body>
-</html>
+RunProgram="fm1:setup3.exe"</pre>
+		<p>áóäåò èñïîëüçîâàí '<tt>fm0</tt>', à '<tt>fm1</tt>' èãíîðèðóåòñÿ.</p>
+		<p>Ïðè îòñóòñòâèè '<tt>FinishMessage</tt>' â ôàéëå êîíôèãóðàöèè - âñå ïðåôèêñû '<tt>fmX</tt>' èãíîðèðóþòñÿ.</p>
+		<P>Äàííûå ïðåôèêñû ìîãóò áûòü ÏÅÐÅÎÏÐÅÄÅËÅÍÛ êëþ÷îì <A href="switches.html#fmX">'-fmX'</A> â êîìàíäíîé ñòðîêå, êîòîðàÿ èìååò ïðèîðèòåò.</P></TD></TR>
+<!-- -->
+	<TR id="forcenowait">
+		<TD class="main"><tt><B>forcenowait</B></tt></TD>
+		<TD class="main"><P>Çàñòàâëÿåò íå äîæèäàòüñÿ îêîí÷àíèÿ âûïîëíåíèÿ êîìàíäû çàïóñêà.<br>
+		Ïî óìîë÷àíèþ êîìàíäû çàïóñêà, â ïðåäåëàõ êàæäîãî òèïà, îáðàáàòûâàþòñÿ â òîé ïîñëåäîâàòåëüíîñòè, â êîòîðîé óêàçàíû â ôàéëå êîíôèãóðàöèè, ïðè ýòîì îæèäàåòñÿ îêîí÷àíèå ïðåäûäóùåé êîìàíäû, à ïîñëå ýòîãî çàïóñêàåòñÿ ñëåäóþùàÿ. Â ñëó÷àå ïðèñóòñòâèÿ ïðåôèêñà '<tt>forcenowait</tt>', ïîñëåäóþùèå êîìàíäû, óêàçàííûå â ôàéëå êîíôèãóðàöèè, áóäóò âûïîëíåíû íåìåäëåííî (çàïóñê ñëåäóþùåé ïðîãðàììû, óäàëåíèå êàòàëîãîâ, ñîçäàíèå ÿðëûêîâ è ò.ä.).</P>
+		<P>Â îòëè÷èè îò ïðåôèêñà '<tt>nowait</tt>' ðàáîòàåò è ïðè ðàñïàêîâêå âî âðåìåííóþ ïàïêó.</P></TD></TR>
+	<TR id="hidcon">
+		<TD class="main"><tt><B>hidcon</B></tt></TD>
+		<TD class="main"><P>Ñêðûâàåò êîíñîëüíûå îêíà. Íàïðèìåð:</P>
+<pre class="pre40">RunProgram="hidcon:install.cmd"</pre>
+		<p>âûïîëíèò "install.cmd" è ïîëíîñòüþ ñêðîåò åãî êîíñîëüíîå îêíî.</TD></TR>
+	<TR id="nowait">
+		<TD class="main"><tt><B>nowait</B></tt></TD>
+		<TD class="main"><P>Çàñòàâëÿåò íå äîæèäàòüñÿ îêîí÷àíèÿ âûïîëíåíèÿ êîìàíäû çàïóñêà.<br>
+		Ïî óìîë÷àíèþ êîìàíäû çàïóñêà, â ïðåäåëàõ êàæäîãî òèïà, îáðàáàòûâàþòñÿ â òîé ïîñëåäîâàòåëüíîñòè, â êîòîðîé óêàçàíû â ôàéëå êîíôèãóðàöèè, ïðè ýòîì îæèäàåòñÿ îêîí÷àíèå ïðåäûäóùåé êîìàíäû, à ïîñëå ýòîãî çàïóñêàåòñÿ ñëåäóþùàÿ. Â ñëó÷àå ïðèñóòñòâèÿ ïðåôèêñà '<tt>nowait</tt>', ïîñëåäóþùèå êîìàíäû, óêàçàííûå â ôàéëå êîíôèãóðàöèè, áóäóò âûïîëíåíû íåìåäëåííî (çàïóñê ñëåäóþùåé ïðîãðàììû, óäàëåíèå êàòàëîãîâ, ñîçäàíèå ÿðëûêîâ è ò.ä.)</P>
+		<P>Ïðè ðàñïàêîâêå âî âðåìåííóþ ïàïêó ïðåôèêñ '<tt>nowait</tt>' ÈÃÍÎÐÈÐÓÅÒÑß.</P></TD></TR>
+	<TR id="shcX">
+		<TD class="main"><tt><B>shcX</B></tt></TD>
+		<TD class="main"><p>Ðåæèì îáðàáîòêè ïàðàìåòðîâ <A href="parameters.html#Shortcut">'Shortcut'</A> è <A href="parameters.html#ShortcutX">'ShortcutX'</A>. Ãäå X ìîæåò ïðèíèìàòü çíà÷åíèå 0 è 1, îñòàëüíûå çíà÷åíèÿ èãíîðèðóþòñÿ.</p>
+<UL>
+	<LI>0 - îòêëþ÷àåò âûïîëíåíèå ïàðàìåòðà '<tt>Shortcut</tt>' äàæå ïðè îòñóòñòâèè ëèòåðíîãî '<tt>ShortcutX</tt>'
+	<LI>1 - äîáàâëÿåò ê âûïîëíåíèþ ïàðàìåòðà '<tt>Shortcut</tt>' âûïîëíåíèå ëèòåðíîãî '<tt>ShortcutX</tt>'
+</UL>
+		<p>Åñëè íå óêàçàí ëèòåðíûé ïàðàìåòð '<tt>ShortcutX</tt>', òî èñïîëüçóåòñÿ îáû÷íûé '<tt>Shortcut</tt>' (äëÿ îáðàòíîé ñîâìåñòèìîñòè), à ïðåôèêñû '<tt>shc0</tt>' èëè '<tt>shc1</tt>' ïðîñòî ïðèíóäèòåëüíî îòêëþ÷àþò èëè âêëþ÷àþò åãî ('<tt>Shortcut</tt>') âûïîëíåíèå.</p>
+		<p>Åñëè óêàçàíî íåñêîëüêî ïðåôèêñîâ '<tt>shcX</tt>' (â ïðåäåëàõ îäíîãî òèïà êîìàíä çàïóñêà), òî ñðàáîòàåò òîëüêî ïîñëåäíèé. Ëîãèêà ðàáîòû ïðåôèêñà àíàëîãè÷íà ïðåôèêñó <A href="prefixes.html#delX">'delX'</A>.</p></TD></TR>
+	<TR id="waitall">
+		<TD class="main"><tt><B>waitall</B></tt></TD>
+		<TD class="main"><p>Çàñòàâëÿåò äîæèäàòüñÿ îêîí÷àíèÿ âûïîëíåíèÿ êîìàíäû çàïóñêà è âñåõ "äî÷åðíèõ" ïðîöåññîâ, çàïóùåííûõ ýòîé êîìàíäîé.</TD></TR>
+	<TR id="x64">
+		<TD class="main"><tt><B>x64</B></tt></TD>
+		<TD class="main"><p>Êîìàíäà çàïóñêà áóäåò âûïîëíåíà ÒÎËÜÊÎ â 64-õ áèòíîé ñèñòåìå. Ïðè ýòîì çàïóñê ïðîãðàììû, óêàçàííîé â ïàðàìåòðå, áóäåò ïðîèçâåäåí â 64-õ ðàçðÿäíîé ñðåäå, íåçàâèñèìî îò ðàçðÿäíîñòè ñàìîãî ìîäóëÿ (x64 èëè x86).</p>
+		<p>Ïðè çàïóñêå â 32-õ áèòíîé ñèñòåìå êîìàíäà èãíîðèðóåòñÿ è ïðîãðàììà, óêàçàííàÿ â ïàðàìåòðå, âûïîëíåíà ÍÅ áóäåò.</p></TD></TR>
+	<TR id="x86">
+		<TD class="main"><tt><B>x86</B></tt></TD>
+		<TD class="main"><p>Êîìàíäà çàïóñêà áóäåò âûïîëíåíà ÒÎËÜÊÎ â 32-õ áèòíîé ñèñòåìå. Ïðè çàïóñêå â 64-õ áèòíîé ñèñòåìå êîìàíäà èãíîðèðóåòñÿ è ïðîãðàììà, óêàçàííàÿ â ïàðàìåòðå, âûïîëíåíà ÍÅ áóäåò.</p></TD></TR>
+</TBODY></TABLE><p>&nbsp;</p>
+</BODY></HTML>

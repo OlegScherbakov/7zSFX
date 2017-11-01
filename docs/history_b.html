@@ -1,0 +1,1269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>История изменений</TITLE>
+<META content="text/html; charset=Windows-1251" http-equiv=Content-Type><LINK 
+rel=stylesheet type=text/css href="misc/styles.css">
+<META name=GENERATOR content="MSHTML 8.00.6001.23590"></HEAD>
+<BODY>
+<H2>История изменений модифицированного SFX модуля</H2>
+<TABLE>
+  <TBODY class=hist>
+  <TR>
+    <TH class=hist>#</TH>
+    <TD class=hist>- Изменено</TD></TR>
+  <TR>
+    <TH class=hist>*</TH>
+    <TD class=hist>- Исправлено</TD></TR>
+  <TR>
+    <TH class=hist>+</TH>
+    <TD class=hist>- Добавлено</TD></TR>
+  <TR>
+    <TH class=hist>–</TH>
+    <TD class=hist>- Удалено</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.7 develop (сборка 3900) 01.04.16</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Некоторые изменения при компиляции ресурсов 
+      (regist:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Не работали AutoInstallX (сломалось в 3888) 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Не подгружался файл конфигурации из больших архивов 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Поддержка имен дополнительных файлов конфигурации 
+      *.sfx.config.*</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Флаг 64 '<TT>MiscFlags</TT>' - отключает использование 
+      дополнительных файлов конфигурации</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Флаг 128 '<TT>MiscFlags</TT>' - отключает SfxAPI</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.7 develop (сборка 3888) 20.03.16</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Манифест некорректно работал в Windows XP без установленных 
+      обновлений (yurecnew:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Исключение при пустом файле конфигурации 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Параметры '<TT>ExtractMaskExclude</TT>', 
+      '<TT>ExtractMaskInclude</TT>' в конфигурационном файле</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Флаг 32 '<TT>MiscFlags</TT>' - меняет порядок обработки 
+      параметров '<TT>ExtractMaskExclude</TT>', 
+  '<TT>ExtractMaskInclude</TT>'</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Дополнительная папка *.sfx.api.* в корне архива</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Дополнительный файл конфигурации *.sfx.config в корне 
+    архива</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.7 develop (сборка 3873) 05.03.16</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Работа ключа '<TT>-nr</TT>' распространена на параметры 
+      '<TT>ExecuteOnLoad</TT>', '<TT>PreExtract</TT>', 
+  '<TT>PreExtractX</TT>'</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.7 develop (сборка 3864) 25.02.16</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Окна некоторых дочерних процессов отображались на заднем 
+      плане (ArtXGroup:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.7 develop (сборка 3861) 22.02.16</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Переменная '<TT>SfxVarApiPath</TT>' отсутствовала в 
+      некоторых случаях (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректная работа ключа '<TT>-sfxlang</TT>'</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Флаг 16 '<TT>MiscFlags</TT>' - отключение вывода сообщения 
+      об ошибке "отменено пользователем"</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.7 develop (сборка 3847) 12.02.16</TH></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Параметры '<TT>ExecuteOnLoad</TT>', '<TT>PreExtract</TT>', 
+      '<TT>PreExtractX</TT>' в конфигурационном файле</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Переменная среды при работе модуля 
+    '<TT>SfxVarApiPath</TT>'</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.6 RC3 (сборка 3850) 12.02.16</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>При некоторых условиях не удалялась временная папка</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.6 RC2 (сборка 3847) 08.02.16</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Удален префикс 7z в именах всех переменных среды модуля, 
+      например, было '<TT>7zSfxVarModulePlatform</TT>', стало 
+      '<TT>SfxVarModulePlatform</TT>'</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Переменная '<TT>SfxVarSystemPlatform</TT>' всегда содержала 
+      '<TT>x86</TT>' (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Ложное сообщение об ошибке "Файл не является 7z архивом." 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Разрушение памяти при установке переменных среды модуля 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>На запароленных SFX окно ввода пароля выводилось дважды 
+      (Valerkan:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректная работа ключа '<TT>-p</TT>' 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Не блокировался вывод '<TT>FinishMessage</TT>' при нажатии 
+      "Да/OK" + Shift в окне '<TT>BeginPrompt</TT>' 
+(gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Вывод окна ввода пароля по умолчанию был после 
+      '<TT>BeginPrompt</TT>' и '<TT>ExtractPath</TT>' или '<TT>BeginPrompt</TT>' 
+      + '<B>ExtractPath</B>', а не до них. Флаг 8 '<TT>MiscFlags</TT>' не имел 
+      действия (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Поддержка многотомности включена по умолчанию</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Поддержка дельта-фильтра включена по умолчанию в модулях 
+      LZMA, LZMA2, LZMA_Dialogs и All</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Переменные среды при работе модуля 
+      '<TT>7zSfxVarModulePlatform</TT>', '<TT>7zSfxVarSystemPlatform</TT>', 
+      '<TT>7zSfxVarSystemLanguage</TT>', '<TT>7zSfxVarCmdLine0</TT>', 
+      '<TT>7zSfxVarCmdLine1</TT>', '<TT>7zSfxVarCmdLine2</TT>'</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Поддержка шифрования/TD&gt;</TD>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.6 beta (сборка 3819) 11.01.16</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 15.14 от 31 декабря 
+      2015 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.6 beta (сборка 3807) 30.12.15</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 15.12 от 19 ноября 
+      2015 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.6 develop (сборка 3574) 11.05.15</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>При предупреждениях иконка в панели задач имеет желтый 
+    фон</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Поддержка многотомности включена по умолчанию</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Поддержка дельта-фильтра включена по умолчанию в модулях 
+      LZMA, LZMA2, LZMA_Dialogs и All</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.6 develop (сборка 3564) 01.05.15</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 9.38 beta от 3 января 
+      2015 г.</TD></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Некоторые изменения, связанные с новыми исходниками 
+  7-Zip</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Исправлена обработка исключения 0x0EEDFADE из автоматически 
+      загружаемых Delphi DLL</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.6 develop (сборка 2797) 25.03.13</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Не работали переменные среды (%SYSTEMDRIVE%, %PROGRAMFILES% 
+      и т.д.) в окне ввода пути (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Не работал флаг 8 '<TT>OverwriteMode</TT>' на полностью 
+      заблокированных файлах (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.6 develop (сборка 2712) 30.12.12</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Ложное сообщение об ошибке "Файл не является 7z архивом." 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.6 develop (сборка 2524) 25.06.12</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Разрушение памяти при установке переменных среды модуля 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.6 develop (сборка 2518) 19.06.12</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Удален префикс <B>7z</B> в именах всех переменных среды 
+      модуля, например, было '<TT>7zSfxVarModulePlatform</TT>', стало 
+      '<TT>SfxVarModulePlatform</TT>'</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.6 develop (сборка 2496) 28.05.12</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>На запароленных SFX окно ввода пароля выводилось дважды 
+      (Valerkan:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректная работа ключа '<TT>-p</TT>' 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Переменные среды при работе модуля 
+      '<TT>7zSfxVarModulePlatform</TT>', '<TT>7zSfxVarSystemPlatform</TT>', 
+      '<TT>7zSfxVarSystemLanguage</TT>'</TD></TR>
+  <TR>
+    <TD class=hist>–</TD>
+    <TD class=hist>Переменная среды при работе модуля 
+      '<TT>7zSfxVarPlatform</TT>'</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.6 develop (сборка 2488) 20.05.12</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Не блокировался вывод '<TT>FinishMessage</TT>' при нажатии 
+      "Да/OK" + Shift в окне '<TT>BeginPrompt</TT>' 
+(gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Вывод окна ввода пароля по умолчанию был после 
+      '<TT>BeginPrompt</TT>' и '<TT>ExtractPath</TT>' или '<TT>BeginPrompt</TT>' 
+      + '<B>ExtractPath</B>', а не до них. Флаг 8 '<TT>MiscFlags</TT>' не имел 
+      действия (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Переменные среды при работе модуля 
+      '<TT>7zSfxVarPlatform</TT>', '<TT>7zSfxVarCmdLine0</TT>', 
+      '<TT>7zSfxVarCmdLine1</TT>', '<TT>7zSfxVarCmdLine2</TT>'</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.6 develop (сборка 2478) 10.05.12</TH></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Поддержка шифрования</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 RC1 (сборка 2485) 17.05.12</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Не блокировался вывод '<TT>FinishMessage</TT>' при нажатии 
+      "Да/OK" + Shift в окне '<TT>BeginPrompt</TT>' 
+(gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 beta (сборка 2478) 10.05.12</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Папка распаковки не была текущей при наличии префикса 
+      '<TT>waitall</TT>' (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 beta (сборка 2367) 21.01.12</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Нажатие кнопки "Выбор папки" на x64 платформах приводило к 
+      ошибке (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Кнопка создания "Новой папки" в диалоге "Выбор папки"</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 beta (сборка 2308) 22.11.11</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Манифест и русские строки</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 beta (сборка 2100) 28.04.11</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 9.22 beta от 18 
+      апреля 2011 г.</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Ошибка загрузки библиотеки msvcrt.dll в 64-х битных версиях 
+      модуля в системах ХР/2003 х64 (YumeYao:msfn.org, 
+      Plastikat:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 beta (сборка 2088) 16.04.11</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 9.21 beta от 11 
+      апреля 2011 г.</TD></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Диалог '<TT>-sfxversion</TT>'</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 alpha (сборка 2079) 07.04.11</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Переменная '<TT>%%P</TT>' не разбиралась в параметрах 
+      команд '<TT>Shortcut</TT>', '<TT>ShortcutX</TT>' 
+  (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 alpha (сборка 1989) 07.01.11</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Не работал ключ '<TT>-fm0</TT>' 
+    (usver32:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 alpha (сборка 1978) 27.12.10</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Изменена логика в ключе '<TT>-!</TT>', убран принудительный 
+      лидирующий пробел (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Не работал '<TT>FinishMessage</TT>' без ключей или 
+      префиксов '<TT>fmX</TT>' (jameszero:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 alpha (сборка 1951) 30.11.10</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Отображение ошибки при некорректной последовательности 
+    томов</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Отсутствие метода 'Copy'</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Отображение поддержки томов (ключ 
+  '<TT>-sfxversion</TT>')</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 alpha (сборка 1948) 27.11.10</TH></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Поддержка томов</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Параметр '<TT>VolumeNameStyle</TT>' в конфигурационном 
+    файле</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 alpha (сборка 1941) 20.11.10</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 9.20 от 18 ноября 
+      2010 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 alpha (сборка 1937) 16.11.10</TH></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Поддержка шифрования архивов</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Параметры '<TT>PasswordTitle</TT>' и 
+      '<TT>PasswordText</TT>' в конфигурационном файле</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Ключ '<TT>-pX</TT>'</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Флаг 8 '<TT>MiscFlags</TT>' - запрос пароля после диалогов 
+      '<TT>BeginPrompt</TT>' и '<TT>ExtractPath</TT>' или '<TT>BeginPrompt</TT>' 
+      + '<B>ExtractPath</B>' </TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1..5 alpha (сборка 1934) 13.11.10</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 9.19 beta от 11 
+      ноября 2010 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 alpha (сборка 1928) 07.11.10</TH></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Переменная модуля '<TT>%%P</TT>' - платформа операционной 
+      системы</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 alpha (сборка 1924) 03.11.10</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 9.18 beta от 2 ноября 
+      2010 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 alpha (сборка 1922) 01.11.10</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Изменения связанные с пакетной сборкой</TD></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Оптимизации для увеличения скорости распаковки</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 alpha (сборка 1915) 25.10.10</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Ветка переведена в статус 'alpha'</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 develop (сборка 1912) 22.10.10</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректная работа ключа '<TT>-fm0</TT>' 
+      (irod61:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Раскрытие совместно используемых переменных модуля и 
+      пользовательских переменных работало некорректно 
+  (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Флаг 16384 '<TT>GUIFlags</TT>' для отображения '&amp;' в 
+      текстах диалогов (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 develop (сборка 1903) 13.10.10</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Обработка ошибок отведения памяти</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 develop (сборка 1902) 12.10.10</TH></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Обработка ошибок отведения памяти</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 develop (сборка 1899) 09.10.10</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Изменена логика обработки языковых секций</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 develop (сборка 1898) 08.10.10</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Неверный размер диалогов со строками, использующих 
+      переменные среды (Das Betrunkene Pferd:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Параметр '<TT>BeginPromptTimeout</TT>' в конфигурационном 
+      файле (DPavlik82:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Ключ '<TT>-bptX</TT>'</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 develop (сборка 1896) 06.10.10</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 9.17 beta от 4 
+      октября 2010 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 develop (сборка 1799) 01.07.10</TH></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Поддержка Windows7 PCA в манифесте</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 develop (сборка 1798) 30.06.10</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>При запуске внешних программ "папка распаковки" не 
+      устанавливалась как "папка по умолчанию"</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 develop (сборка 1795) 27.06.10</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректная работа ключа '<TT>-mf</TT>')</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректное сообщение об ошибке перезаписи файлов, если у 
+      пользователя недостаточно прав</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Флаг 4 '<TT>MiscFlags</TT>' для запуска с повышенными 
+      правами</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.5 develop (сборка 1794) 26.06.10</TH></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Префикс '<TT>waitall</TT>' для ожидания завершения всех 
+      дочерних процессов</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Копирайт (ключ '<TT>-sfxversion</TT>')</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.4 beta (сборка 1896) 06.10.10</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 9.17 beta от 4 
+      октября 2010 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.4 beta (сборка 1799) 01.07.10</TH></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Поддержка Windows7 PCA в манифесте</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.4 beta (сборка 1795) 27.06.10</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректная работа ключа '<TT>-mf</TT>'</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректное сообщение об ошибке перезаписи файлов, если у 
+      пользователя недостаточно прав</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.4 beta (сборка 1794) 26.06.10</TH></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Копирайт (ключ '<TT>-sfxversion</TT>')</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.4 beta (сборка 1791) 23.06.10</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 9.15 beta от 20 июня 
+      2010 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.4 alpha (сборка 1774) 06.06.10</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 9.14 beta от 4 июня 
+      2010 г.</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Проверка необходимого для процесса распаковки: свободного 
+      место на диске и размера физической памяти</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Параметры '<TT>WarningTitle</TT>', '<TT>MiscFlags</TT>' в 
+      конфигурационном файле</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Ключ '<TT>-mfX</TT>'</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.4 alpha (сборка 1704) 28.03.10</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 9.12 beta от 24 марта 
+      2010 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.4 alpha (сборка 1698) 22.03.10</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 9.11 beta от 15 марта 
+      2010 г.</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Исключена привязка к msvcr80.dll, ее наличие в системе 
+      более модулю не требуется (DrGrechkin:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Изменена логика передачи параметра из командной строки в 
+      первую команду запуска программ. Параметр передается в первую команду, 
+      которая реально может быть выполнена с учетом разрядности системы и 
+      примененных префиксов '<TT>x64</TT>', '<TT>x86</TT>'. 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.4 alpha (сборка 1659) 12.02.10</TH></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Префиксы '<TT>x64</TT>', '<TT>x86</TT>' в конфигурационном 
+      файле</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.4 alpha (сборка 1643) 27.01.10</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 9.10 beta от 22 
+      декабря 2009 г.</TD></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Проект полностью переведен на VS2005</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Сохранение позиций окна в ходе одного запуска SFX. Если 
+      выведенное окно перемещено пользователем, то все последующие окна 
+      выводятся в том месте, куда было перемещено предыдущее окно.</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Кнопка "Готово" в "собственном" диалоге 
+      '<TT>FinishMessage</TT>' (7ZSD_LZMA_Dialogs.sfx) не меняет размер и 
+      положение при обратном отсчете времени</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Форматирование окна с информацией о версии SFX модуля и 
+      т.д. (ключ '<TT>-sfxversion</TT>')</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Поддержка многоязыковых файлов конфигурации</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Ключ '<TT>-sfxlang</TT>' и идентификатор языка в сигнатурах 
+      файла конфигурации</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Индикатор процесса распаковки (ProgressBar) на значке SFX 
+      архива в панели задач для Windows 7</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Флаг 8192 '<TT>GUIFlags</TT>' отключает индикатор процесса 
+      распаковки на значке SFX архива в панели задач для Windows 7</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.4 alpha (сборка 1599) 13.12.09</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 9.09 beta от 12 
+      декабря 2009 г.</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректное извлечение сплитером архива и файла 
+      конфигурации (Stanner, gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Заменена иконка (некорректное отображение в Windows 7) 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректное определение языка в зависимости от 
+      региональных настроек системы (YuriPet:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.4 alpha (сборка 1501) 07.09.09</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 9.07 beta от 29 
+      августа 2009 г.</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректная работа ключа '<TT>-sfxconfig</TT>' с большими 
+      файлами конфигурации</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Изменены (обновлены) диалоги в модуле 
+  7ZSD_LZMA_Dialogs</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Модуль с поддержкой метода сжатия LZMA2</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>64-х битные версии всех модулей</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Все модули двуязычные (русский/английский) с автоматическим 
+      выбором языка в зависимости от региональных настроек системы</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Префикс '<TT>forcenowait</TT>' в конфигурационном 
+  файле</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.3 beta (сборка 1307) 25.02.09</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.65 от 3 февраля 
+      2009 г.</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Ошибка при нажатии кнопки "Отмена" в ходе распаковки 
+      (Wilmots:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректная работа простых параметров '<TT>Delete</TT>' и 
+      '<TT>Shortcut</TT>' при литерных автоустановках (jameszero, 
+      gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.3 beta (сборка 1284) 02.02.09</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Масштабирование изображений в "подмененных" диалогах при 
+      больших шрифтах</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректная работа ключа '<TT>-gmX</TT>' 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректный подсчет ширины диалога по длине 
+заголовка</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.3 beta (сборка 1274) 23.01.09</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Переменные из командной строки не подставлялись в ярлыки 
+      (v12345:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Параметр '<TT>DeleteX</TT>' в конфигурационном файле</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Префиксы '<TT>shcX</TT>', '<TT>delX</TT>' в 
+      конфигурационном файле</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.3 beta (сборка 1272) 21.01.09</TH></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Параметр '<TT>ShortcutX</TT>' в конфигурационном файле 
+      (SAOPP:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.3 beta (сборка 1263) 12.01.09</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.64 от 2 января 2009 
+      г.</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Не добавлялись диалоги в модули 
+  (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.3 beta (сборка 1240) 20.12.08</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.62 от 2 декабря 
+      2008 г.</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Не выводилось сообщение о "нехватке места на диске" 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректная работа ключа '<TT>-omX</TT>'</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректное отображение пути распаковки 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.3 beta (сборка 1215) 25.11.08</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.61 beta от 23 
+      ноября 2008 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.3 beta (сборка 1212) 22.11.08</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Изменение некоторых параметров файла конфигурации из 
+      командной строки работало некорректно</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.3 beta (сборка 1206) 16.11.08</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Не работал параметр '<TT>ExtractDialogText</TT>' 
+      (qeraser:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Использование изображений и RTF в "подмененных" 
+  диалогах</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.3 beta (сборка 1141) 12.09.08</TH></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Возможность изменения параметров файла конфигурации из 
+      командной строки</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.3 beta (сборка 1135) 06.09.08</TH></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Возможность замены диалогов модуля</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.3 beta (сборка 1133) 04.09.08</TH></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Разбор переменных в текстах диалогов</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.3 beta (сборка 1118) 20.08.08</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.60 beta от 19 
+      августа 2008 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.3 beta (сборка 1115) 17.08.08</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>UPX не сжимал последние версии 
+  (Wilmots:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.3 beta (сборка 1113) 15.08.08</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.59 beta от 13 
+      августа 2008 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.3 beta (сборка 1095) 28.07.08</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.58 beta от 5 мая 
+      2008 г.</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Информация о версии исходных текстов 7-Zip в 
+      '<TT>-sfxversion</TT>'</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Флаг 8 '<TT>OverwriteMode</TT>' для пропуска файлов 
+      заблокированных системой</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Переменная модуля '<TT>%%M</TT>' - имя SFX архива без 
+    пути</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2.1 Release (сборка 985) 09.04.08</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некоторые внутренние ошибки (104...106) выводятся с 
+      описанием и указанием файла/папки вызвавшего ошибку 
+    (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2.1 Release (сборка 959) 14.03.08</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Изменена иконка</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Увеличено число '<TT>AutoInstallX</TT>'-ов до 62. Разрешены 
+      [0...9], [A...Z], [a...z] (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2.1 Release (сборка 910) 25.01.08</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Устранено возможное отображение курсором фонового режима 
+      после распаковки и запуска некоторых приложений в случае, если модуль до 
+      этого не выводил ни одного своего диалога (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2 Release (сборка 861) 07.12.07</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.57 от 6 декабря 
+      2007 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2 RC2 (сборка 822) 29.10.07</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.56 beta от 24 
+      октября 2007 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2 RC2 (сборка 787) 24.09.07</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Флаг 4096 изменяет не только названия кнопок, но и 
+      изображения иконки в диалоге '<TT>BeginPrompt</TT>' и в совмещенном 
+      диалоге '<TT>BeginPrompt</TT>' + '<B>ExtractPath</B>' </TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2 RC2 (сборка 770) 07.09.07</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.55 beta от 5 
+      сентября 2007 г.</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Информация о поддерживаемых методах и фильтрах в 
+      '<TT>-sfxversion</TT>'</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2 RC2 (сборка 739) 07.08.07</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.52 beta от 3 
+      августа 2007 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2 RC2 (сборка 727) 26.07.07</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.51 beta от 25 июля 
+      2007 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2 RC2 (сборка 726) 25.07.07</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.50 beta от 24 июля 
+      2007 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2 RC1 (сборка 715) 14.07.07</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.49 beta от 11 июля 
+      2007 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2 RC1 (сборка 704) 03.07.07</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Уменьшен размера модуля за счет оптимизации текстовых 
+    данных</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2 RC1 (сборка 702) 01.07.07</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Небольшие изменения в автоматическом определении языка 
+      системы и пользователя</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2 beta (сборка 699) 28.06.07</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.48 beta от 26 июня 
+      2007 г.</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Метод 'Сopy' для несжатых файлов 
+  (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2 beta (сборка 687) 16.06.07</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.47 beta от 27 мая 
+      2007 г.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2 beta (сборка 643) 03.05.07</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.45 beta от 17 
+      апреля 2007 г.</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Утечка памяти, особенно заметная при большом количестве 
+      файлов в архиве</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2 beta (сборка 571) 20.02.07</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Отсутствие '<TT>GUIFlags</TT>' в файле конфигурации 
+      приводило к неверному отображению диалогов (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>'<TT>SelfDelete</TT>' не работал на SFX архивах имеющих 
+      атрибут "только для чтения" (SAOPP:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2 beta (сборка 552) 01.02.07</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Не работал (не воспринимался модулем) указанный 
+      пользователем путь распаковки (SAOPP:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2 beta (сборка 551) 31.01.07</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Не обрабатывались (не разбирались) переменные среды в 
+      параметре '<TT>Directory</TT>'</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.2 beta (сборка 549) 29.01.07</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.44 beta от 20 
+      января 2007 г. </TD></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>В диалоге '<TT>CancelPrompt</TT>' по умолчанию кнопка 
+    "Нет"</TD></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Полностью переписано отображение диалогов </TD></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Клавиша [Esc] работает во всех диалогах, срабатывая как 
+      "Нет" или "Отмена"</TD></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Звуки только в диалогах '<TT>CancelPrompt</TT>', 
+      '<TT>Error</TT>' и '<TT>FinishMessage</TT>'</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректная работа '<TT>FinishMessage</TT>' при указании 
+      ключа '<TT>-y</TT>'</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректная работа '<TT>CancelPrompt</TT>' при указании 
+      ключа '<TT>-y</TT>'</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Совместимость с Windows Vista</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Русская/английская локализация всех сообщений (язык 
+      сообщений выбирается автоматически, исходя из языка интерфейса 
+      пользователя)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Пакетный режим автоматической установки программ (ключ 
+      <TT>'-aiX</TT>') (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Параметр '<TT>SetEnvironment</TT>' в конфигурационном файле 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Ключ '<TT>-sfxconfig</TT>' (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Таймер в '<TT>FinishMessage</TT>'</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Отображение иконки модуля в диалоге '<TT>BeginPrompt</TT>' 
+      и в совмещенном диалоге '<TT>BeginPrompt</TT>' + '<B>ExtractPath</B>' 
+      (через '<TT>GUIFlags</TT>')</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Замена кнопок "Да"-"Нет" на "ОК"-"Отмена" в диалоге 
+      '<TT>BeginPrompt</TT>' и в совмещенном диалоге '<TT>BeginPrompt</TT>' + 
+      '<B>ExtractPath</B>' (через '<TT>GUIFlags</TT>')</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.1 beta (сборка 516) 27.12.06</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Параметр '<TT>Directory</TT>' действует только для первого 
+      '<TT>RunProgram</TT>'</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Ключ '<TT>-sfxversion</TT>'</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.1 beta (сборка 513) 24.12.06</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Игнорирование ключей командной строки '<TT>-?</TT>' 
+      ('<TT>-h</TT>') при отсутствующем '<TT>HelpText</TT>' 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.1 beta (сборка 499) 10.12.06</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Префикс '<TT>nowait</TT>' игнорируется при распаковке во 
+      временную папку</TD></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Ключ '<TT>-y</TT>' подавляет все окна, кроме окон ошибок и 
+      окна процесса распаковки (если используется)</TD></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>'<TT>ExecuteFile</TT>' и '<TT>ExecuteParameters</TT>' не 
+      могут быть множественными</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Не работал ключ командной строки '<TT>-nr</TT>'</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.1 beta (сборка 463) 04.11.06</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Управление '<TT>FinishMessage</TT>' из командной строки и 
+      префиксом в конфигурационном файле</TD></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Префиксы в параметрах выполнения программ могут следовать в 
+      любой последовательности</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>При распаковке во временную папку и неуказанных 
+      '<TT>RunProgram</TT>', '<TT>ExecuteFile</TT>' и '<TT>AutoInstall</TT>'-ах 
+      не производилась попытка выполнить "setup.exe" 
+  (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректное отображение '<TT>ExtractPathText</TT>' при 
+      количестве строк больше 2 и выключенном отображении иконки 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>'<TT>GUIFlags</TT>' отдельными флагами</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.1 beta (сборка 457) 29.10.06</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>В '<TT>InstallPath</TT>' не подставлялась переменная 
+      '<TT>%%S</TT>' (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Параметр '<TT>FinishMessage</TT>' в конфигурационном файле 
+      (neitral72:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Поддержка новых параметров оригинального модуля: 
+      '<TT>ExecuteFile</TT>', '<TT>ExecuteParameters</TT>', '<TT>Progress</TT>', 
+      '<TT>Directory'</TT></TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Множественное использование '<TT>RunProgram</TT>', 
+      '<TT>ExecuteFile</TT>' и всех '<TT>AutoInstall</TT>'-ов</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.1 beta (сборка 301) 10.06.06</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.42 от 14 мая 2006 
+    г.</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Неверное отображение кнопки выбора папки при включенных 
+      стилях (схемах) Windows XP</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректное отображение '<TT>ExtractDialogText</TT>' при 
+      количестве строк больше 2 и включенном отображении иконки 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>При отображении диалога указания пути распаковки выводился 
+      "Стандартный звук" ("Default beep") Windows. (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректная передача ключей исполняемой программе, 
+      указанных в командной строке модуля (vampik:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Некорректная передача пути распаковки с пробелами через 
+      переменную '<TT>%%T</TT>' (melato:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Отображение иконки в диалоге указания пути распаковки 
+      (через '<TT>GUIFlags</TT>')</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Запрет на исполнение '<TT>RunProgram</TT>' и 
+      '<TT>AutoInstall</TT>'-ов из командной строки (ключ '<TT>-nr</TT>')</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Переменная '<TT>%%S</TT>' - полный путь к папке, в которой 
+      расположен архив установки (vampik:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Назначение иконки ярлыку в параметре '<TT>Shortcut</TT>' 
+      (YuriPet:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.1 beta (сборка 258) 13.04.06</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>При отображении диалога распаковки БЕЗ использования в нем 
+      иконки, выводился "Стандартный звук" ("Default beep") Windows. 
+      (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.1 beta (сборка 257) 12.04.06</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Медленная распаковка (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.1 beta (сборка 255) 10.04.06</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.37 beta от 18 марта 
+      2006 г.</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Режимы перезаписи файлов ('<TT>OverwriteMode</TT>' в 
+      конфигурационном файле и '<TT>-omX</TT>' в командной строке)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Возможность подтверждения пользователем отмены 
+      установки/распаковки</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Возможность указания/изменения пути распаковки 
+    пользователем</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Вывод текста помощи (указывается в конфигурационном файле 
+      '<TT>HelpText</TT>', вызывается из командной строки '<TT>-h</TT>' или 
+      '<TT>-?</TT>')</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Отмена вывода иконки в заголовках окон (через 
+      '<TT>GUIFlags</TT>') (gora:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Дополнительные переменные среды при работе модуля 
+      (%UserDesktop%, %MyDocuments% и т.д. )</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Дополнительный префикс '<TT>nowait</TT>' для 
+      '<TT>RunProgram</TT>' и '<TT>AutoInstall</TT>'-ов</TD></TR>
+  <TR>
+    <TD class=hist>–</TD>
+    <TD class=hist>Поддержка ANSI операционных систем Win95, Win98, 
+WinMe</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.0.0.51123 (сборка 117) 23.11.05</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Использован исходный код 7-Zip версии 4.30 beta от 18 
+      ноября 2005 г.</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Ключ '<TT>-!</TT>' в командной строке.</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.0.0.51028 (сборка 91) 28.10.05</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Текущей папкой при выполнении команд '<TT>Delete</TT>' 
+      является папка, в которой находится файл SFX архива.</TD></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>В '<TT>RunProgram</TT>' и всех '<TT>AutoInstall</TT>' 
+      отсутствовал разбор переменных среды (Vadikan:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>В параметрах создания ярлыков '<TT>Shortcut</TT>' и 
+      удаления '<TT>Delete</TT>' вместо '<TT>%%T</TT>' подставляется папка 
+      распаковки (раньше работало только для '<TT>RunProgram</TT>' и 
+      '<TT>AutoInstall</TT>'-ов)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.0.0.51017 (сборка 80) 17.10.05</TH></TR>
+  <TR>
+    <TD class=hist>#</TD>
+    <TD class=hist>Отображение/расположение/центровка элементов диалога 
+      распаковки для различных режимов (с иконкой, без нее, с дополнительным 
+      текстом и т.д.)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.0.0.51015 (сборка 78) 15.10.05</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>В режиме со скрытой кнопкой "Отмена" и блокированной 
+      "Закрыть" (GUIMode="1") все равно можно было прервать распаковку с 
+      клавиатуры с помощью [Esc] или [Alt+F4] (Debby:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Жирный шрифт для индикатора процентов (через 
+      '<TT>GUIFlags</TT>') (Debby:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Поддержка стилей (схем) Windows XP (через 
+      '<TT>GUIFlags</TT>')</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Иконка в диалоге распаковки (через 
+  '<TT>GUIFlags</TT>')</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.0.0.51012 (сборка 75) 12.10.05</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Нажатие "Да" с клавишей [Shift] в окне запроса установки 
+      ('<TT>BeginPrompt</TT>') не вызывало автоматическую установку. Из 
+      командной строки работало. (zvezduk:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Указание рабочей папки в ярлыках 
+    (zvezduk:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.0.0.51011 (сборка 74) 11.10.05</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Ошибка при отсутствующих '<TT>RunProgram</TT>' и 
+      '<TT>AutoInstall</TT>' и указанном '<TT>InstallPath</TT>' приводила к 
+      ненормальному завершению работы модуля с окном "Инструкция по адресу 
+      "0х0040XXXX обратилась к памяти по адресу "0x00000000. Память не может 
+      быть "read"". (HWG:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.0.0.51010 (сборка 73) 10.10.05</TH></TR>
+  <TR>
+    <TD class=hist>*</TD>
+    <TD class=hist>Ошибка при извлечении архива в корень диска 
+      (HWG:forum.oszone.net)</TD></TR>
+  <TR>
+    <TD class=hist>+</TD>
+    <TD class=hist>Самоудаление ('<TT>SelfDelete</TT>' в конфигурационном 
+      файле и '<TT>-sdX</TT>' в командной строке) (HWG:forum.oszone.net)</TD></TR>
+  <TR>
+    <TH class=hist colSpan=2><BR>1.0.0.51007 07.10.05</TH></TR>
+  <TR>
+    <TD class=hist>&nbsp;</TD>
+    <TD class=hist>Первый релиз</TD></TR></TBODY></TABLE>
+<P>&nbsp;</P></BODY></HTML>

@@ -1,0 +1,452 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD>
+<BODY>
+   <OBJECT type="text/site properties"> 
+     <param name="FrameName" value="right">
+     <param name="Font" value=",8,0">
+     <param name="ImageType" value="Book">
+     <param name="Window Styles" value="0x27">
+     <param name="ExWindow Styles" value="0x0">
+   </OBJECT>
+<UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Модифицированный модуль">
+<param name="Local" value="intro.html">
+<param name="ImageNumber" value="18">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Первые шаги">
+<param name="Local" value="firststeps.html">
+<param name="ImageNumber" value="10">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Файл конфигурации">
+<param name="Local" value="configinfo.html">
+<param name="ImageNumber" value="1">
+</OBJECT>
+<UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Общая информация о файле конфигурации">
+<param name="Local" value="configinfo.html">
+<param name="ImageNumber" value="17">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Секции файла конфигурации">
+<param name="Local" value="sections.html">
+<param name="ImageNumber" value="17">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Дополнительный файл конфигурации">
+<param name="Local" value="page_1.html">
+<param name="ImageNumber" value="17">
+</OBJECT>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Переменные модуля">
+<param name="Local" value="variables.html">
+<param name="ImageNumber" value="1">
+</OBJECT>
+<UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Описания CSIDL_*">
+<param name="Local" value="csidl.html">
+<param name="ImageNumber" value="11">
+</OBJECT>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Параметры конфигурации">
+<param name="Local" value="parameters.html">
+<param name="ImageNumber" value="1">
+</OBJECT>
+<UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="AutoInstall">
+<param name="Local" value="parameters.html#AutoInstall">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="AutoInstallX">
+<param name="Local" value="parameters.html#AutoInstallX">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="BeginPrompt">
+<param name="Local" value="parameters.html#BeginPrompt">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="BeginPromptTimeout">
+<param name="Local" value="parameters.html#BeginPromptTimeout">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="CancelPrompt">
+<param name="Local" value="parameters.html#CancelPrompt">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Delete">
+<param name="Local" value="parameters.html#Delete">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="DeleteX">
+<param name="Local" value="parameters.html#DeleteX">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Directory">
+<param name="Local" value="parameters.html#Directory">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="ErrorTitle">
+<param name="Local" value="parameters.html#ErrorTitle">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="ExecuteFile">
+<param name="Local" value="parameters.html#ExecuteFile">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="ExecuteOnLoad">
+<param name="Local" value="parameters.html#ExecuteOnLoad">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="ExecuteParameters">
+<param name="Local" value="parameters.html#ExecuteParameters">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="ExtractCancelText">
+<param name="Local" value="parameters.html#ExtractCancelText">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="ExtractDialogText">
+<param name="Local" value="parameters.html#ExtractDialogText">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="ExtractDialogWidth">
+<param name="Local" value="parameters.html#ExtractDialogWidth">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="ExtractMaskExclude">
+<param name="Local" value="parameters.html#ExtractMaskExclude">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="ExtractMaskInclude">
+<param name="Local" value="parameters.html#ExtractMaskInclude">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="ExtractPathText">
+<param name="Local" value="parameters.html#ExtractPathText">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="ExtractPathTitle">
+<param name="Local" value="parameters.html#ExtractPath">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="ExtractPathWidth">
+<param name="Local" value="parameters.html#ExtractPathWidth">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="ExtractTitle">
+<param name="Local" value="parameters.html#ExtractTitle">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="FinishMessage">
+<param name="Local" value="parameters.html#FinishMessage">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="GUIFlags">
+<param name="Local" value="parameters.html#GUIFlags">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="GUIMode">
+<param name="Local" value="parameters.html#GUIMode">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="HelpText">
+<param name="Local" value="parameters.html#HelpText">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="InstallPath">
+<param name="Local" value="parameters.html#InstallPath">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="MiscFlags">
+<param name="Local" value="parameters.html#MiscFlags">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="OverwriteMode">
+<param name="Local" value="parameters.html#OverwriteMode">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="PasswordText">
+<param name="Local" value="parameters.html#PasswordText">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="PasswordTitle">
+<param name="Local" value="parameters.html#PasswordTitle">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="PreExtract">
+<param name="Local" value="parameters.html#PreExtract">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="PreExtractX">
+<param name="Local" value="parameters.html#PreExtractX">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Progress">
+<param name="Local" value="parameters.html#Progress">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="RunProgram">
+<param name="Local" value="parameters.html#RunProgram">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="SelfDelete">
+<param name="Local" value="parameters.html#SelfDelete">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="SetEnvironment">
+<param name="Local" value="parameters.html#SetEnvironment">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Shortcut">
+<param name="Local" value="parameters.html#Shortcut">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="ShortcutX">
+<param name="Local" value="parameters.html#ShortcutX">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Title">
+<param name="Local" value="parameters.html#Title">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="VolumeNameStyle">
+<param name="Local" value="parameters.html#VolumeNameStyle">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="WarningTitle">
+<param name="Local" value="parameters.html#WarningTitle">
+<param name="ImageNumber" value="11">
+</OBJECT>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Префиксы команд запуска">
+<param name="Local" value="prefixes.html">
+<param name="ImageNumber" value="1">
+</OBJECT>
+<UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="delX">
+<param name="Local" value="prefixes.html#delX">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="fmX">
+<param name="Local" value="prefixes.html#fmXp">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="forcenowait">
+<param name="Local" value="prefixes.html#forcenowait">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="hidcon">
+<param name="Local" value="prefixes.html#hidcon">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="nowait">
+<param name="Local" value="prefixes.html#nowait">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="shcX">
+<param name="Local" value="prefixes.html#shcX">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="waitall">
+<param name="Local" value="prefixes.html#waitall">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="x64">
+<param name="Local" value="prefixes.html#x64">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="x86">
+<param name="Local" value="prefixes.html#x86">
+<param name="ImageNumber" value="11">
+</OBJECT>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Ключи командной строки">
+<param name="Local" value="switches.html">
+<param name="ImageNumber" value="1">
+</OBJECT>
+<UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="-!">
+<param name="Local" value="switches.html#breakcmdline">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-?">
+<param name="Local" value="switches.html#h">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-ai">
+<param name="Local" value="switches.html#ai">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-aiX">
+<param name="Local" value="switches.html#aiX">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-bptX">
+<param name="Local" value="switches.html#bptX">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-fmX">
+<param name="Local" value="switches.html#fmX">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-gfX">
+<param name="Local" value="switches.html#gfX">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-gmX">
+<param name="Local" value="switches.html#gmX">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-h">
+<param name="Local" value="switches.html#h">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-mfX">
+<param name="Local" value="switches.html#mfX">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-nr">
+<param name="Local" value="switches.html#nr">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-omX">
+<param name="Local" value="switches.html#omX">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-pX">
+<param name="Local" value="switches.html#pX">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-sdX">
+<param name="Local" value="switches.html#sdX">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-sfxconfig">
+<param name="Local" value="switches.html#sfxconfig">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="sfxelevation">
+<param name="Local" value="switches.html#sfxelevation">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-sfxlang">
+<param name="Local" value="switches.html#sfxlang">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-sfxtest:cc">
+<param name="Local" value="switches.html#sfxtestcc">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-sfxtest:D:Q">
+<param name="Local" value="switches.html#sfxtestD">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-sfxversion">
+<param name="Local" value="switches.html#sfxversion">
+<param name="ImageNumber" value="11">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="-y">
+<param name="Local" value="switches.html#y">
+<param name="ImageNumber" value="11">
+</OBJECT>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Примеры использования">
+<param name="Local" value="examples.html">
+<param name="ImageNumber" value="41">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="История изменений">
+<param name="Local" value="history_b.html">
+<param name="ImageNumber" value="1">
+</OBJECT>
+<UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Бета версии">
+<param name="Local" value="history_b.html">
+<param name="ImageNumber" value="39">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Стабильные версии">
+<param name="Local" value="history_s.html">
+<param name="ImageNumber" value="39">
+</OBJECT>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Ссылки для загрузки">
+<param name="Local" value="download.html">
+<param name="ImageNumber" value="13">
+</OBJECT>
+</UL>
+</BODY>
+</HTML>

@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Переменные модуля</TITLE>
+<META content="text/html; charset=Windows-1251" http-equiv=Content-Type><LINK 
+rel=stylesheet type=text/css href="misc/styles.css">
+<META name=GENERATOR content="MSHTML 8.00.6001.23590"></HEAD>
+<BODY>
+<H2>Переменные модуля</H2>
+<P id=vars>В <B>момент выполнения</B> модулем своей работы, помимо основных 
+переменных среды (%SYSTEMDRIVE%, %PROGRAMFILES% и т.д.), доступны переменные, 
+которые создает модуль.</P>
+<P>Все переменные, создаваемые модулем при работе, можно разделить на два типа: 
+переменные среды модуля и переменные модуля.</P>
+<HR align=left width="100%">
+
+<P><TT>Переменные среды при работе модуля</TT>:</P>
+<UL>
+  <LI>%CommonDesktop% - рабочий стол ДЛЯ ВСЕХ пользователей 
+  <LI>%CommonDocuments% - ОБЩИЕ документы 
+  <LI>%MyDocuments% - "Мои документы" ТЕКУЩЕГО пользователя (она же %MyDocs%) 
+  <LI>%SfxFolder<B>XX</B>% - набор переменных для доступа к некоторым системным 
+  папкам<BR>где <B>XX</B> - десятичное число (00...61), определяющее номер 
+  переменной. Значение переменной может зависеть от типа ОС, имени диска 
+  установки ОС, имени пользователя и т.п. Описания CSIDL_* можно посмотреть <A 
+  class=int href="csidl.html">здесь</A>.<BR><B>ВАЖНО!</B> Некоторые переменные, 
+  перечисленные в списке, могут отсутствовать в конкретной системе 
+  <LI>%SfxVarApiPath% - временная папка создаваемая модулем, текущая для команд 
+  '<TT>ExecuteOnLoad</TT>', '<TT>PreExtract</TT>' и '<TT>PreExtractX</TT>'. 
+  Переменная %SfxVarApiPath% не равна %%T. Если присутствуют указанные команды, 
+  то модуль создает дополнительную временную папку и путь к ней помещает в 
+  переменную %SfxVarApiPath% 
+  <LI>%SfxVarCmdLine0% - командная строка целиком (как есть с кавычками и 
+  лидирующими слешами) 
+  <LI>%SfxVarCmdLine1% - командная строка до ключа <A class=int 
+  href="switches.html#breakcmdline">'-!'</A> или до первого ключа, 
+  неподдерживаемого модулем (лишние пробелы удаляются с двух сторон) 
+  <LI>%SfxVarCmdLine2% - командная строка после ключа <A class=int 
+  href="switches.html#breakcmdline">'-!'</A> или начиная с первого ключа, 
+  неподдерживаемого модулем (лишние пробелы удаляются с двух сторон) 
+  <LI>%SfxVarModulePlatform% - платформа модуля; принимает значения <B>x86</B> и 
+  <B>x64</B> в зависимости от разрядности модуля 
+  <LI>%SfxVarSystemLanguage% - язык интерфейса пользователя операционной 
+  системы; принимает значение <B>XXXX<BR></B>где <B>XXXX</B> - ID языка 
+  интерфейса пользователя (например, <B>1049</B> - для русского интерфейса, 
+  <B>1033</B> - для английского и т.д.) 
+  <LI>%SfxVarSystemPlatform% - платформа операционной системы; принимает 
+  значения <B>x86</B> и <B>x64</B> в зависимости от разрядности ОС 
+  <LI>%UserDesktop% - рабочий стол ТЕКУЩЕГО пользователя 
+  <LI>переменные, определяемые пользователем в параметрах 
+  '<TT>SetEnvironment</TT>' </LI></UL>
+<P>Все перечисленные переменные среды НЕ зависят от регистра.</P>
+<P>Все перечисленные переменные среды могут использоваться как в файле 
+конфигурации, так и в других программах (.cmd, .bat файлах) запущенных из 
+модуля.</P>
+<HR align=left width="100%">
+
+<P><TT>Переменные модуля</TT>:</P>
+<P>Кроме этого можно использовать (только в файле конфигурации, но не в других 
+программах, запущенных из модуля) следующие переменные модуля:</P>
+<UL>
+  <LI>%%M - имя SFX архива без пути 
+  <LI>%%P - платформа операционной системы; принимает значения x86 и x64 в 
+  зависимости от разрядности ОС 
+  <LI>%%S - полный путь к файлу SFX архива 
+  <LI>%%T - полный путь распаковки </LI></UL>
+<P>Все перечисленные переменные модуля зависят от регистра.</P>
+<P>Все перечисленные переменные модуля могут использоваться только в файле 
+конфигурации, но не в других программах (.cmd, .bat файлах), запущенных из 
+модуля.</P>
+<HR align=left width="100%">
+
+<P>Все перечисленные переменные (основные переменные среды, переменные среды при 
+работе модуля и переменные модуля) разбираются и подставляются в следующих 
+параметрах:</P>
+<UL>
+  <LI>'<TT>AutoInstall</TT>' 
+  <LI>'<TT>AutoInstallX</TT>' 
+  <LI>'<TT>BeginPrompt</TT>' 
+  <LI>'<TT>CancelPrompt</TT>' 
+  <LI>'<TT>Delete</TT>' 
+  <LI>'<TT>DeleteX</TT>' 
+  <LI>'<TT>Directory</TT>' 
+  <LI>'<TT>ErrorTitle</TT>' 
+  <LI>'<TT>ExecuteFile</TT>' 
+  <LI>'<TT>ExtractCancelText</TT>' 
+  <LI>'<TT>ExtractDialogText</TT>' 
+  <LI>'<TT>ExtractPathText</TT>' 
+  <LI>'<TT>ExtractPathTitle</TT>' 
+  <LI>'<TT>ExtractTitle</TT>' 
+  <LI>'<TT>FinishMessage</TT>' 
+  <LI>'<TT>HelpText</TT>' 
+  <LI>'<TT>InstallPath</TT>' (за исключением %%T, а также переменных, 
+  определенных параметрами '<TT>SetEnvironment</TT>', если в них используется 
+  %%T) 
+  <LI>'<TT>PasswordText</TT>' 
+  <LI>'<TT>PasswordTitle</TT>' 
+  <LI>'<TT>RunProgram</TT>' 
+  <LI>'<TT>string</TT>' параметра '<TT>SetEnvironment</TT>' 
+  <LI>'<TT>Title</TT>' 
+  <LI>'<TT>WarningTitle</TT>' </LI></UL>
+<P>Во всех строках параметров '<TT>Shortcut</TT>' и '<TT>ShortcutX</TT>' 
+разбираются и подставляются (будут подставлены ЗНАЧЕНИЯ этих переменных) только 
+переменные среды при работе модуля и переменные модуля. Основные переменные 
+среды во всех строках параметров '<TT>Shortcut</TT>' и '<TT>ShortcutX</TT>' НЕ 
+разбираются и подставляются как обычные строки (будут подставлены ИМЕНА этих 
+переменных).<BR>В строке <TT>type</TT> параметров '<TT>Shortcut</TT>' и 
+'<TT>ShortcutX</TT>' можно использовать переменные %SfxFolder<B>XX</B>%. В этом 
+случае используется только десятичное число <B>XX</B>, например:<BR>&nbsp;</P>
+<DIV align=left><PRE style="WIDTH: 100%; HEIGHT: 115px" class=example_code>; Создаем переменную модуля, т.к., основная переменная среды %SystemDrive% не может использоваться в Shortcut
+SetEnvironment="PFx86=%SystemDrive%\\totalcmd86"
+; Ярлык на панели быстрого запуска
+Shortcut="26,{%PFx86%\\Totalcmd.exe},{},{Microsoft\\Internet Explorer\\Quick Launch},{Файловый менеджер},{Total Commander},{%PFx86%}"
+; Ярлык в Пуск-&gt;Программы-&gt;Автозагрузка
+Shortcut="7,{%PFx86%\\Totalcmd.exe},{},{},{Файловый менеджер},{Total Commander},{%PFx86%}"</PRE></DIV>
+<P>В остальных параметрах все переменные (основные переменные среды, переменные 
+среды при работе модуля и переменные модуля) не используются и подставляются как 
+обычные строки (будут подставлены ИМЕНА этих переменных).</P>
+<P>Если в текстовых параметрах необходимо указать имя переменной, а не ее 
+значение, то переменную нужно записать следующим образом:</P>
+<UL>
+  <LI>%^PROGRAMFILES% 
+  <LI>%^MyDocuments% 
+  <LI>%^Var% 
+  <LI>%%^S 
+  <LI>%%^T </LI></UL>
+<HR align=left width="100%">
+
+<P>Следующий файл конфигурации поможет просмотреть и\или сохранить все 
+переменные среды при работе модуля и переменные модуля, а также их значения на 
+конкретной системе:<BR>&nbsp;</P>
+<DIV align=left><PRE style="WIDTH: 100%; HEIGHT: 445px" class=example_code>;!@Install@!UTF-8!
+Title="Variables %SfxVarModulePlatform% module in %%P OS"
+BeginPrompt="	Check of variables %SfxVarModulePlatform% module in %%P OS
+
+• Click 'OK', variables will are shown in a console window
+
+• Click 'OK', retaining [Shift], variables will be are saved
+  to the file %SystemDrive%\\vars_%SfxVarModulePlatform%_module_on_%%P_OS.txt"
+FinishMessage="The module %SfxVarModulePlatform% finished operation"
+SetEnvironment="cmnd=@Echo Off&amp; Title Module - %SfxVarModulePlatform%, OS - %%P&amp; Echo 	Module - %SfxVarModulePlatform%,	OS - %%P&amp; Echo.&amp; Echo Folders:&amp;Set SfxFolder&amp; Echo.&amp; Echo Vars:&amp;Set SfxVar&amp; Echo %%^M=%%M&amp; Echo %%^P=%%P&amp; Echo %%^S=%%S&amp; Echo %%^T=%%T&amp; Set CommonD&amp; Set MyDoc&amp; Echo UserDesktop=%UserDesktop%&amp; Echo."
+RunProgram="hidcon:cmd /c Echo"
+RunProgram="%%P:fm0:cmd /k %cmnd%"
+AutoInstall="hidcon:cmd /c Echo"
+AutoInstall="%%P:fm20:hidcon:cmd /c (%cmnd%)&gt;%SystemDrive%\\vars_%SfxVarModulePlatform%_module_on_%%P_OS.txt"
+GUIMode="2"
+GUIFlags="2+4+8+16+32+2048+4096"
+MiscFlags="4"
+;!@InstallEnd@!
+;!@Install@!UTF-8:Language:1049!
+Title="Переменные %SfxVarModulePlatform% модуля в %%P ОС"
+BeginPrompt="	Проверка переменных %SfxVarModulePlatform% модуля в %%P ОС
+
+• Нажмите 'OK', переменные будут показаны в окне консоли
+
+• Нажмите 'OK', удерживая [Shift], переменные будет
+  сохранены в файл %SystemDrive%\\vars_%SfxVarModulePlatform%_module_on_%%P_OS.txt"
+FinishMessage="Модуль %SfxVarModulePlatform% завершил работу"
+;!@InstallEnd@:Language:1049!
+</PRE></DIV></BODY></HTML>
