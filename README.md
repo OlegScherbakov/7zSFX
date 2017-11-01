@@ -13,4 +13,4 @@ Direct link: https://raw.githubusercontent.com/OlegScherbakov/7zSFX/master/files
 
 Direct link: https://raw.githubusercontent.com/OlegScherbakov/7zSFX/master/files/7z_splitter_1017.7z
 
-[Visit page](https://cosmomill.github.io/7zsfx/)
+[Visit page](https://olegscherbakov.github.io/7zSFX/)
