@@ -1,159 +1,251 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<HTML><HEAD><TITLE>Примеры использования</TITLE>
-<META http-equiv=Content-Type content="text/html; charset=Windows-1251">
-<LINK href="misc/styles.css" type="text/css" rel=stylesheet>
-</HEAD>
-<BODY>
+<html>
+	<head>
+		<title>Usage examples</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link href="common/styles.css" type="text/css" rel=stylesheet>
+		<script language="javascript" src="common/scripts.js" type="text/javascript"></script>
+		<script language="javascript" src="misc/menu.js" type="text/javascript"></script>
+	</head>
+<body onLoad="OnLoadBody()">
 
-<H2>Примеры использования</H2>
-<TABLE>
-<TBODY class="main">
-	<TR>
-		<TH class="main" width="270"><P>Пример файла конфигурации</P></TH>
-		<TH class="main"><P>Описание работы SFX архива</P></TH></TR>
-	<TR>
-		<TD class="main"><P><b>№1</b></P>
+<h2>Usage examples</h2>
+<table><tbody class="main">
+
+	<tr>
+		<th class="main" width="270"><p>Configuration file example</p></th>
+		<th class="main"><p>Description of SFX archive operation</p></th>
+	</tr>
+
+	<tr>
+		<td class="main"><p><b>#1</b></p>
 <pre class="example_code" style="WIDTH: 260px; HEIGHT: 66px">;!@Install@!UTF-8!
 RunProgram="setup.exe /s"
 GUIMode="2"
-;!@InstallEnd@!</pre></TD>
-		<TD class="main"><P>Это беcключевой "тихий" SFX архив.</P>
-		<P>Архив при запуске незаметно (диалог распаковки не отображается, GUIMode="2") распакует содержимое во временную папку и запустит "setup.exe /s" для автоматической установки ПО. Временная папка будет удалена по окончании установки.</P></TD></TR>
-	<TR>
-		<TD class="main"><P><b>№2</b></P>
-<pre class="example_code" style="WIDTH: 260px; HEIGHT: 112px">;!@Install@!UTF-8!
+;!@InstallEnd@!
+</pre>
+		</td>
+
+		<td class="main">
+		<p>This is a switchless silent SFX.</p>
+		<p>When you launch this SFX it will silently (with no extraction dialog windows displayed, GUIMode="2")
+		   unpack its content into a temporary folder and run setup.exe /s for the silent software installation.
+		   The temporary folder will be deleted after the installation.</p>
+		</td>
+	</tr>
+
+	<tr>
+		<td class="main"><p><b>#2</b></p>
+<pre class="example_code" style="width: 260px; height: 112px;">;!@Install@!UTF-8!
 RunProgram="setup.exe /s"
 InstallPath="%PROGRAMFILES%\\test"
 ExtractTitle="Installing a virus..."
 GUIMode="1"
 SelfDelete="1"
-;!@InstallEnd@!</pre></TD>
-		<TD class="main"><P>Это беcключевой SFX архив.<br>
-		После запуска архива, он напугает пользователя <img src="misc/sad.gif" alt="" class="inlineimg"> диалогом распаковки с заголовком "<b>Installing the virus...</b>", но без кнопки "Отмена" и возможности прервать распаковку (GUIMode="1"). Содержимое архива будет распаковано в папку %ProgramFiles%\test, после чего запустится "setup.exe /s" для автоматической установки ПО. Сам SFX архив будет удален (если он был запущен с жесткого диска).</P>
-		<P>Папка %ProgramFiles%\test НЕ будет удалена по окончании установки.</P></TD></TR>
-	<TR>
-		<TD class="main"><P><b>№3</b></P>
-<pre class="example_code" style="WIDTH: 260px; HEIGHT: 113px">;!@Install@!UTF-8!
+;!@InstallEnd@!
+</pre>
+		</td>
+
+		<td class="main">
+		<p>This is a switchless SFX.</p>
+		<p>When you run this SFX it will scare the user to death <img src="misc/sad.gif" alt="" class="inlineimg"> with the extraction
+		   dialog titled "<b>Installing a virus...</b>", but without the "Cancel" button (GUIMode="1") while
+		   unpacking its content to the %ProgramFiles%\test folder.</p>
+		<p>After that it will run setup.exe /s for the silent software installation. The SFX will be deleted
+		   after the installation (if it was launched from the hard drive).</p>
+		<p>The %ProgramFiles%\test folder will NOT be deleted after the installation.</p>
+		</td>
+	</tr>
+
+	<tr>
+		<td class="main"><p><b>#3</b></p>
+<pre class="example_code" style="width: 260px; height: 113px;">;!@Install@!UTF-8!
 BeginPrompt="Install this program?"
 ExtractTitle="Preparing the installation..."
 RunProgram="setup.exe"
 AutoInstall="setup.exe /s"
-;!@InstallEnd@!</pre></TD>
-		<TD class="main"><P>Этот SFX архив может быть использован как для интерактивной установки, так и для полностью автоматической установки с соответствующими ключами.</P>
-		<P>Если пользователь запустит архив без ключей, то появится диалог "<b>Install this program?</b>" с кнопками "Да" и "Нет". Нажав "Да", он запустит распаковку архива во временную папку, сопровождаемую родным диалогом архиватора 7-Zip с кнопками "Отмена" и "Закрыть" (которая в правом верхнем углу окна) с заголовком "<b>Preparing the installation...</b>". По окончании распаковки запустится "setup.exe", давая пользователю возможность контролировать ход установки ПО.</P>
-		<P>Если же пользователь нажмет "Да", удерживая клавишу [SHIFT] (запускает автоматическую установку, <A href="parameters.html#AutoInstall">'AutoInstall'</A>), то "setup.exe" запустится с ключом "/s", осуществляя автоматическую установку ПО.</P>
-		<P>Если он запустит этот же архив с ключами "-ai -gm2", то диалог "<b>Install this program?</b>" будет подавлен ключом '<tt>-ai</tt>', будет вызвана опция автоматической установки "setup.exe /s" (ключ <A href="switches.html#ai">'-ai'</A>), а диалог распаковки не будет отображаться вовсе (ключ <A href="switches.html#gmX">'-gm2'</A>).</P>
-		<P>При любом из вариантов временная папка будет удалена по окончании установки.</P></TD></TR>
-	<TR>
-		<TD class="main"><P><b>№4</b></P>
-<pre class="example_code" style="WIDTH: 260px; HEIGHT: 248px">;!@Install@!UTF-8!
-Title="Установка Media Player Classic"
-BeginPrompt="В архиве три варианта установки Media Player Classic.\nПосле установки он будет назначен проигрывателем \nпо умолчанию для следующих типов файлов:\n\n1.  Запуск с ключом '-ai1' - только для аудио файлов\n2.  Запуск с ключом '-ai2' - только для видео файлов\n3.  Нажатие \"Да\" или запуск с ключом '-ai' - для аудио\n     и видео файлов\n\nИспользовать вариант №3 установки Media Player Classic?"
-InstallPath="%windir%\\system32"
+;!@InstallEnd@!
+</pre>
+		</td>
+
+		<td class="main">
+		<p>This SFX can be used either for an interactive installation or for a totally silent installation
+		   with the corresponding switches.</p>
+		<p>If you run this SFX without switches, it will show you the " <b>Install this program?</b>" dialog
+		   window with "Yes" and "No" buttons. Clicking "Yes" extracts the SFX into a temp folder with the
+		   "<b>Preparing the installation...</b>" title and the native extraction dialog with "Cancel" and
+		   "Close" buttons.</p>
+		<p>Setup.exe will run immediately after that, allowing user to control the software installation process.</p>
+		<p>If you click "Yes" while holding down the [SHIFT] key (invokes
+		   <a href="parameters.html#AutoInstall">AutoInstall</a> option), the setup.exe will run with the /s
+		   switch for the silent software installation.</p>
+		<p>If you run the same SFX with -ai -gm2 switches, then the "<b>Install this program?</b>" dialog window
+		   will be suppressed by '<tt>-ai</tt>' switch, <a href="parameters.html#AutoInstall">AutoInstall</a>
+		   parameter (setup.exe /s) will be invoked (<a href="switches.html#ai">-ai</a>), and no extraction
+		   dialog will be displayed (<a href="switches.html#gmX">-gm2</a>).</p>
+		<p>Either way the temporary folder will be deleted after the installation.</p>
+		</td>
+	</tr>
+
+	<tr>
+		<td class="main"><p><b>#4</b></p>
+<pre class="example_code" style="width: 260px; height: 248px;">;!@Install@!UTF-8!
+Title="Media Player Classic installation"
+BeginPrompt="There are three Media Player Classic installation scenarios in this archive.\nAfter the installation it becomes the default player\nfor the following file types:\n\n1. Launching with '-ai1' switch - for audio files only\n2. Launching with '-ai2' switch - for video files only\n3. Clicking \"Yes\" or launching with '-ai' switch - both for\n audio and video files.\n\nWould you like to begin the Media Player Classic installation scenario #3?"
+InstallPath="%windir%\system32"
 GUIMode="1"
 GUIFlags="1+8+2048"
 Shortcut="Du,{%%T\\mplayerc.exe},{},{},{Media Player Classic},{Media Player Classic}"
 Shortcut="Pu,{%%T\\mplayerc.exe},{},{},{Media Player Classic},{Media Player Classic}"
-RunProgram="mplayerc.exe /regaud /regvid"
-AutoInstall="mplayerc.exe /regaud /regvid"
+RunProgram="mplayerc.exe /regaud /regvid"<br>AutoInstall="mplayerc.exe /regaud /regvid"
 ;Audio Only
 AutoInstall1="mplayerc.exe /regaud"
-;Video Only
+;VideoOnly
 AutoInstall2="mplayerc.exe /regvid"
-;!@InstallEnd@!</pre></TD>
-		<TD class="main"><P>Media Player Classic и его INI файл упакованы в SFX архив. Если его запустить без ключей, пользователь увидит следующее окно. Одна из "стандартных" иконок в окне заменена на иконку модуля ключом 2048 параметра '<tt>GUIFlags</tt>'.</P>
-		<P align=center><IMG alt="Example4" src="misc/Example4.png"></P>
-		<P>Нажатие "Да" приведет к распаковке содержимого архива в папку system32 (в папку установки Windows). В окне распаковки кнопка "Отмена" скрыта, а "Закрыть" (которая в правом верхнем углу окна) - блокирована, процент распаковки отображается в правой части заголовка, используются стили Windows XP. Для текущего пользователя будут созданы два ярлыка с именем и описанием "Media Player Classic": на рабочем столе и в меню "Пуск -> Программы".</P>
-		<P>Запуск этого же SFX архива с ключами "-ai -gm2" сделает все то же самое, но без диалогов. Точно так же, запуск с ключом '<tt>-ai1</tt>' или '<tt>-ai2</tt>', вместе с '<tt>-gm2</tt>', тихо установит Media Player Classic и ассоциирует его с аудио или видео файлами соответственно.</P></TD></TR>
-	<TR>
-		<TD class="main"><P><b>№5</b></P>
-<pre class="example_code" style="WIDTH: 260px; HEIGHT: 234px">;!@Install@!UTF-8!
-Title="Инструменты для 7z SFX"
-BeginPrompt="Архив содержит инструменты для 7z SFX:\n\n• Модифицированный 7z SFX модуль\n• 7z SFX Splitter для извлечения компонентов из SFX архива \n• Файл справки для модуля (CHM формат)\n\nЯрлык к файлу справки будет помещен на ваш Рабочий стол.\nФайл справки откроется автоматически после извлечения."
-CancelPrompt="Вы хотите прервать распаковку?"
-ExtractDialogText="Подождите, пожалуйста..."
-ExtractPathText="Пожалуйста, введите путь распаковки:"
-ExtractTitle="Распаковка..."
+;!@InstallEnd@!
+</pre>
+		</td>
+
+		<td class="main">
+		<p>Media Player Classic and its INI file are packed into an SFX archive. If you launch the archive
+		   without switches, user will see the following windows. The standard icon has been replaced with
+		   the module icon by using flag 2048 of '<tt>GUIFlags</tt>' parameter.</p>
+		<p><br></p>
+		<p align="center"><img alt="Example4" src="misc/Example4.png"></p>
+		<p>Clicking the "Yes" button extracts the SFX to system32 folder. The "Cancel" button is hidden
+		   during extraction and the "Close" button is blocked, the percentage is displayed on the right
+		   of the window title, and Windows XP styles are used. Shortcuts on the Desktop and in the Programs
+		   menu with 'Media Player Classic' name and description are created for the current user.</p>
+		<p>Launching the same SFX with "-ai -gm2" switches accomplishes the same task silently with no
+		   visible dialog windows. Similarly, '<tt>-ai1</tt>' or '<tt>-ai2</tt>' switch in conjunction
+		   with '<tt>-gm2</tt>' switch silently install and associate Media Player Classic with audio and
+		   video files respectively.</p>
+		</td>
+	</tr>
+
+	<tr><td><p><b>#5</b></p>
+<pre class="example_code" style="width: 260px; height: 234px;">;!@Install@!UTF-8!
+Title="7z SFX Tools"
+BeginPrompt="The archive contains 7z SFX Tools:\n\n Modified 7z SFX module\n 7z SFX Splitter for extracting components from an SFX archive\n Help file for the module (CHM format)\n\nShortcut to the help file will be created on your Desktop.\nThe help file will be launched automatically when extracted."
+CancelPrompt="Do you want to cancel the extraction?"
+ExtractDialogText="Please, wait..."
+ExtractPathText="Please, enter the extraction path:"
+ExtractTitle="Extracting..."
 GUIFlags="8+32+64+256+4096"
 GUIMode="1"
 InstallPath="%ProgramFiles%\\7z SFX Tools"
 OverwriteMode="2"
-RunProgram="nowait:\"7zSD_RU.chm\""
-Shortcut="Du,{%%T\\7zSD_RU.chm},{},{},{Описание модифицированного 7z SFX модуля},{Все о 7z SFX модуле},{},{%%T\\7ZSplit.exe},{0}"
-;!@InstallEnd@!</pre></TD>
-		<TD class="main"><P>Интерактивный режим установки с возможностью выбора каталога распаковки. 7z SFX Tools упакованы в архив. При запуске пользователь видит такое сообщение:</P>
-		<P align=center><IMG alt="Example5" src="misc/Example5.png"></P>
-		<P>"Стандартные" кнопки диалога "Да"-"Нет" заменены на "ОК"-"Отмена" ключом 4096 параметра '<tt>GUIFlags</tt>'. Он же изменил иконку со знаком вопроса на иконку с буквой &quot;i&quot;.</P>
-		<P>При попытке отменить распаковку нажатием "Отмена", будет показан диалог, прописанный в параметре '<tt>CancelPrompt</tt>'. Каталог распаковки архива может быть изменен. Путь по умолчанию берется из '<tt>InstallPath</tt>', а сам диалог выбора пути совмещен с '<tt>BeginPrompt</tt>' при помощи параметра GUIFlags="8+32+64+256".</P>
-		<P>При распаковке будут перезаписаны только более старые файлы ('<tt>OverwriteMode</tt>'). На Рабочем столе текущего пользователя (параметр '<tt>type</tt>' указан как "Du") принудительно будет создан ярлык к файлу справки (иконка для него будет взята из файла 7ZSplit.exe), а сам файл справки запустится по окончании распаковки.</P></TD></TR>
-	<TR>
-		<TD class="main"><P><b>№6</b></P>
-<pre class="example_code" style="WIDTH: 260px; HEIGHT: 832px">;!@Install@!UTF-8!
-Title="Установка Total Commander 7pb3"
-BeginPrompt="Сейчас будет установлен Total Commander\nс английским интерфейсом (trial версия).\n\nО других вариантах установки Вы можете\nузнать, нажав \"Отмена\" и запустив снова\nэтот SFX архив с ключом '-?' или '-h'"
-; Путь установки TC
+RunProgram="nowait:\"7zSD_EN.chm\""
+Shortcut="Du,{%%T\\7zSD_EN.chm},{},{},{Help file for 7z SFX modified module},{Everything about 7-zip SFX modified module},{},{%%T\\7ZSplit.exe},{0}"
+;!@InstallEnd@!
+</pre>
+		</td>
+
+		<td class="main">
+		<p>This is an interactive mode with the option of choosing the extraction folder. 7z SFX tools are
+		   packed into an archive. When the SFX archive is launched, the following window is displayed:</p>
+		<p><br></p>
+		<p align="center"><img alt="Example5" src="misc/Example5.png"></p>
+		<p>Standard buttons "Yes" and "No" have been replaced with "OK" and "Cancel" respectively by using
+		   flag 4096 of '<tt>GUIFlags</tt>' parameter.</p>
+		<p>An attempt to cancel the extraction by clicking "Cancel" causes the '<tt>CancelPrompt</tt>'
+		   dialog window to be displayed. The extraction folder can be changed by user. The default path is
+		   retrieved from '<tt>InstallPath</tt>' parameter, while the extraction dialog is combined with
+		   '<tt>BeginPrompt</tt>' by using GUIFlags="8+32+64+256".</p>
+		<p>Only the older files will be overwritten during the extraction process ('<tt>OverwriteMode</tt>').
+		   A shortcut to the help file will be created on the current user's Desktop ("Du" for the
+		   '<tt>type</tt>' parameter). The shortcut icon is taken from&nbsp;7ZSplit.exe file), The help file
+		   is launched automatically when extraction is complete.</p>
+		</td>
+	</tr>
+
+	<tr>
+		<td class="main"><p><b>#6</b></p>
+<pre class="example_code" style="width: 260px; height: 832px;">;!@Install@!UTF-8!
+Title="Total Commander 7 installation"
+BeginPrompt="Total Commander file manager will be installed\nnow with English interface language.\n\nLearn about other installation scenarios\nby pressing \"Cancel\" and launching this\nSFX again with '-?' or  '-h' switch."
+; Installation folder
 SetEnvironment="PathTC=%ProgramFiles%\\TOOLS\\Total Commander"
 SetEnvironment="Var1=%PathTC%\\"
 SetEnvironment="Var2=\"%PathTC%\""
-; Удаление ключей предыдущей установки TC
+; Deleting the previous installation registry keys
 SetEnvironment="DelKey1=hidcon:cmd /c reg delete \"hkcu\\Software\\Ghisler\" /f"
 SetEnvironment="DelKey2=hidcon:cmd /c reg delete \"hklm\\Software\\Ghisler\" /f"
-; Установка "чистого" TC
+; "Clean" TC installation
 RunProgram="%DelKey1%"
 RunProgram="%DelKey2%"
 RunProgram="fm20:tcmd7pb3_E.exe"
 AutoInstall1="%DelKey1%"
 AutoInstall1="%DelKey2%"
 AutoInstall1="fm20:tcmd7pb3_E.exe"
-; Русификация
+; Russian localization
 AutoInstall2="hidcon:cmd /c xcopy Language \"%Var1%Language\" /s /e /i /y"
 AutoInstall2="hidcon:cmd /c copy !ReadMe_Rus.txt %Var2%"
 AutoInstall2="hidcon:cmd /c copy Hist_rus.txt %Var2%"
 AutoInstall2="hidcon:cmd /c copy Keyb_rus.txt %Var2%"
-; Индивидуальные настройки
+; Personal settings
 AutoInstall3="hidcon:cmd /c copy Default.bar %Var2%"
 AutoInstall3="hidcon:cmd /c copy default.br2 %Var2%"
 AutoInstall3="hidcon:cmd /c copy wcx_ftp.ini %Var2%"
 AutoInstall3="hidcon:cmd /c copy wincmd.ini %Var2%"
-; Лицензионный ключ
-AutoInstall4="hidcon:cmd /c copy wincmd.key %Var2%"
-; Поддержка шифрования
+; Licnese key<br>AutoInstall4="hidcon:cmd /c copy wincmd.key %Var2%"
+; Encryption support
 AutoInstall5="hidcon:cmd /c copy wcmzip32.dll %Var2%"
-; Плагины и утилиты
+; Plugins and utilities
 AutoInstall6="hidcon:cmd /c xcopy Info \"%Var1%Info\" /s /e /i /y"
 AutoInstall6="hidcon:cmd /c xcopy Plugins \"%Var1%Plugins\" /s /e /i /y"
-AutoInstall6="hidcon:cmd /c xcopy Utilites \"%Var1%Utilites\" /s /e /i /y"
-; Просмотровщик графических и медиа файлов
+AutoInstall6="hidcon:cmd /c xcopy Utils \"%Var1%Utils\" /s /e /i /y"
+; Graphic and media file viewer
 AutoInstall7="hidcon:cmd /c xcopy IrfanView \"%Var1%IrfanView\" /s /e /i /y"
-; Автозапуск TC при подключении флешки
+; TC autorun when a USB flash drive is inserted
 AutoInstall8="hidcon:cmd /c \"regedit -s ForAutoplayTC.reg\""
-; Полная установка TC
+; Full TC installation
 AutoInstall="%DelKey1%"
 AutoInstall="%DelKey2%"
 AutoInstall="fm20:tcmd7pb3_E.exe"
 AutoInstall="hidcon:cmd /c \"del tcmd7pb3_E.exe /q\""
 AutoInstall="hidcon:cmd /c xcopy %%T %Var2% /s /e /i /y"
 AutoInstall="hidcon:cmd /c \"regedit -s ForAutoplayTC.reg\""
-GUIFlags="2+4+8+16+32+2048+4096"
-GUIMode="1"
-ExtractTitle="Распаковка файлов..."
-ExtractDialogText="Подождите, уже почти все готово."
-Shortcut="26,{%Var1%TOTALCMD.EXE},{},{Microsoft\\Internet Explorer\\Quick Launch},{Менеджер файлов},{Total Commander}"
-HelpText="При запуске этого SFX архива без ключей будет установлен\nTotal Commander (TC) с английским интерфейсом (trial версия).\n\nПри запуске этого же SFX архива с ключами (цифра - ключ),\nбудут установлены:\n\t1  Сам Total Commander (ключ ОБЯЗАТЕЛЬНЫЙ)\n\t2  Файлы русификации\n\t3  Файлы настроек\n\t4  Файл регистрации (помните об авторских правах)\n\t5  ZIP-dll с возможностью шифрования\n\t6  Плагины\n\t7  Просмотровщик IrfanView\n\t8  Автозапуск TC при подключении флешки\n\nЕсли запустить SFX архив с ключом:\n•  '-ai12345678' - Вы получите \"полный\" TC\n•  '-ai1245' - Вам не будет \"навязан\" стиль создателя архива\n•  '-ai125' - Вы получите TC с русским интерфейсом,\nно trial версию, зато совесть ваша будет чиста ;)\n\nВыберите нужный Вам набор ключей."
-FinishMessage="Total Commander 7pb3 установлен.\n\nДля запуска ТС щелкните его значок\nна панели быстрого запуска."
-;!@InstallEnd@!</pre></TD>
-		<TD class="main"><P>Популярный файловый менеджер Total Commander и необходимые для его нормальной работы файлы упакованы в SFX архив. Если его запустить без ключей, пользователь увидит окно, прописанное в параметре '<tt>BeginPrompt</tt>'. "Нестандартная" иконка в окне и кнопки "ОК"-"Отмена" определены GUIFlags="...+2048+4096".</P>
-		<P align=center><IMG alt="Example6 BeginPrompt" src="misc/Example6_BeginPrompt.png"></P>
-		<P>Если пользователь, следую рекомендации, нажмет кнопку "Отмена" и прервет установку, а затем запустит архив снова, но с ключом '<tt>-?</tt>' или '<tt>-h</tt>', то увидит следующее окно, прописанное в параметре '<tt>HelpText</tt>'.</P>
-		<P align=center><IMG alt="Example6 HelpText" src="misc/Example6_HelpText.png"></P>
-		<P>Выбрав необходимый вариант, пользователь вновь запускает SFX архив с ключом, например, '<tt>-ai125</tt>'. Окно '<tt>BeginPrompt</tt>' показано не будет (ключ '<tt>-aiX</tt>' подавит его), а появится окно распаковки.</P>
-		<P align=center><IMG alt="Example6 ExtractDialog" src="misc/Example6_ExtractDialog.png"></P>
-		<P>Его внешний вид определяют GUIFlags="2+4+8+16+32..." и GUIMode="1", а текст - параметры '<tt>ExtractTitle</tt>' и '<tt>ExtractDialogText</tt>'.</P>
-		<P>По окончании распаковки запустится установка TC и, по ее завершении (при любом варианте установки, префикс '<tt>fm20</tt>' в параметрах '<tt>AutoInstall</tt>'), будет выведено окно, прописанное в параметре '<tt>FinishMessage</tt>' в течение 20с (обратный отсчет таймера отображается на кнопке "OK"), а затем закроется.</P>
-		<P align=center><IMG alt="Example6 FinishMessage" src="misc/Example6_FinishMessage.png"></P>
-		<P>На панели Быстрого запуска для текущего пользователя, параметр '<tt>type</tt>' указан как "26" (подробнее <a href="variables.html#vars">здесь</a>), принудительно будет создан ярлык к TC.</P>
-		<P>Если пользователь запустит SFX архив с ключом "-sfxconfig cfg.txt", то в сохраненном файле cfg.txt он обнаружит вариант установки "забытый" <img src="misc/wink.gif" alt="" class="inlineimg"> создателем архива.<br>
-		Можно было просто нажать "OK", удерживая клавишу [SHIFT] в первом окне '<tt>BeginPrompt</tt>' (запускает команды <A href="parameters.html#AutoInstall">'AutoInstall'</A>), и был бы установлен "полный" TC.</P>
-		<P>При любом из вариантов временная папка будет удалена по окончании установки.</P></TD></TR>
-</TBODY></TABLE><p>&nbsp;</p>
-</BODY></HTML>
+GUIFlags="2+4+8+16+32+2048+4096"<br>GUIMode="1"
+ExtractTitle="Extracting files..."
+ExtractDialogText="Hang on, we are almost done."
+Shortcut="26,{%Var1%TOTALCMD.EXE},{},{Microsoft\\Internet Explorer\\Quick Launch},{File manager},{Total Commander}"
+HelpText="If you launch this SFX archive without switches, Total Commander (TC)\nwill be installed (unregistered version) with English interface language.\n\nIf you launch this SFX archive with switches (number below is a key),\nyou will get:\n\t1 Total Commander (required switch)\n\t2 Russian localization\n\t3 Configuration files\n\t4 Legally purchased license key\n\t5 ZIP-dll with encryption support\n\t6 Plugins\n\t7 IrfanView viewer\n\t8 Autorun TC when USB flash drive is inserted\n\nIf the SFX is launched with switch:\n '-ai12345678' - You get \"full\" TC\n '-ai1245' - You keep the original TC interface\n '-ai125' - You get TC with Russian interface.\n\nMake up your mind and launch the SFX with the switches you need!"
+FinishMessage="Total Commander 7 has been installed.\n\nClick the TC icon on the Quick Launch\ntool bar to launch the program."
+;!@InstallEnd@!
+</pre>
+		</td>
+
+		<td class="main">
+		<p>Total Commander, a popular file manager, is packed into the SFX archive along with additional
+		   files to enhance user experience. If the SFX is launched without switches, user is presented
+		   with '<tt>BeginPrompt</tt>' dialog window. The custom icon and buttons "OK"- "Cancel" are
+		   defined by GUIFlags="...+2048+4096".</p>
+		<p><br></p>
+		<p align="center"><img alt="Example6 BeginPrompt" src="misc/Example6_BeginPrompt.png"></p>
+		<p>If user wants to learn about other installation options, one can press the "Cancel" button, and
+		   then launch the SFX archive again with ' <tt>-?</tt>' or '<tt>-h</tt>' switches. The following
+		   '<tt>HelpText</tt>' window will be displayed.</p>
+		<p align="center"><img alt="Example6 HelpText" src="misc/Example6_HelpText.png"></p>
+		<p>After deciding which installation option to go with, one can launch the SFX archive with the
+		   corresponding switches. For example, by using' <tt>-ai135</tt>' you can bypass '<tt>BeginPrompt</tt>'
+		   dialog window (suppressed by '<tt>-aiX</tt>' switch), and display the extraction window only.</p>
+		<p align="center"><img alt="Example6 ExtractDialog" src="misc/Example6_ExtractDialog.png"></p>
+		<p>Its appearance is controlled by GUIFlags="2+4+8+16+32...", while the text is defined
+		   in '<tt>ExtractTitle</tt>' и '<tt>ExtractDialogText</tt>'.</p>
+		<p>Total Commander installation is launched immediately after extraction. After the installation
+		   '<tt>FinishMessage</tt>' dialog window is displayed (for any installation scenario as defined
+		   by '<tt>fm20</tt>' prefix). The 20 second countdown is displayed on the "OK" button, and the
+		   window closes when time expires.</p>
+		<p align="center"><img alt="Example6 FinishMessage" src="misc/Example6_FinishMessage.png"></p>
+		<p>A shortcut to Total Commander will be created in the current user Quick Launch panel
+		   as defined by '<tt>type</tt>' option with the value of "26" (an undocumented
+		   <img src="misc/smile.gif" alt="" class="inlineimg"> feature).</p>
+		<p>If one runs the SFX archive with "-sfxconfig cfg.txt" switch, the output file "cfg.txt" will
+		   contain the configuration file used by the package author.</p>
+		<p>Either scenario results in deletion of the temporary folder.</p>
+		</td>
+	</tr>
+</tbody></table>
+<p>&nbsp;</p>
+</body></html>

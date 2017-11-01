@@ -1,83 +1,199 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<HTML><HEAD><TITLE>Информация о файле конфигурации</TITLE>
-<META http-equiv=Content-Type content="text/html; charset=Windows-1251">
-<LINK href="misc/styles.css" type="text/css" rel=stylesheet>
-</HEAD>
-<BODY>
+<html>
+	<head>
+		<title>General information about the configuration file</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link href="common/styles.css" type="text/css" rel=stylesheet>
+		<script language="javascript" src="common/scripts.js" type="text/javascript"></script>
+		<script language="javascript" src="misc/menu.js" type="text/javascript"></script>
+	</head>
 
-<H2>Общая информация о файле конфигурации</H2>
-<P>Данный SFX модуль сохраняет все свойства стандартного SFX модуля архиватора 7-Zip и добавляет возможности, перечисленные в этой документации.</P>
-<UL>
-	<LI>Файл конфигурации <B>ДОЛЖЕН БЫТЬ</B> сохранен в кодировке <B>UTF-8</B>.
-	<LI>Существуют 4 типа команд запуска программ: '<tt>AutoInstall</tt>', '<tt>AutoInstallX</tt>', '<tt>RunProgram</tt>' и '<tt>ExecuteFile</tt>'. В файле конфигурации могут одновременно присутствовать любые из этих 4-х типов и даже все, но после запуска SFX архива может выполняться только один тип команд запуска.
-	<LI>Параметры '<tt>AutoInstall</tt>', '<tt>AutoInstallX</tt>', '<tt>RunProgram</tt>', '<tt>Delete</tt>', '<tt>DeleteX</tt>', '<tt>SetEnvironment</tt>', '<tt>Shortcut</tt>' и '<tt>ShortcutX</tt>' - множественные, т.е. могут присутствовать в файле конфигурации неограниченное количество раз. Указанные параметры, если их несколько в пределах своего типа, обрабатываются в той последовательности, в которой идут в файле конфигурации.
-	<LI>Команд запуска программ в каждом типе ('<tt>AutoInstall</tt>', '<tt>AutoInstallX</tt>' и '<tt>RunProgram</tt>') может быть несколько, обрабатываются они (в пределах каждого типа) в той последовательности, в которой указаны в файле конфигурации, при этом ожидается окончание предыдущей команды, а после этого запускается следующая.
-	<LI><tt>'AutoInstall</tt>' запускается нажатием кнопки "Да/OK" в окне '<tt>BeginPrompt</tt>', с нажатой кнопкой [Shift], или из командной строки. '<tt>AutoInstallX</tt>' запускается только из командной строки. '<tt>ExecuteFile</tt>' и '<tt>RunProgram</tt>' запускается только из файла конфигурации.<br>
-	Одновременное наличие '<tt>ExecuteFile</tt>' и '<tt>RunProgram</tt>', в файле конфигурации, возможно, но нецелесообразно, т.к. '<tt>ExecuteFile</tt>' имеет приоритет и все '<tt>RunProgram</tt>' будут проигнорированы. Однако '<tt>RunProgram</tt>' множественные, не требуют дополнительных параметров для ввода ключей, и поэтому предпочтительнее.
-	<LI>Для '<tt>ExecuteFile</tt>', если нужно указать ключи, применяется '<tt>ExecuteParameters</tt>'. Если ключей нет, то '<tt>ExecuteParameters</tt>' может отсутствовать.
-	<LI>Для '<tt>RunProgram</tt>', если нужно указать путь к исполняемому файлу, может применяться '<tt>Directory</tt>'. Путь к исполняемому файлу может быть указан непосредственно в '<tt>RunProgram</tt>'. Параметр '<tt>Directory</tt>' может быть только один и используется только для первого '<tt>RunProgram</tt>', но не обязателен и может отсутствовать совсем.
-	<LI>Взаимное расположение параметров '<tt>ExecuteFile</tt>' и '<tt>ExecuteParameters</tt>', а также '<tt>RunProgram</tt>' и '<tt>Directory</tt>' значения не имеет.
-	<LI>Алгоритм выбора типа команд запуска следующий: если указано использование '<tt>AutoInstall</tt>' ([Shift], командная строка) или '<tt>AutoInstallX</tt>' (командная строка) - используется они. Если нет - проверяется наличие '<tt>ExecuteFile</tt>' и, если есть, то используется он (все '<tt>RunProgram</tt>' при этом игнорируются). Если и '<tt>ExecuteFile</tt>' нет - проверяется '<tt>RunProgram</tt>'.
-	<LI>Работают файловые ассоциации, т.е. можно указывать RunProgram="Setup.msi", не используя при этом StartX.exe, msistub.exe и подобные утилиты.
-	<LI>Если '<tt>RunProgram</tt>', '<tt>ExecuteFile</tt>', '<tt>AutoInstall</tt>' или '<tt>AutoInstallX</tt>' отсутствуют, и распаковка происходит во временную папку ('<tt>InstallPath</tt>' отсутствует), будет сделана попытка выполнить файл "setup.exe" (если он имеется в корне архива). "'<tt>InstallPath</tt>' отсутствует" означает - либо отсутствие параметра '<tt>InstallPath</tt>' в файле конфигурации, либо InstallPath="", либо стирание пути, в соответствующем поле редактирования, после запуска архива. Если путь распаковки указан - попытки выполнить "setup.exe" не будет.
-	<LI>Исполняемый после распаковки файл не обязательно должен располагаться в корне архива. Последовательность поиска: сначала в папке распаковки, затем по путям, указанным в %PATH%.
-	<LI>Параметры '<tt>AutoInstall</tt>', '<tt>Delete</tt>', '<tt>Shortcut</tt>' могут быть простые или литерные '<tt>AutoInstallX</tt>', '<tt>DeleteX</tt>', '<tt>ShortcutX</tt>', где X - литера варианта соответствующей автоматической установки. В качестве X допустимы [0...9], [A...Z], [a...z] (только один символ).
-</UL>
-<HR align=left width="100%">
-<P id="slash"><b>ВАЖНО!</b> Следующие двухсимвольные последовательности в "значение_параметра" заменяются односимвольными:</P>
-<UL>
-	<LI>\\ = \
-	<LI>\" = "
-	<LI>\n = перевод строки
-	<LI>\t = табуляция
-</UL>
-<P>Если надо указать обратный слеш (<B>\</B>) (например, в путях или тексте диалога), <b>НЕОБХОДИМО</b> использовать <B>ДВОЙНОЙ</B> (<B>\\</B>), а если "значение_параметра" или текст диалога содержит кавычки (<b>"</b>), <b>НЕОБХОДИМО</b> перед ними использовать обратный слеш (<B>\"</B>) (правило "лидирующего слеша").</P>
-<P>Двухсимвольные последовательности \n и \t зависят от регистра. Т.е., \N и \T НЕ будут заменяются односимвольными.</P>
-<HR align=left width="100%">
-<P id="paths">Модуль также поддерживает <b>относительные</b> пути в следующих параметрах и ключах:</P>
+<body onLoad="OnLoadBody()">
+
+<h2>General information about the configuration file</h2>
+<p>This SFX module retains all the standard features described in the 7-zip manual and adds the new
+   features listed in this documentation.</p>
+
 <ul>
-	<LI>'<tt>AutoInstall</tt>', '<tt>AutoInstallX</tt>', '<tt>Directory</tt>', '<tt>ExecuteFile</tt>', '<tt>RunProgram</tt>' - относительно папки, в которую произведена распаковка
-	<LI>'<tt>ExecuteOnLoad</tt>', '<tt>PreExtract</tt>', '<tt>PreExtractX</tt>' - относительно временной папки создаваемой модулем, путь к папке находится в переменной %SfxVarApiPath%
-	<LI>'<tt>InstallPath</tt>', '<tt>-sfxconfig</tt>' - относительно папки программы, из которой произведен запуск SFX архива<br>
-	<b>ВНИМАНИЕ!</b> Это не обязательно папка, в которой расположен SFX архив. Если SFX архив запущен из <b>другой</b> программы (.bat, .cmd, и т.д.), то текущей будет папка этой программы.
-	<LI>'<tt>Delete</tt>', '<tt>DeleteX</tt>' - относительно папки, в которой расположен SFX архив
+	<li>The config file <b>MUST</b> be saved in <b>UTF-8</b> encoding.</li>
+	<li>There are four ways to run programs packed into SFX: '<tt>AutoInstall</tt>', '<tt>AutoInstallX</tt>',
+		'<tt>RunProgram</tt>' and '<tt>ExecuteFile</tt>'. You can use any and all parameters in the
+		configuration file simultaneously, but only one of them can be executed after the SFX launch.</li>
+	<li>Parameters '<tt>AutoInstall</tt>', '<tt>AutoInstallX</tt>', '<tt>RunProgram</tt>', '<tt>Delete</tt>',
+		'<tt>SetEnvironment</tt>' and '<tt>Shortcut</tt>' can appear in the config file unlimited number of
+		times. If there are several parameters of the same type, they are processed according to the order
+		of appearance in the config file.</li>
+	<li>'<tt>AutoInstall</tt>' can be launched by pressing "Yes/OK" while holding down the [Shift] key in
+		'<tt>BeginPrompt</tt>' window or from the command line. '<tt>AutoInstallX</tt>' can be launched from
+		the command line only. '<tt>ExecuteFile</tt>' and '<tt>RunProgram</tt>' can be launched from the
+		config file only.<br>
+		It is possible to specify both '<tt>ExecuteFile</tt>' and '<tt>RunProgram</tt>' parameters in the
+		config file, but this is not practical. '<tt>ExecuteFile</tt>' parameter overrides any
+		'<tt>RunProgram</tt>' parameter. However, '<tt>RunProgram</tt>' can be specified multiple times,
+		does not require additional switches, and therefore recommended for use in general.</li>
+	<li>If you need to specify switches for '<tt>ExecuteFile</tt>', use '<tt>ExecuteParameters</tt>'
+		parameter. If switches are not needed, you can omit '<tt>ExecuteParameters</tt>'.</li>
+	<li>You can specify the path to the executable file in '<tt>RunProgram</tt>'. You can also use
+		'<tt>Directory</tt>' parameter along with '<tt>RunProgram</tt>' to specify the path (in that case
+		you typically specify only the executable file name in '<tt>RunProgram</tt>'). '<tt>Directory</tt>'
+		parameter is used along with the first '<tt>RunProgram</tt>' only. '<tt>Directory</tt>' is not a
+		required parameter; it can appear in the config file only once.</li>
+	<li>Parameters '<tt>ExecuteFile</tt>' and '<tt>ExecuteParameters</tt>' as well as '<tt>RunProgram</tt>'
+		and '<tt>Directory</tt>' can appear anywhere in the config file.</li>
+	<li>The way of running a program is determined by the following algorithm: if '<tt>AutoInstall</tt>'
+		([Shift], command line) or '<tt>AutoInstallX</tt>' (command line) are specified, they will be used.
+		Otherwise, '<tt>ExecuteFile</tt>' presence is checked, and it is used if found (all
+		'<tt>RunProgram</tt>' parameters will be ignored). If <tt>ExecuteFile</tt>' is not present,
+		then '<tt>RunProgram</tt>' presence is checked.</li>
+	<li>File associations are working, i. e. you can specify RunProgram="Setup.msi" without using StartX.exe,
+		msistub.exe or other supplementary tools.</li>
+	<li>If '<tt>RunProgram</tt>', '<tt>ExecuteFile</tt>', '<tt>AutoInstall</tt>' or '<tt>AutoInstallX</tt>'
+		are not present, and the archive is being extracted to a temp folder ('<tt>InstallPath</tt>' is not
+		present), an attempt will be made to launch "setup.exe" (if such a file is found in the root of the
+		archive).</li>
+	<li>The file you need to execute after the extraction does not have to be placed in the root of archive.
+		The search sequence is as follows: extraction folder first, then paths specified in the %PATH%
+		environment variable.</li>
 </ul>
-<HR align=left width="100%">
-<P>Для '<tt>RunProgram</tt>' и всех вариантов '<tt>AutoInstall</tt>'-ов <b>МОЖНО/НУЖНО</b> заключать <b>путь и имя исполняемой программы</b> в дополнительные кавычки.<br>
-<b>МОЖНО</b>, даже если имя и путь к исполняемому файлу НЕ СОДЕРЖАТ пробелов, <b>НУЖНО</b>, если СОДЕРЖАТ пробелы, т.к. имя и путь к исполняемому файлу формируются ПОСЛЕ разбора переменных среды. Например:</P>
-<pre class="pre40">RunProgram="nowait:%ProgramFiles%\\test.exe /s"</pre>
-<P>В НАПИСАНИИ имя и путь к исполняемому файлу не содержит пробелов, но после подстановки оно МОЖЕТ содержать пробелы. Поэтому лучше всегда писать так:</P>
-<pre class="pre40">RunProgram="nowait:<b>\"</b>%ProgramFiles%\\test.exe<b>\"</b> /s"</pre>
-<p>Префиксы и ключи исполняемой программы в дополнительные кавычки <b>НЕ ВКЛЮЧАЮТСЯ</b>.</P>
-<P>Для '<tt>ExecuteFile</tt>' <b>необязательны</b> дополнительные кавычки даже для имен с пробелами (т.к. в нем не может быть ключей командной строки). Т.е. предыдущий пример может быть записан так:</P>
-<pre class="pre40">ExecuteFile="nowait:%ProgramFiles%\\test.exe"
-ExecuteParameters="/s"</pre>
-<HR align=left width="100%">
-<P>Многострочный текст допустим в диалогах следующих параметров:</P>
-<UL>
-	<LI>'<tt>BeginPrompt</tt>'
-	<LI>'<tt>CancelPrompt</tt>'
-	<LI>'<tt>ExtractDialogText</tt>'
-	<LI>'<tt>ExtractPathText</tt>'
-	<LI>'<tt>FinishMessage</tt>'
-	<LI>'<tt>HelpText</tt>'
-</UL>
-<P>В тексте допустимы любые символы. Слеши (\) и кавычки (") попадают под правило "лидирующего слеша" (см. <A href="#slash" class="int">выше</A>), т.е. написав<br>
-&nbsp;</P>
-<div align=center>
-<pre class="example_code" style="WIDTH: 98%; HEIGHT: 38px;">HelpText="Так пишите (в скобках \"и кавычках\")\nА так пишите путь C:\\Windows\nА вот так используйте табуляцию\nПоз. 1\tПоз. 2\tПоз. 3\tПоз. 4"</pre>
-</div>
-<p>получим следующее диалоговое окно:</p>
-<P align="center"><IMG alt="help" src="misc/Text.png"></P>
-<P>Размеры окна диалога зависят от длины строк и их количества, и будут автоматически изменяться.</P>
-<HR align=left width="100%">
-<p>Прервать работу SFX архива можно:</p>
+
+<hr align="left" width="100%">
+<p id="slash"><b>IMPORTANT!</b> Certain two-symbol sequences in the Value are parsed as follows:</p>
 <ul>
-	<li>Нажатием кнопки "Нет" или "Отмена" в тех диалогах, где они предусмотрены
-	<li>Нажатием кнопки "Закрыть" (которая в правом верхнем углу окна) за исключением диалога распаковки, если кнопка блокирована параметром '<tt>GUIMode</tt>' или ключом '<tt>-gmX</tt>' равным 1
-	<li>Нажатием кнопки '<tt>ExtractCancelText</tt>' в диалоге распаковки, если она не скрыта параметром '<tt>GUIMode</tt>'	или ключом '<tt>-gmX</tt>' равным 1
-	<li>Нажатием клавиши [Esc] на клавиатуре (если параметр '<tt>GUIMode</tt>' или ключ '<tt>-gmX</tt>' равен 1, то в диалоге распаковки не действует)
+	<li>\\ = \</li>
+	<li>\" = "</li>
+	<li>\n = caret return</li>
+	<li>\t = tabulation (TAB)</li>
 </ul>
-<p>При указанных выше действиях будет выведен диалог подтверждения отмены распаковки/установки, если он разрешен флагом 256 параметра '<tt>GUIFlags</tt>'. Текст диалога отмены можно назначить параметром '<tt>CancelPrompt</tt>'. Этот диалог НЕ будет выводиться в окне сообщения об ошибке и в окнах определяемых параметрами '<tt>FinishMessage</tt>' и '<tt>HelpText</tt>'.</p>
+
+<p>As a result, you <b>MUST</b> use <b>DOUBLE</b> backslashes (<b>\\</b>) wherever you normally use
+   backslashes (<b>\</b>) (e.g. in paths or dialog texts). Similarly, if the Value contains double
+   quotes (<b>"</b>), you <b>MUST</b> precede them with a backslash (<b>\"</b>).</p>
+
+<hr align="left" width="100%">
+<p id="vars">In addition to the regular environment variables (%SYSTEMDRIVE%, %PROGRAMFILES%, etc),
+   <b>during the module operation</b> the environment variables defined by user in '<tt>SetEnvironment</tt>'
+   parameters are available as well as extra variables pointing to the following folders on the hard drive:</p>
+
+<ul>
+	<li>%CommonDesktop% - Desktop for ALL users</li>
+	<li>%CommonDocuments% - COMMON documents</li>
+	<li>%MyDocuments% - "My Documents" folder for the CURRENT user (same as %MyDocs%)</li>
+	<li>%UserDesktop% - Desktop for the CURRENT user</li>
+</ul>
+
+<p>The variables listed above can be used in the module parameters as well as in other executables
+   (.cmd, .bat files) <b>launched from the module</b>.</p>
+
+  
+<p>In addition, you can use the following module variables (only in the module parameters, but not in
+   other programs launched from the module):<br></p>
+
+<ul>
+	<li>%%S - full path to the SFX archive file</li>
+	<li>%%T - full extraction path</li>
+</ul>
+
+<p>All environment variables will be expanded in the following parameters:</p>
+<ul>
+	<li>'<tt>AutoInstall</tt>'</li>
+	<li>'<tt>AutoInstallX</tt>'</li>
+	<li>'<tt>Delete</tt>'</li>
+	<li>'<tt>Directory</tt>'</li>
+	<li>'<tt>ExecuteFile</tt>'</li>
+	<li>'<tt>InstallPath</tt>' (with the exception of %%T and variables defined in '<tt>SetEnvironment</tt>',
+		if %%T is used in any of them)</li>
+	<li>'<tt>RunProgram</tt>'</li>
+	<li>'<tt>string</tt>' option of '<tt>SetEnvironment</tt>' parameter</li>
+</ul>
+
+<p>Only the module variables %CommonDesktop%, %CommonDocuments%, %MyDocuments%, %MyDocs%, %UserDesktop%,
+   %%T and %%S as well as the variables defined in '<tt>SetEnvironment</tt>' will be expanded (replaced
+   with variable value) in the following options of the '<tt>Shortcut</tt>' parameter:</p>
+<ul>
+	<li>'<tt>icon_file</tt>'</li>
+	<li>'<tt>src_file_path</tt>'</li>
+</ul>
+
+<p>Environment variables are not expanded and treated as text strings in all other parameters.</p>
+<p><br></p>
+
+<p id="paths">The module also supports <b>relative</b> paths in the parameters and switches listed below:</p>
+<ul>
+	<li>'<tt>AutoInstall</tt>', '<tt>AutoInstallX</tt>', '<tt>Directory</tt>', '<tt>ExecuteFile</tt>',
+		'<tt>RunProgram</tt>' - relative to the extraction folder.</li>
+	<li>'<tt>InstallPath</tt>', '<tt>-sfxconfig</tt>' - relative to the folder from which the SFX was launched<br>
+		<b>ATTENTION!</b> This is not necessarily the folder where SFX is stored. If SFX is launched from
+		<b>another</b> program (.bat, .cmd, etc), the program's folder becomes the current one.<br></li>
+	<li>'<tt>Delete</tt>' - relative to the folder where SFX is stored.</li>
+</ul>
+
+<hr align="left" width="100%">
+<p>For '<tt>RunProgram</tt>' and all '<tt>AutoInstall</tt>' parameters you <b>CAN/MUST</b>
+   enclose the <b>path to the executable along with its name</b> in quotes.</p>
+
+<p>You <b>CAN</b> do so, even if the path and file name DO NOT contain spaces. You <b>MUST</b> do so, if
+   the path or/and file name CONTAIN spaces. This is due to the fact that the full path is formed AFTER
+   expanding the variables. For instance,</p>
+
+<blockquote><pre>RunProgram="nowait:%ProgramFiles%\\test.exe /s"<br></pre></blockquote>
+
+<p>In this string file name and its path do not contain spaces; however, after expanding the %ProgramFiles%
+   variable the full path may contain spaces (i.e. C:\Program Files). Therefore, it is recommended to
+   always enclose the path and file name in quotes:</p>
+
+<blockquote><pre>RunProgram="nowait:<b>\"</b>%ProgramFiles%\\test.exe<b>\"</b> /s"<br></pre></blockquote>
+
+<p>Prefixes and executable file command line switches <b>DO NOT</b> need extra quotes.</p>
+
+<p>Extra quotes are not required for '<tt>ExecuteFile</tt>' parameter even when the path contains spaces
+   (this is because this parameter does not contain command line switches). Thus, the previous example
+   can be rewriten as follows:</p>
+
+<blockquote>
+  <pre>ExecuteFile="nowait:%ProgramFiles%\\test.exe"<br>
+ExecuteParameters="/s"
+  </pre></blockquote>
+
+<hr align="left" width="100%">
+<p>Multiple lines of text are allowed in dialog windows controlled by the following parameters:</p>
+<ul>
+	<li>'<tt>BeginPrompt</tt>'</li>
+	<li>'<tt>CancelPrompt</tt>'</li>
+	<li>'<tt>ExtractDialogText</tt>'</li>
+	<li>'<tt>ExtractPathText</tt>'</li>
+	<li>'<tt>FinishMessage</tt>'</li>
+	<li>'<tt>HelpText</tt>'</li>
+</ul>
+
+<p style="padding-bottom:8px">Any symbols can be used in text. Slashes (\) and quotes (") are subject to the "Leading Slash" rule
+   (see <A href="#slash" class="int">above</A>). For example, having the following text in the config file:</p>
+
+<pre style="border: 2px inset ; margin: 0px; padding-left: 2px; overflow: auto; width: 100%; height: 38px;">HelpText="Here is how to use (\"quotes\" and parenthesis)\nHere's how to specify path C:\\Windows\nHere's how to use TAB\nStart\tTab1\tTab2\tTab3"<br></pre>
+
+<p>produces the output shown below:</p>
+<p align="center"><img alt="help" src="misc/text.png"></p>
+
+<p>The dialog window dimensions are adjusted automatically according to the number of strings and their
+   lengths. Do not make the lines too long, because the window may get out of the screen range with no
+   scroll bar provided <img src="misc/wink.gif" alt="" class="inlineimg">.</p>
+
+<hr align="left" width="100%">
+<p>You can cancel the SFX operation by:</p>
+<ul>
+	<li>Clicking "No" or "Cancel" buttons, if they are made available via the config file</li>
+	<li>Clicking "Close" button (upper right corner of the window), unless the button is blocked by
+		'<tt>GUIMode</tt>' parameter or by '<tt>-gmX</tt>' command line switch with the value of 1</li>
+	<li>Clicking '<tt>ExtractCancelText</tt>' button in the extraction dialog, unless the button is blocked
+		by '<tt>GUIMode</tt>' parameter or by command line switch '<tt>-gmX</tt>' with the value of 1</li>
+	<li>Pressing [Esc] key on the keybord (will not work if '<tt>GUIMode</tt>' parameter specified in the
+		config file or '<tt>-gmX</tt>' switch have the value of 1)</li>
+</ul>
+
+<p>Any of the above actions will cause the cancel prompt to appear, if it is permitted by '<tt>GUIFlags</tt>'
+   parmeter with the value of 256. The cancel prompt text can be customized with '<tt>CancelPrompt</tt>'
+   parameter. This prompt will NOT be displayed in the error message windows and windows defined by
+   '<tt>FinishMessage</tt>' and '<tt>HelpText</tt>' parameters.</p>
+
 <p>&nbsp;</p>
-</BODY></HTML>
+</body>
+</html>

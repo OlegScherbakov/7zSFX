@@ -1,485 +1,269 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML><HEAD><TITLE>Ключи командной строки</TITLE>
-<META content="text/html; charset=Windows-1251" http-equiv=Content-Type><LINK 
-rel=stylesheet type=text/css href="misc/styles.css">
-<META name=GENERATOR content="MSHTML 8.00.6001.23590"></HEAD>
-<BODY>
-<H2>Ключи командной строки</H2>
-<UL>
-  <LI>Модуль поддерживает ключи командной строки. Ключи модуля НЕ зависят от 
-  регистра. Их может быть несколько, и записываются они последовательно. 
-  Например, так "sfx.exe -ai -fm1 -gf+256-8" или так "sfx.exe /ai /fm1 
-  /gf+256-8" и даже так "sfx.exe /Ai -fM1 /GF+256-8". 
-  <LI>Модуль может передать ключи исполняемой программе внутри архива. Если 
-  нужно передать исполняемой программе ключи, используемые самим модулем, 
-  необходимо перед ними использовать ключ '<TT>-!</TT>'. 
-  <LI>Модуль ведет поиск "своих" (перечисленных на этой странице) ключей в 
-  командной строке до первого неизвестного ключа. После этого все остальное 
-  (ключи, параметры) передается в вызываемую программу. Например: в файле 
-  конфигурации RunProgram="some_program.exe" после запуска SFX архива: "sfx.exe 
-  -gm2 /key=1 /silent" выполнится: "some_program.exe /key=1 /silent". В то же 
-  время, модуль воспримет ключ '<TT>-gm2</TT>' и сделает "тихую" распаковку. В 
-  этом случае применять ключ '<TT>-!</TT>' не обязательно. 
-  <LI>Все ключи, передаваемые исполняемой программе внутри архива, будут 
-  переданы ТОЛЬКО первой программе, исполняемого в данный момент типа команд 
-  запуска. Например, в файле конфигурации есть строки: <PRE>RunProgram="\"%ProgramFiles%\\Setup.exe\""
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Command line switches</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link href="common/styles.css" type="text/css" rel=stylesheet>
+		<script language="javascript" src="common/scripts.js" type="text/javascript"></script>
+		<script language="javascript" src="misc/menu.js" type="text/javascript"></script>
+	</head>
+
+<body onLoad="OnLoadBody(2)">
+
+<h2>Command line switches</h2>
+
+<ul>
+	<li>The module supports command line switches. The switches are NOT case sensitive. Multiple switches
+		can be passed to the SFX archive sequentially. For example, "sfx.exe -ai -fm1 -gf+256-8" or
+		"sfx.exe /ai /fm1 /gf+256-8" and even like "sfx.exe /Ai -fM1 /GF+256-8".</li>
+	<li>The module can pass switches to the executable program inside the SFX archive. The module looks for
+		its native switches (listed on this page) in the command line until it finds the first unsupported
+		switch. If such a switch found, the remaining switches are passed to the executable program inside
+		the archive. For example, you have the following line in the config file:
+		RunProgram="some_program.exe". If you launch the SFX with the command line like
+		"sfx.exe -gm2 /key=1 /silent", the module recognizes its native switch '<tt>-gm2</tt>' and performs
+		silent extraction of the archive content. The unsupported switches are passed "as is" to the
+		executable in the archive, and therefore the program is invoked with the following parameters:
+		"some_program.exe /key=1 /silent"<br></li>
+	<li>If you need to pass any natively supported switch to the executable inside the archive, you can use
+		'<tt>-!</tt>' switch. </li>
+	<li>All switches passed to the executable inside the archive will be passed only to the FIRST program of
+		the installation scenario you invoke. For example, you have the following lines in the config file:</li>
+</ul>
+<blockquote>
+	<pre>
+RunProgram="\"%ProgramFiles%\\Setup.exe\""
 RunProgram="\"regedit\" settings.reg"
 AutoInstall="\"%ProgramFiles%\\Setup.exe\""
-AutoInstall="\"regedit\" settings.reg"</PRE>
-  <P>После запуска SFX архива "sfx.exe -gm2 -s -y", ключи "-s -y" будут переданы 
-  в первую строку, и выполнено</P><PRE>RunProgram="\"%ProgramFiles%\\Setup.exe\" -s -y"
-RunProgram="\"regedit\" settings.reg".</PRE>
-  <P>Если же этот SFX архив запустить так, "sfx.exe -ai -s -y", то ключи "-s -y" 
-  будут переданы в третью строку, и выполнено</P><PRE>AutoInstall="\"%ProgramFiles%\\Setup.exe\" -s -y"
-AutoInstall="\"regedit\" settings.reg"</PRE>
-  <LI>
-  <P>Большинство параметров может использоваться в качестве ключей командной 
-  строки при запуске SFX архива. Исключение составляют эти множественные 
-  параметры:<BR></P>
-  <P><TT>AutoInstall<BR>AutoInstallX<BR>Delete<BR>DeleteX<BR>RunProgram<BR>Shortcut<BR>ShortcutX</TT></P>
-  <P>Одноименные параметры в файле конфигурации при этом будут переназначены 
-  (параметры в командной строке имеют приоритет), отсутствующие - будут 
-  добавлены. Возможные варианты записи параметров в командной строке:</P><PRE>sfx.exe -InstallPath="%ProgramFiles%\\IEPro"
-sfx.exe -SetEnvironment="Var1=E:\\totalcmd" -SetEnvironment="Var2=%%T\\"
-sfx.exe -FinishMessage="new_finish_message"
-sfx.exe -InstallPath="%Path7z%\\7zSFX_Tools" -FinishMessage="7z SFX Tools установлен!" -ai -gm2 -fm20</PRE></LI></UL>
-<TABLE>
-  <TBODY class=main>
-  <TR>
-    <TH class=main width=100>
-      <P>Ключ</P></TH>
-    <TH class=main>
-      <P>Описание</P></TH></TR>
-  <TR id=breakcmdline>
-    <TD class=main><TT><B>-!</B></TT></TD>
-    <TD class=main>
-      <P>Прерывает разбор командной строки. Все ключи, указанные после него, 
-      могут быть переданы (как есть) только&nbsp; в первую выполняемую программу 
-      (<A href="parameters.html#RunProgram">'RunProgram'</A>, <A 
-      href="parameters.html#ExecuteFile">'ExecuteFile'</A>, <A 
-      href="parameters.html#AutoInstall">'AutoInstall'</A> или <A 
-      href="parameters.html#AutoInstallX">'AutoInstallX'</A>). Может 
-      понадобиться, если необходимо указать ключ, который используется и в SFX 
-      модуле и в выполняемой программе.<BR>Например, в файле конфигурации 
-      RunProgram="setup.exe -s", а необходимо выполнить "setup.exe -s -y" (ключ 
-      <A href="#y">'-y'</A> используется самим модулем). Чтобы передать его в 
-      '<TT>RunProgram</TT>' нужно выполнить "sfx.exe -gm2 -! -y". Ключ 
-      '<TT>-y</TT>' будет проигнорирован модулем, передан в командную строку и 
-      выполнится "setup.exe -s -y". В то же время, модуль воспримет ключ 
-      '<TT>-gm2</TT>' и сделает "тихую" распаковку.</P></TD></TR>
-  <TR id=ai>
-    <TD class=main><TT><B>-ai</B></TT></TD>
-    <TD class=main>
-      <P>Автоматическая установка.</P>
-      <P>Указывает использовать параметр <A 
-      href="parameters.html#AutoInstall">'AutoInstall'</A> вместо <A 
-      href="parameters.html#RunProgram">'RunProgram'</A>, <A 
-      href="parameters.html#ExecuteFile">'ExecuteFile'</A> или <A 
-      href="parameters.html#AutoInstallX">'AutoInstallX'</A> из файла 
-      конфигурации. Если 'AutoInstall' не указан - данный ключ игнорируется.</P>
-      <P>Ключ автоматически скрывает окна диалогов <A 
-      href="parameters.html#BeginPrompt">'BeginPrompt'</A>, <A class=int 
-      href="parameters.html#ExtractPath">'ExtractPath'</A>, совмещенного <A 
-      class=int href="parameters.html#ExtractPathText">'BeginPrompt' + 
-      'ExtractPath'</A>, <A 
-      href="parameters.html#FinishMessage">'FinishMessage'</A> и <A 
-      href="parameters.html#CancelPrompt">'CancelPrompt'</A>, действуя 
-      аналогично ключу <A href="#y">'-y'</A>.</P></TD></TR>
-  <TR id=aiX>
-    <TD class=main><TT><B>-aiX</B></TT></TD>
-    <TD class=main>
-      <P>Автоматическая установка определенного (литерного) варианта. В качестве 
-      литеры X допустимы [0...9], [A...Z], [a...z]. Для вызываемого варианта 
-      должна быть соответствующая строка в файле конфигурации (параметр <A 
-      href="parameters.html#AutoInstallX">'AutoInstallX'</A>), т.е., если 
-      указать '<TT>-ai7</TT>', то в файле конфигурации должна присутствовать 
-      строка вида AutoInstall7="auto_install.exe parameters for scenario 7", 
-      иначе будет выведено сообщение об ошибке.</P>
-      <P>Пакетный режим автоматических установок также возможен. После 
-      '<TT>-ai</TT>' указываются литеры автоматических установок, например, если 
-      выполнить "sfx.exe -ai3R2", то будут выполнены последовательно 
-      '<TT>AutoInstall3</TT>', затем '<TT>AutoInstallR</TT>', а затем 
-      '<TT>AutoInstall2</TT>'. Если в какой-то из '<TT>AutoInstallX</TT>' 
-      установок несколько команд - они выполнятся последовательно, и только 
-      затем выполнение перейдет к следующей указанной 
-      '<TT>AutoInstallX</TT>'.<BR>Для каждого вызываемого варианта 
-      '<TT>AutoInstallX</TT>', литеры после '<TT>-ai</TT>', должна быть 
-      соответствующая строка в файле конфигурации (параметр 
-      '<TT>AutoInstallX</TT>'). Таким образом, если указать '<TT>-ai37</TT>', в 
-      файле конфигурации должны присутствовать хотя бы по одной строке вида 
-      AutoInstall3="auto_install3.exe switches for program3" и 
-      AutoInstall7="auto_install7.exe switches for program7", иначе будет 
-      выведено сообщение об ошибке.</P>
-      <P>Ключ автоматически скрывает окна диалогов <A 
-      href="parameters.html#BeginPrompt">'BeginPrompt'</A>, <A class=int 
-      href="parameters.html#ExtractPath">'ExtractPath'</A>, совмещенного <A 
-      class=int href="parameters.html#ExtractPathText">'BeginPrompt' + 
-      'ExtractPath'</A>, <A 
-      href="parameters.html#FinishMessage">'FinishMessage'</A> и <A 
-      href="parameters.html#CancelPrompt">'CancelPrompt'</A>, действуя 
-      аналогично ключу <A href="#y">'-y'</A>.</P></TD></TR>
-  <TR id=bptX>
-    <TD class=main><TT><B>-bptX</B></TT></TD>
-    <TD class=main>
-      <P>Определяет время отображения диалога '<TT>BeginPrompt</TT>' или 
-      совмещенного диалога '<TT>BeginPrompt</TT>' + '<B>ExtractPath</B>' и 
-      кнопку по умолчанию, где X: 
-      <UL>
-        <LI>1...999 - отображать окно 1...999 секунд; обратный отсчет времени 
-        отображается на кнопке "Да" ("OK"), и по его истечении она будет нажата 
-        автоматически. 
-        <LI>-1...-999 - отображать окно 1...999 секунд; обратный отсчет времени 
-        отображается на кнопке "Нет" ("Отмена"), и по его истечении она будет 
-        нажата автоматически. 
-        <LI>0 - игнорируется </LI></UL>
-      <P>Ключ ИЗМЕНЯЕТ параметр <A 
-      href="parameters.html#BeginPromptTimeout">'BeginPromptTimeout'</A> в файле 
-      конфигурации.</P></TD></TR>
-  <TR id=fmX>
-    <TD class=main><TT><B>-fmX</B></TT></TD>
-    <TD class=main>
-      <P>Режим/время отображения окна <A 
-      href="parameters.html#FinishMessage">'FinishMessage'</A>, где X:</P>
-      <UL>
-        <LI>0 - не отображать окно 
-        <LI>1 - отображать окно 
-        <LI>N (N = 2...999) - отображать окно в течение N секунд; обратный 
-        отсчет времени отображается на кнопке "OK", и по его истечении окно 
-        '<TT>FinishMessage</TT>' закрывается и работа модуля прекращается 
-      </LI></UL>
-      <P>Ключ ПЕРЕОПРЕДЕЛЯЕТ префиксы <A href="prefixes.html#fmXp">'fmX'</A> в 
-      файле конфигурации. Командная строка имеет приоритет.<BR>При отсутствии 
-      '<TT>FinishMessage</TT>' в файле конфигурации ключи '<TT>-fmX</TT>' 
-      игнорируются. </P></TD></TR>
-  <TR id=gfX>
-    <TD class=main><TT><B>-gfX</B></TT></TD>
-    <TD class=main>
-      <P>Режим отображения диалоговых окон.<BR>Из командной строки можно 
-      ИЗМЕНИТЬ отдельные флаги в '<TT>GUIFlags</TT>' файла конфигурации:</P>
-      <UL>
-        <LI>-gf-8&nbsp; - уберет стили ХР (минус перед восьмеркой), остальные 
-        возьмет из файла конфигурации 
-        <LI>-gf+256&nbsp; - добавит подтверждение отмены установки, остальные 
-        возьмет из файла конфигурации 
-        <LI>-gf-8+256&nbsp; или 
-        <LI>-gf+256-8&nbsp; - уберет стили ХР, добавит подтверждение отмены 
-        установки, а остальные возьмет из файла конфигурации </LI></UL>
-      <P>Попытки сбросить неустановленный флаг или добавить уже установленный 
-      флаг - ИГНОРИРУЮТСЯ.<BR>Например, если в файле конфигурации было 
-      GUIFlags="136" (8+128), а запустили SFX архив с ключом 
-      "-gf-8+128-256+1024", то это только сбросит флаг 8 и добавит флаг 1024, а 
-      остальное проигнорирует (в '<TT>GUIFlags</TT>' флаг 128 уже установлен, а 
-      флаг 256 отсутствует и сбрасывать нечего). В результате SFX архив 
-      отработает с GUIFlags="128+1024".</P>
-      <P>Если не указывать предваряющий знак (+ или -), то можно полностью 
-      ЗАМЕНИТЬ '<TT>GUIFlags</TT>' файла конфигурации:</P>
-      <UL>
-        <LI>-gf64+8&nbsp; - '<TT>GUIFlags</TT>' будет равен "72", независимо от 
-        того, что указано в файле конфигурации. </LI></UL>
-      <P>Ключ ИЗМЕНЯЕТ параметр <A 
-      href="parameters.html#GUIFlags">'GUIFlags'</A> в файле конфигурации. 
-    </P></TD></TR>
-  <TR id=gmX>
-    <TD class=main><TT><B>-gmX</B></TT></TD>
-    <TD class=main>
-      <P>Режим отображения распаковки, где X:</P>
-      <UL>
-        <LI>0 - стандартный режим - <I>родной режим архиватора 7-Zip</I>, т.е. с 
-        кнопками "Отмена" и "Закрыть" (которая в правом верхнем углу окна) 
-        <LI>1 - отображать процесс распаковки, но скрыть кнопку "Отмена", 
-        блокировать кнопку "Закрыть" (которая в правом верхнем углу окна) и 
-        клавишу [Esc] на клавиатуре 
-        <LI>2 - не отображать диалог процесса распаковки (т.е. "тихий" режим) 
-        </LI></UL>
-      <P>Ключ ПЕРЕОПРЕДЕЛЯЕТ параметр <A 
-      href="parameters.html#GUIMode">'GUIMode'</A> в файле конфигурации. Ключ не 
-      подавляет вывод диалога <A 
-      href="parameters.html#BeginPrompt">'BeginPrompt'</A>, для этого нужно 
-      использовать ключи <A href="#ai">'-ai'</A>, <A href="#aiX">'-aiX'</A> или 
-      <A href="#y">'-y'</A>.</P></TD></TR>
-  <TR id=h>
-    <TD class=main>
-      <P><TT><B>-h</B></TT> или <B><TT>-?</TT></B></P></TD>
-    <TD class=main>
-      <P>Выводит диалог с текстом, содержащимся в <A 
-      href="parameters.html#HelpText">'HelpText'</A>, и кнопкой 'OK'. Если 
-      '<TT>HelpText</TT>' в файле конфигурации отсутствует, будет выведено 
-      сообщение: (Параметр "HelpText" не указан в файле конфигурации)</P>
-      <P>После закрытия данного диалога работа модуля будет прервана (т.е. 
-      ничего не будет распаковываться/устанавливаться).</P></TD></TR>
-  <TR id=mfX>
-    <TD class=main><TT><B>-mfX</B></TT></TD>
-    <TD class=main>
-      <P>Режим проверки и вывод диалоговых окон предупреждений 
-      ('<TT>WarningTitle</TT>'), где X сумма флагов:</P>
-      <UL>
-        <LI>1 - не проверять свободное место на диске необходимое для процесса 
-        распаковки 
-        <LI>2 - не проверять размер физической памяти необходимой для процесса 
-        распаковки 
-        <LI>4 - запрашивать права администратора для всех операций текущего SFX, 
-        если таких прав нет у пользователя запустившего SFX. 
-        <LI>8 - запрос пароля (диалог '<TT>PasswordTitle</TT>') <B>после</B> 
-        диалогов '<TT>BeginPrompt</TT>' и '<TT>ExtractPath</TT>', без этого 
-        флага диалог '<TT>PasswordTitle</TT>' будет появляться <B>до</B> 
-        диалогов '<TT>BeginPrompt</TT>' и '<TT>ExtractPath</TT>' </LI></UL>
-      <P>Ключ ПЕРЕОПРЕДЕЛЯЕТ параметр <A 
-      href="parameters.html#MiscFlags">'MiscFlags'</A> в файле 
-    конфигурации.</P></TD></TR>
-  <TR id=nr>
-    <TD class=main><TT><B>-nr</B></TT></TD>
-    <TD class=main>
-      <P>Запрещает запуск программ, указанных в <A 
-      href="parameters.html#RunProgram">'RunProgram'</A>, <A 
-      href="parameters.html#ExecuteFile">'ExecuteFile'</A>, <A 
-      href="parameters.html#AutoInstall">'AutoInstall'</A> или <A 
-      href="parameters.html#AutoInstallX">'AutoInstallX'</A>, т.е. выполняется 
-      только распаковка. Кроме этого не создаются ярлыки, не удаляются файлы и 
-      SFX архив ('<TT>Delete</TT>' , '<TT>DeleteX</TT>'', '<TT>Shortcut</TT>', 
-      ''<TT>ShortcutX</TT> и '<TT>SelfDelete</TT>' не выполняются)</P>
-      <P>Ключ не действует при распаковке во временную папку.</P></TD></TR>
-  <TR id=omX>
-    <TD class=main><TT><B>-omX</B></TT></TD>
-    <TD class=main>
-      <P>Переопределяет параметр <A 
-      href="parameters.html#OverwriteMode">'OverwriteMode'</A> файла 
-      конфигурации.</P>
-      <UL>
-        <LI>0 - перезаписывать все файлы (режим по умолчанию) 
-        <LI>1 - не перезаписывать существующие файлы 
-        <LI>2 - перезаписывать только те файлы, которые старее, чем в SFX 
-        архиве<BR>&nbsp; 
-        <LI>8 - пропускать файлы заблокированные системой </LI></UL>
-      <P>Из значений 0, 1, 2 можно использовать только одно, но его можно 
-      комбинировать с флагом 8 по тому же принципу, как в <A 
-      href="#gfX">'-gfX'</A>.</P></TD></TR>
-  <TR id=pX>
-    <TD class=main><TT><B>-pX</B></TT></TD>
-    <TD class=main>
-      <P>Определяет пароль для зашифрованных SFX архивов, где X - пароль с 
-      которым упакован исходный 7z архив.<BR>Пароль без пробелов можно указывать 
-      без кавычек. При наличии пробелов в пароле, он обязательно должен быть в 
-      кавычках. Примеры использования: 
-      <UL>
-        <LI>-sfx.exe -p<B>Password</B> 
-        <LI>-sfx.exe -p"<B>Password with a space</B>" </LI></UL>
-      <P>Ключ автоматически скрывает окно диалога <A 
-      href="parameters.html#PasswordTitle">ввода пароля</A>. 
-      <P>Если указан неверный пароль, то появится окно сообщения об 
-    ошибке.</P></TD></TR>
-  <TR id=sdX>
-    <TD class=main><TT><B>-sdX</B></TT></TD>
-    <TD class=main>
-      <P>Переопределяет параметр <A 
-      href="parameters.html#SelfDelete">'SelfDelete'</A> файла конфигурации.</P>
-      <UL>
-        <LI>0 - НЕ УДАЛЯТЬ SFX архив, даже если в файле конфигурации 
-        присутствует SelfDelete="1" 
-        <LI>1 - УДАЛИТЬ SFX архив, независимо от наличия '<TT>SelfDelete</TT>' в 
-        файле конфигурации </LI></UL></TD></TR>
-  <TR id=sfxconfig>
-    <TD class=main><TT><B>-sfxconfig</B></TT></TD>
-    <TD class=main>
-      <P>Позволяет извлечь из SFX архива и сохранить файл конфигурации. После 
-      ключа через пробел указывается имя (или путь и имя) файла. Имя и 
-      расширение файла может быть любым. Допустимы как абсолютные, так и <A 
-      class=int href="configinfo.html#paths">относительные</A> пути. Если папки 
-      не существует - она будет создана. Если создать папку или записать файл на 
-      носитель (например, CD-ROM) не удастся - будет выведено сообщение об 
-      ошибке. Примеры использования: 
-      <UL>
-        <LI>-sfxconfig config.txt&nbsp; - сохранит файл "config.txt" в текущей 
-        папке* 
-        <LI>-sfxconfig \config.txt&nbsp; - сохранит файл "config.txt" в корне 
-        диска, на котором находится текущая папка* 
-        <LI>-sfxconfig ..\config.txt&nbsp; - сохранит файл "config.txt" в папке 
-        уровнем выше текущей папки* 
-        <LI>-sfxconfig D:\DISTRIBUT\7-Zip\Папка с пробелами и 
-        кириллицей\конфигурация.cfg&nbsp; - сохранит файл "конфигурация.cfg" в 
-        папке "D:\DISTRIBUT\7-Zip\Папка с пробелами и кириллицей" </LI></UL>
-      <P>* О текущей папке см. <A class=int 
-      href="configinfo.html#paths">относительные</A> пути.</P></TD></TR>
-  <TR id=sfxelevation>
-    <TD class=main><TT><B>-sfxelevation</B></TT></TD>
-    <TD class=main>
-      <P>Запуск с повышением прав (от имени Администратора).</P>
-      <P>Равносильно ключу MiscFlags="4" в сценарии, без изменения манифеста.</P></TD></TR>
-  <TR id=sfxlang>
-    <TD class=main><TT><B>-sfxlang</B></TT></TD>
-    <TD class=main>
-      <P>Указывает, какой язык, из имеющихся в файле конфигурации, будет 
-      использован в диалоговых окнах SFX архива.<BR>Форма записи: 
-      <B><TT>-sfxlang</TT>:xxxx</B> (где <B>xxxx</B> - идентификатор языка). 
-      Этот ключ должен быть первым в командной строке. 
-      <P>Пример трехязычного файла конфигурации: 
-      <P></P><PRE style="WIDTH: 615px; HEIGHT: 394px" class=example_code>;!@Install@!UTF-8<FONT color=#ff0000>:Language:1049</FONT>!
-SetEnvironment="lng=1049"
-Title="Установка 'Кнопки для работы с 7z SFX архивами' (v1.18.6)"
-BeginPrompt="Сейчас будет установлена кнопка для работы с 7z SFX архивами в TC.
+AutoInstall="\"regedit\" settings.reg"
+	</pre>
+	<p>After launching the SFX archive as "sfx.exe -gm2 -s -y", switches "-s -y" are passed to the first
+	   line, and the following commands are executed: </p>
+	<pre>
+RunProgram="\"%ProgramFiles%\\Setup.exe\" -s -y"
+RunProgram="\"regedit\" settings.reg".
+	</pre>
+	<p>If you invoke an automated scenario by launching the same SFX archive as "sfx.exe -ai -s -y",
+	   switches "-s -y" are passed to the third line, and the following commands are executed: </p>
+    <pre>
+AutoInstall="\"%ProgramFiles%\\Setup.exe\" -s -y"
+AutoInstall="\"regedit\" settings.reg"
+	</pre>
+</blockquote>        
 
-Для ее нормальной установки и работы необходимо, чтобы запуск
-этого инсталлятора был произведен из работающего Total Commander.
-Расположение самого инсталлятора значения не имеет.
+<table class="main"><tbody>
+	<tr>
+		<th class="main" width="86"><p>Switch</p></th>
+		<th class="main"><p>Description</p></th>
+	</tr>
 
-Если это условие не выполнено, нажмите кнопку \"Отмена\"."
-ExtractPathTitle="Путь установки кнопки"
-ExtractPathText="Если Вы видите в строке ввода \"%^COMMANDER_PATH%\\Utilites\", значит НЕ выполнено
-условие запуска этого инсталлятора - ТОЛЬКО из Total Commander.
-Настоятельно рекомендуется отменить установку и повторить ее из работающего TC!
+	<tr id="breakcmdline">
+		<td class="main"><tt><b>-!</b></tt></td>
+		<td class="main">
+			<p>Stops the command line parsing. All switches that appear in the command line after '<tt>-!</tt>'
+			   are passed to the first executable program (
+			   <a href="parameters.html#RunProgram">'RunProgram'</a>,
+			   <a href="parameters.html#ExecuteFile">'ExecuteFile'</a>,
+			   <a href="parameters.html#AutoInstall">'AutoInstall'</a> or
+			   <a href="parameters.html#AutoInstallX">'AutoInstallX'</a>).</p>
 
-Если Вы видите в строке ввода реальный путь к вашему TC - можете продолжить
-установку. Изменять указанный путь НЕ рекомендуется, но... можно. ;)"
-;!@InstallEnd@<FONT color=#ff0000>:Language:1049</FONT>!
+			<p>In certain scenarios you may need to pass a switch that matches one of the native module switches.
+			   For example, you have "RunProgram="setup.exe -s" in the config file while you need to execute
+			   "setup.exe -s -y" (note,  <a href="switches.html#y">'-y'</a> is a native module switch).
+			   In order to pass this switch to the executable, you need to use the following command line:
+			   "sfx.exe -gm2 -! -y". As a result,  '<tt>-y</tt>' switch will be ignored by the module and
+			   passed to the executable inside the archive, so you get the command you need. Meanwhile,
+			   the module recognizes its native switch '<tt>-gm2</tt>' and performs silent extraction
+			   of the archive content.</p>
+		</td>
+	</tr>
 
-;!@Install@!UTF-8<FONT color=#ff0000>:Language:1058</FONT>!
-SetEnvironment="lng=1058"
-SetEnvironment="SfxString26=Скасувати"
-SetEnvironment="SfxString27=Так"
-SetEnvironment="SfxString28=Ні"
-SetEnvironment="SfxString29= с"
-SetEnvironment="SfxString35=Назад"
-SetEnvironment="SfxString36=Далі"
-SetEnvironment="SfxString37=Готово"
-SetEnvironment="SfxString38=Скасувати"
-Title="Інсталяція 'Кнопки для роботи з 7z SFX-архівами' (v1.18.6)"
-BeginPrompt="Зараз буде встановлена кнопка для роботи з 7z SFX-архивами у TC.
+	<tr id="ai">
+		<td class="main"><tt><b>-ai</b></tt></td>
+		<td class="main">
+			<p>Automated installation.</p>
+			<p>Specifies that the config file <a href="parameters.html#AutoInstall">'AutoInstall</a>'
+			   parameter will be used instead of <a href="parameters.html#RunProgram">'RunProgram'</a>,
+			   <a href="parameters.html#ExecuteFile">'ExecuteFile'</a> or
+			   <a href="parameters.html#AutoInstallX">'AutoInstallX'</a> If 'AutoInstall' is not specified,
+			   this switch will be ignored.</p>
+			<p>This switch automatically suppresses <a href="parameters.html#BeginPrompt">'BeginPrompt'</a>
+			   dialog window (i. e. you do not need to specify <a href="switches.html#y">'-y'</a> switch.</p>
+		</td>
+	</tr>
 
-Для її нормальної інсталяції й роботи необхідно, щоб запуск цього
-інсталятора був проведений з працюючого Total Commander.
-Розташування самого інсталятора значення не має.
+	<tr id="aiX">
+		<td class="main"><tt><b>-aiX</b></tt></td>
+		<td class="main">
+			<p>Automated installation by the specified scenario. X can take the values from 0 to 9.
+			   You must have the invoked scenario in the config file
+			   (<a href="parameters.html#AutoInstallX">AutoInstallX</a> parameter).
+			   In other words, you must have a line like AutoInstall7="auto_install.exe params for scenario 7"
+			   for the -ai7 switch to work. Otherwise, the error message is displayed.</p>
+			<p>Batch mode is possible for automated installation. You need to specify numbers of automated
+			   installations after '<tt>-ai</tt>'. For example, launching "sfx.exe -ai372" consequently
+			   invokes '<tt>AutoInstall3</tt>' first, then '<tt>AutoInstall7</tt>', and finally
+			   '<tt>AutoInstall2</tt>'. If either '<tt>AutoInstallX</tt>' contains multiple commands,
+			   they are run consequently before moving on to the next '<tt>AutoInstallX</tt>'. </p>
+			<p>This switch automatically suppresses <a href="parameters.html#BeginPrompt">'BeginPrompt'</a>
+			   dialog window (i. e. you do not need to specify <a href="switches.html#y">'-y'</a> switch).</p>
+		</td>
+	</tr>
 
-Якщо ця умова не виконана, натисніть кнопку \"Скасувати\"."
-ExtractPathTitle="Шлях інсталяції кнопки"
-ExtractPathText="Якщо ви бачите у рядку введення \"%^COMMANDER_PATH%\\Utilites\", значить НЕ виконана
-умова запуску цього інсталятора - ТІЛЬКИ з Total Commander.
-Радимо скасувати установку і повторити її з працюючого TC!
+	<tr id="fmX">
+		<td class="main"><tt><b>-fmX</b></tt></td>
+		<td class="main">
+			<p>Appearance mode and display duration for
+			   <a href="parameters.html#FinishMessage">'FinishMessage'</a> dialog window, where X is:</p>
+				<ul>
+					<li>0 - do not display the window</li>
+					<li>1 - display the window</li>
+					<li>N (N= 2...999) - display the window for N seconds. The countdown is displayed on the "OK"
+						button. When time expires, the window closes and the module finishes its operation.</li>
+				</ul>
+			<p>This switch OVERRIDES <a href="prefixes.html#fmXp">'fmX'</a> prefixes in the config file.
+			   If '<tt>FinishMessage</tt>' is not present in the config file, '<tt>-fmX</tt>' are ignored.</p>
+		</td>
+	</tr>
 
-Якщо ви бачите в рядку введення реальний шлях до вашого TC - можете продовжити
-установку. Змінювати вказаний шлях НЕ рекомендується, але... можна. ;)"
-;!@InstallEnd@<FONT color=#ff0000>:Language:1058</FONT>!
+	<tr id="gfX">
+		<td class="main"><tt><b>-gfX</b></tt></td>
+		<td class="main">
+			<p>Dialog windows display mode. You can alter or completely replace '<tt>GUIFlags</tt>'
+			   parameter specified in the config file.</p>
+			<p>The minus sign (-) removes flags, while the plus sign (+) adds flags. Examples of ALTERING flags:</p>
+				<ul>
+					<li>-gf-8  - removes XP styles (minus in front of 8); the rest is taken from the config file</li>
+					<li>-gf+256  - adds confirmation dialog window when canceling installation or execration
+						process; the rest is taken from the config file</li>
+					<li>-gf-8+256<br>OR</li>
+					<li>-gf+256-8  - removes XP styles, adds confirmation dialog window when canceling
+						installation, and the rest is taken from the config file</li>
+				</ul>
+			<p>The module ignores attempts to remove a flag that is not set or add a flag that is already added.
+			   For example, in the config file you have GUIFlags="136" (8+128), and the SFX archive is launched
+			   as follows: "-gf-8+128-256+1024". As a result, flag 8 is removed, flag 1024 is added, and other
+			   flags are ignored (because flag 128 is already present in '<tt>GUIFlags</tt>' parameter, while
+			   flag 256 is absent and therefore can not be removed). Thus, the SFX archive is launched with
+			   GUIFlags="128+1024".</p>
+			<p>If you do not precede the first flag with the plus (+) or minus (-) sign, you can completely
+			   REPLACE '<tt>GUIFlags</tt>' parameter in the config file.</p>
+				<ul>
+					<li>-gf64+8  - '<tt>GUIFlags</tt>' is made equal to 72 regardless of what specified in the config file</li>
+				</ul>
+			<p>This switch ALTERS or REPLACES <a href="parameters.html#GUIFlags">'GUIFlags'</a> in the config file.</p>
+		</td>
+	</tr>
 
-;!@Install@!UTF-8!
-SetEnvironment="lng=1033"
-Title="Installation of the 'Button for work with 7z SFX archives' (v1.18.6)"
-BeginPrompt="The button for work with 7z SFX archives in TC will be now installed.
+	<tr id="gmX">
+		<td class="main"><tt><b>-gmX</b></tt></td>
+		<td class="main">
+			<p>Extraction display mode, where X is:</p>
+				<ul>
+					<li>0 - the standard mode (native 7-Zip mode) with "Cancel" and "Close" buttons
+						(the latter is in the upper right corner of the window)</li>
+					<li>1 - display the extraction process, but hide the "Cancel" button and block the
+						"Close" button as well the [ESC] key on the keyboard</li>
+					<li>2 - hides the extraction dialog completely (silent mode)</li>
+				</ul>
+			<p>This switch OVERRIDES <a href="parameters.html#GUIMode">'GUIMode'</a> in the config file.
+			   This switch does not suppress <a href="parameters.html#BeginPrompt">'BeginPrompt'</a> dialog
+			   window; you will need to use  <a href="switches.html#ai">'-ai'</a>,
+			   <a href="switches.html#aiX">'-aiX'</a> or <a href="switches.html#y">'-y'</a> switches for this.</p>
+		</td>
+	</tr>
 
-For its normal installation and job it is necessary, that start of this
-installer has been made from working Total Commander.
-The location of the installer is indifferent.
+	<tr id="h">
+		<td class="main"><tt><b>-h</b></tt> or <b><tt>-?</tt></b></td>
+		<td class="main">
+			<p>Displays a dialog window with '<tt>HelpText</tt>' and the "OK" button. If '<tt>HelpText</tt>'
+			   is not present in the config file, the following message is displayed: "No "HelpText" in the
+			   configuration file".</p>
+			<p>Closing the window completes the module operation (i. e. nothing will be unpacked or executed).</p>
+		</td>
+	</tr>
 
-If this condition is not executed, press button \"Cancel\"."
-ExtractPathTitle="Path for installation of the button"
-ExtractPathText="If you see in a line of input \"%^COMMANDER_PATH%\\Utilites\", means
-the condition of start of this installer - ONLY from Total Commander is NOT satisfied.
-Insistently it is recommended to cancel installation and to repeat it from working TC!
+	<tr id="nr">
+		<td class="main"><tt><b>-nr</b></tt></td>
+		<td class="main">
+			<p>"No Run" mode. Disallows running executables specified in
+			   <a href="parameters.html#RunProgram">'RunProgram'</a>,
+			   <a href="parameters.html#ExecuteFile">'ExecuteFile'</a>,
+			   <a href="parameters.html#AutoInstall">'AutoInstall'</a> or
+			   <a href="parameters.html#AutoInstallX">'AutoInstallX'</a>,
+			   i.e. only the extraction is performed. In addition, shortcuts are not created,
+			   files are not deleted as well as the SFX archive, i. e. '<tt>Shortcut</tt>',
+			   '<tt>Delete</tt>' and '<tt>SelfDelete</tt>' are not executed.</p>
+			<p>This switch is disabled when the SFX archive is extracted to a temporary folder.</p>
+		</td>
+	</tr>
 
-If you see in a line of input a real path to yours TC - can continue installation.
-To change the specified way it is NOT recommended, but... it is possible. ;)"
-; Постоянная часть
-SetEnvironment="CustomPath=%%T"
-GUIFlags="32+128+1024+2048+4096"
-GUIMode="2"
-InstallPath="%COMMANDER_PATH%\\Utilites"
-RunProgram="hidcon:install_button.bat"
-Delete="%%T\\install_button.bat"
-;!@InstallEnd@!</PRE>
-      <P>Приведенный файл конфигурации состоит из трех секций, каждая из которых 
-      имеет сигнатуру начала (<B>;!@Install@!UTF-8!</B>) и сигнатуру конца 
-      (<B>;!@InstallEnd@!</B>). В первых двух секциях (русской и украинской) к 
-      сигнатурам добавлен идентификатор языка (выделен красным).</P>
-      <P>Секций может быть и больше, но одну из них лучше всегда оставлять без 
-      идентификаторов. В случае, когда модуль не найдет секции соответствующей 
-      языку системы или указанному в ключе идентификатору, будет использоваться 
-      секция без языковых идентификаторов, но если ее не будет, то будет выдано 
-      сообщение об ошибке.</P>
-      <P>Возможные варианты установки SFX архива с таким файлом 
-конфигурации:</P>
-      <P>1 Язык системы русский (идентификатор 1049)</P>
-      <UL>
-        <LI>установка без ключа <B><TT>-sfxlang</TT></B> - интерфейс установки 
-        SFX архива русский 
-        <LI>установка с ключом <B><TT>-sfxlang:1049</TT></B> - интерфейс 
-        установки SFX архива русский 
-        <LI>установка с ключом <B><TT>-sfxlang:1058</TT></B> - интерфейс 
-        установки SFX архива украинский 
-        <LI>установка с ключом <B><TT>-sfxlang:1033</TT></B> или любым другим не 
-        равным 1049 и 1058 - интерфейс установки SFX архива английский </LI></UL>
-      <P>2 Язык системы украинский (идентификатор 1058)</P>
-      <UL>
-        <LI>установка без ключа <B><TT>-sfxlang</TT></B> - интерфейс установки 
-        SFX архива украинский 
-        <LI>установка с ключом <B><TT>-sfxlang:1049</TT></B> - интерфейс 
-        установки SFX архива русский 
-        <LI>установка с ключом <B><TT>-sfxlang:1058</TT></B> - интерфейс 
-        установки SFX архива украинский 
-        <LI>установка с ключом <B><TT>-sfxlang:1033</TT></B> или любым другим не 
-        равным 1049 и 1058 - интерфейс установки SFX архива английский </LI></UL>
-      <P>3 Язык системы не русский и не украинский (идентификатор любой не 
-      равный 1049 или 1058)</P>
-      <UL>
-        <LI>установка без ключа <B><TT>-sfxlang </TT></B>- интерфейс установки 
-        SFX архива английский 
-        <LI>установка с ключом <B><TT>-sfxlang:1049</TT></B> - интерфейс 
-        установки SFX архива русский 
-        <LI>установка с ключом <B><TT>-sfxlang:1058</TT></B> - интерфейс 
-        установки SFX архива украинский 
-        <LI>установка с ключом <B><TT>-sfxlang:1033</TT></B> или любым другим не 
-        равным 1049 - интерфейс установки SFX архива английский </LI></UL></TD></TR>
-  <TR id=sfxtestcc>
-    <TD class=main><TT><B>-sfxtest:cc</B></TT></TD>
-    <TD class=main>
-      <P>Проверка синтаксиса (ошибок в сценарии)</P>
-      <PRE><B>модуль</B> -sfxtest:cc -sfxconfig:<B>путь к файлу конфигурации</B></PRE>
-      <P>Код возврата:</P>
-      <UL>
-        <LI>0 - Без ошибок 
-        <LI>4 - Ошибка в синтаксисе сценария</LI></UL>
-      <P>"Тихий" режим:</P>
-      <PRE><B>модуль</B> -sfxtest:<B>CC</B> -sfxconfig:<B>путь к файлу конфигурации</B></PRE>
-      <P>При использовании заглавных букв <B>CC</B> определяется только код возврата, а окно ошибки модуля на выводится</P></TD></TR>
-  <TR id=sfxtestD>
-    <TD class=main><TT><B>-sfxtest:D:Q</B></TT></TD>
-    <TD class=main>
-      <P>Просмотр диалоговых окон, готового проекта, где Q:</P> 
-      <UL>
-        <LI>B - Начальное окно 
-        <LI>P - Выбор пути распаковки 
-        <LI>E[:X] - Прогресс распаковки, где Х - скорость распаковки 
-        <LI>C - Сообщение отмены 
-        <LI>F - Финишное сообщение. Может объединяться с ключом '<TT>-fmX</TT>' 
-        <LI>H - Вывод справочной информации 
-        <LI>W - Сообщение недостаточно места 
-        <LI>Z - Сообщение о ошибка 
-        <LI>X - Окно ввода пароля </LI></UL>
-      <P>Также можно тестировать дизайн диалогов, не собирая в проект:</P>
-      <PRE><B>модуль</B> -sfxtest:D:B -sfxconfig:<B>путь к файлу конфигурации</B></PRE></TD></TR>
-  <TR id=sfxversion>
-    <TD class=main><TT><B>-sfxversion</B></TT></TD>
-    <TD class=main>
-      <P>Выводит окно с информацией о: 
-      <UL>
-        <LI>версии и дате создания SFX модуля 
-        <LI>версии исходных текстов архиватора 7-Zip используемых в модуле 
-        <LI>методах и фильтрах сжатия, поддерживаемых модулем 
-        <LI>опциях сборки модуля 
-        <LI>копирайт </LI></UL>
-      <P>Полезно для идентификации модуля, определения его возможностей и/или, 
-      когда информация в ресурсах модуля была кем-то изменена.</P></TD></TR>
-  <TR id=y>
-    <TD class=main><TT><B>-y</B></TT></TD>
-    <TD class=main>
-      <P>Скрывает окна диалогов <A 
-      href="parameters.html#BeginPrompt">'BeginPrompt'</A>, <A class=int 
-      href="parameters.html#ExtractPath">'ExtractPath'</A>, совмещенного <A 
-      class=int href="parameters.html#ExtractPathText">'BeginPrompt' + 
-      'ExtractPath'</A> и <A 
-      href="parameters.html#FinishMessage">'FinishMessage'</A>. Окно распаковки 
-      (если не скрыто параметром <A href="parameters.html#GUIMode">'GUIMode'</A> 
-      или ключом '<TT>-gm2</TT>') будет показано. При попытке прервать 
-      распаковку/установку, она будет прервана без вывода окна подтверждения <A 
-      href="parameters.html#CancelPrompt">'CancelPrompt'</A>. </P>
-      <P>Окна ошибок, если таковые возникнут, а также окно диалога <A 
-      href="parameters.html#PasswordTitle">Ввода пароля</A>, будут отображаться, 
-      независимо от этого ключа. <I>Ключ оригинального SFX модуля архиватора 
-      7-Zip</I>.</P></TD></TR></TBODY></TABLE>
-<P>&nbsp;</P></BODY></HTML>
+	<tr id="omX">
+		<td class="main"><tt><b>-omX</b></tt></td>
+		<td class="main">
+			<p>Overrides <a href="parameters.html#OverwriteMode">'OverwriteMode'</a> parameter in the config file.</p>
+				<ul>
+					<li>0 - overwrite all files (default mode)</li>
+					<li>1 - do not overwrite the existing files</li>
+					<li>2 - overwrite only older files</li>
+				</ul>
+		</td>
+	</tr>
+
+	<tr id="sdX">
+		<td class="main"><tt><b>-sdX</b></tt></td>
+		<td class="main">
+			<p>Overrides <a href="parameters.html#SelfDelete">'SelfDelete'</a> parameter in the config file.</p>
+				<ul>
+					<li>0 - DO NOT DELETE SFX, even if SelfDelete="1" is specified in the config file</li>
+					<li>1 - DELETE SFX, regardless of whether SelfDelete="1" is specified in the config file</li>
+			</ul>
+		</td>
+	</tr>
+
+	<tr id="sfxconfig">
+		<td class="main"><tt><b>-sfxconfig</b></tt></td>
+		<td class="main">
+			<p>Lets you extract the config file from the SFX archive and save the file in the folder of your
+			   choice. The switch is followed by a space and the file name (or the file path and name). File
+			   name and extension can be arbitrary. <a href="configinfo.html#paths" class="int">Relative</a>
+			   paths are allowed. If the folder does not exist, it will be created. If an attempt to create
+			   a folder or write on a medium (such as CD) fails, the error message is displayed. </p>
+			<p>Usage examples:</p>
+				<ul>
+					<li>-sfxconfig config.txt  - saves "config.txt" file in the current folder*</li>
+					<li>-sfxconfig \config.txt  - saves "config.txt" file in the current folder disk root*</li>
+					<li>-sfxconfig ..\config.txt  - saves "config.txt" file in a folder one level above the current folder*</li>
+					<li>-sfxconfig D:\DISTRIBUT\7-Zip\Folder name with spaces\setup.cfg  - saves file "setup.cfg" file in "D:\DISTRIBUT\7-Zip\Folder name with spaces" folder</li>
+				</ul>
+			<p>* See <a href="configinfo.html#paths" class="int">relative</a> paths regarding the current folder.</p>
+		</td>
+	</tr>
+
+	<tr id="sfxversion">
+		<td class="main"><tt><b>-sfxversion</b></tt></td>
+		<td class="main">
+			<p>Displays a dialog window with the SFX module version and creation date.</p>
+			<p>Useful when the module resources have been modified by somebody.</p>
+		</td>
+	</tr>
+
+	<tr id="y">
+		<td class="main"><tt><b>-y</b></tt></td>
+		<td class="main">
+			<p>Hides the following dialog windows: <a href="parameters.html#BeginPrompt">'BeginPrompt'</a>,
+			   <a href="parameters.html#ExtractPath" class="int">'ExtractPath'</a>, combined
+			   <a href="parameters.html#ExtractPathText" class="int">'BeginPrompt' + 'ExtractPath'</a> and
+			   <a href="parameters.html#FinishMessage">'FinishMessage'</a>. The extraction window will be
+			   displayed (unless it is blocked by <a href="parameters.html#GUIMode">'GUIMode'</a> parameter
+			   or '<tt>-gm2</tt>' switch). If the extraction or installation process is interrupted, no
+			   <a href="parameters.html#CancelPrompt">'CancelPrompt'</a> confirmation window is displayed.
+			   Should errors occur, error message windows are displayed regardless of this switch.
+			   <em>Native 7-zip SFX switch.</em></p>
+		</td>
+	</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+</body>
+</html>

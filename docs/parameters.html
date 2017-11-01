@@ -1,326 +1,248 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML><HEAD><TITLE>Параметры файла конфигурации</TITLE>
-<META content="text/html; charset=Windows-1251" http-equiv=Content-Type><LINK 
-rel=stylesheet type=text/css href="misc/styles.css">
-<META name=GENERATOR content="MSHTML 8.00.6001.23590"></HEAD>
-<BODY>
-<H2>Параметры файла конфигурации</H2>
-<UL>
-  <LI>
-  <P>Имена параметров зависят от регистра. </P>
-  <LI>
-  <P>Большинство параметров может использоваться в качестве ключей командной 
-  строки при запуске SFX архива. Исключение составляют эти множественные 
-  параметры:<BR>
-  <P><TT>AutoInstall<BR>AutoInstallX<BR>Delete<BR>DeleteX<BR>RunProgram<BR>Shortcut<BR>ShortcutX</TT></P>
-  <P>Одноименные параметры в файле конфигурации при этом будут переназначены 
-  (параметры в командной строке имеют приоритет), отсутствующие - будут 
-  добавлены. Возможные варианты записи параметров в командной строке:</P><PRE>sfx.exe -InstallPath="%ProgramFiles%\\IEPro"
-sfx.exe -SetEnvironment="Var1=E:\\totalcmd" -SetEnvironment="Var2=%%T\\"
-sfx.exe -FinishMessage="new_finish_message"
-sfx.exe -InstallPath="%Path7z%\\7zSFX_Tools" -FinishMessage="7z SFX Tools установлен!" -ai -gm2 -fm20</PRE></LI></UL>
-<TABLE>
-  <TBODY class=main>
-  <TR>
-    <TH class=main width=276>
-      <P>Имя_параметра="значение_параметра"</P></TH>
-    <TH class=main>
-      <P>Описание параметра и допустимых значений</P></TH></TR>
-  <TR>
-    <TH class=main colSpan=2>
-      <P>Распаковка / исполнение (команды и пути)</P></TH></TR>
-  <TR id=AutoInstall>
-    <TD class=main>
-      <P><B><TT>AutoInstall</TT>="command_auto_install"</B></P></TD>
-    <TD class=main>
-      <P>Команда для исполнения (множественная). Есть два режима - обычный, 
-      запускаемый из '<TT>RunProgram</TT>' или '<TT>ExecuteFile</TT>', и 
-      автоматический, запускаемый из '<TT>AutoInstall</TT>'.</P>
-      <P>АВТОМАТИЧЕСКИЙ режим установки может быть вызван двумя способами:</P>
-      <UL>
-        <LI>Указанием в командной строке ключа <A 
-        href="switches.html#ai">'-ai'</A> 
-        <LI>Нажатием кнопки "Да/OK" в окне '<TT>BeginPrompt</TT>' (если таковое 
-        указано) ВМЕСТЕ С КЛАВИШЕЙ [Shift] </LI></UL>
-      <P>Без указанных выше манипуляций используется '<TT>RunProgram</TT>' или 
-      '<TT>ExecuteFile</TT>'.</P>
-      <P>Допустимы <A class=int href="variables.html#vars">переменные</A>, 
-      обрабатываемые модулем, а также <A class=int 
-      href="configinfo.html#paths">относительные</A> пути. Написание аналогично 
-      '<TT>RunProgram'</TT></P></TD></TR>
-  <TR id=AutoInstallX>
-    <TD class=main>
-      <P><B><TT>AutoInstallX</TT>="command_auto_install"</B></P></TD>
-    <TD class=main>
-      <P>Где X - литера варианта. В качестве литеры X допустимы [0...9], 
-      [A...Z], [a...z]. Команда для исполнения (множественная).<BR>Вы можете 
-      указать в файле конфигурации до 62 вариантов автоматических установок, 
-      которые можно выбрать ТОЛЬКО из командной строки, указав ключ <A 
-      href="switches.html#aiX">'-aiX'</A>.</P>
-      <P>Если предполагается использовать несколько вариантов автоматической 
-      установки, литеры '<TT>AutoInstallX</TT>'-ам можно присваивать любые, даже 
-      не по порядку. При этом каждый из '<TT>AutoInstallX</TT>' множественный. 
-      Например, '<TT>AutoInstall3</TT>' может быть сколько угодно, так же как и 
-      '<TT>AutoInstall7</TT>' или '<TT>AutoInstall0</TT>'.</P>
-      <P>Допустимы <A class=int href="variables.html#vars">переменные</A>, 
-      обрабатываемые модулем, а также <A class=int 
-      href="configinfo.html#paths">относительные</A> пути. Написание аналогично 
-      '<TT>RunProgram'</TT></P></TD></TR>
-  <TR id=Delete>
-    <TD class=main>
-      <P><B><TT>Delete</TT>="file_or_folder_name"</B></P></TD>
-    <TD class=main>
-      <P>Команда удаляет указанный файл или папку ПОСЛЕ установки 
-      (множественная).<BR>Если указанное имя является папкой, то она будет 
-      удалена вместе со всем содержимым.</P>
-      <P>ВНИМАНИЕ! Будьте осторожны, чтобы не указать что-нибудь вроде 
-      "C:\Windows" <IMG class=inlineimg alt="" src="misc/wink.gif">.</P>
-      <P>Допустимы <A class=int href="variables.html#vars">переменные</A>, 
-      обрабатываемые модулем, а также <A class=int 
-      href="configinfo.html#paths">относительные</A> пути. Текущей папкой при 
-      выполнении команд '<TT>Delete</TT>' является папка, в которой находится 
-      SFX архив.</P>
-      <P>Выполнение параметра '<TT>Delete</TT>' может быть изменено префиксом <A 
-      href="prefixes.html#delX">'delX'</A>. </P></TD></TR>
-  <TR id=DeleteX>
-    <TD class=main>
-      <P><B><TT>DeleteX</TT>="file_or_folder_name"</B></P></TD>
-    <TD class=main>
-      <P>Где X - литера варианта соответствующей автоматической установки 
-      ('<TT>AutoInstallX</TT>'). В качестве литеры X допустимы [0...9], [A...Z], 
-      [a...z]. Команда удаляет указанный файл или папку ПОСЛЕ установки 
-      (множественная).</P>
-      <P>Если указанное имя является папкой, то она будет удалена вместе со всем 
-      содержимым.</P>
-      <P>Допустимы <A class=int href="variables.html#vars">переменные</A>, 
-      обрабатываемые модулем, а также <A class=int 
-      href="configinfo.html#paths">относительные</A> пути. Текущей папкой при 
-      выполнении команд '<TT>DeleteX</TT>' является папка, в которой находится 
-      SFX архив.</P>
-      <P>Синтаксис команды аналогичен команде '<TT>Delete</TT>'.</P>
-      <P>Если для автоматической установки не указано удаление, будет 
-      использован параметр по умолчанию, то есть, '<TT>Delete</TT>'. Например, 
-      создан SFX архив с файлом конфигурации, содержащим следующие записи:</P><PRE class=pre40>RunProgram="setup.exe"
-AutoInstall="setup.exe /S"
-AutoInstall1="setup1.exe /S"
-AutoInstall2="setup2.exe /S"
-AutoInstall3="setup3.exe /S"
-Delete="%%T\\Help_en.chm"
-Delete1="%%T\\Help_ru.chm"
-Delete2="%%T\\Help_ua.chm"</PRE>
-      <P>После запуска этого SFX архива:</P>
-      <UL>
-        <LI>без ключей - сработает параметр '<TT>Delete</TT>' 
-        <LI>без ключей с удерживанием клавиши [Shift] - сработает параметр 
-        '<TT>Delete</TT>' 
-        <LI>с ключом '<TT>-ai1</TT>' - сработает параметр '<TT>Delete1</TT>' 
-        <LI>с ключом '<TT>-ai2</TT>' - сработает параметр '<TT>Delete2</TT>' 
-        <LI>с ключом '<TT>-ai3</TT>' - сработает параметр '<TT>Delete</TT>' 
-        <LI>с ключом '<TT>-ai12</TT>' - сработают параметры '<TT>Delete1</TT>' и 
-        '<TT>Delete2</TT>' 
-        <LI>с ключом '<TT>-ai13</TT>' - сработает параметр '<TT>Delete1</TT>' 
-        <LI>с ключом '<TT>-ai123</TT>' - сработают параметры '<TT>Delete1</TT>' 
-        и '<TT>Delete2</TT>' </LI></UL>
-      <P>Выполнение параметра '<TT>DeleteX</TT>' может быть изменено префиксом 
-      <A href="prefixes.html#delX">'delX'</A>.</P></TD></TR>
-  <TR id=Directory>
-    <TD class=main>
-      <P><B><TT>Directory</TT>="path_to_command"</B></P></TD>
-    <TD class=main>
-      <P>Путь к папке команды исполнения '<TT>RunProgram</TT>' (не путать с 
-      текущей папкой). <I>Параметр оригинального SFX модуля архиватора 
-      7-Zip.</I></P>
-      <P>Может использоваться только для первого '<TT>RunProgram</TT>'. 
-      Допустимы <A class=int href="variables.html#vars">переменные</A>, 
-      обрабатываемые модулем, а также <A class=int 
-      href="configinfo.html#paths">относительные</A> пути. Параметр 
-      необязателен, т.к. путь и команду можно указать прямо в 
-      '<TT>RunProgram</TT>'. Например:</P><PRE class=pre40>RunProgram="notepad.exe"
-Directory="C:\\Windows\\system32\\"</PRE>
-      <P>равнозначны</P><PRE class=pre40>RunProgram="C:\\Windows\\system32\\notepad.exe"</PRE></TD></TR>
-  <TR id=ExecuteFile>
-    <TD class=main>
-      <P><B><TT>ExecuteFile</TT>="command_for_executing"</B></P></TD>
-    <TD class=main>
-      <P>Команда для исполнения. <I>Параметр оригинального SFX модуля архиватора 
-      7-Zip.</I></P>
-      <P>Допустимы <A class=int href="variables.html#vars">переменные</A>, 
-      обрабатываемые модулем, а также <A class=int 
-      href="configinfo.html#paths">относительные</A> пути. Написание аналогично 
-      '<TT>RunProgram</TT>' за исключением ключей для исполняемого файла, 
-      которых в ней быть не может. В случае необходимости ключи для исполняемого 
-      файла подставляются в '<TT>ExecuteParameters</TT>'.</P></TD></TR>
-  <TR id=ExecuteOnLoad>
-    <TD class=main>
-      <P><B><TT>ExecuteOnLoad</TT>="command_for_executing"</B></P></TD>
-    <TD class=main>
-      <P>Команда для исполнения (множественная). Выполняется сразу после запуска 
-      SFX. Запускается как в обычном режиме ('<TT>RunProgram</TT>' или 
-      '<TT>ExecuteFile</TT>'), так и в автоматическом ('<TT>AutoInstall</TT>'). 
-      Допустимы <A class=int href="variables.html#vars">переменные</A>, 
-      обрабатываемые модулем, а также <A class=int 
-      href="configinfo.html#paths">относительные</A> пути. Написание аналогично 
-      '<TT>RunProgram</TT>'</P>
-  <TR id=ExecuteParameters>
-    <TD class=main>
-      <P><B><TT>ExecuteParameters</TT>="keys_command"</B></P></TD>
-    <TD class=main>
-      <P>Ключи для команды исполнения '<TT>ExecuteFile</TT>'. <I>Параметр 
-      оригинального SFX модуля архиватора 7-Zip.</I></P>
-      <P>Параметр '<TT>ExecuteParameters</TT>' необязателен, он нужен только в 
-      том случае, если необходимо передать что-то в командной строке для 
-      '<TT>ExecuteFile</TT>'.</P></TD></TR>
-  <TR id=ExtractMaskExclude>
-    <TD class=main>
-      <P><B><TT>ExtractMaskExclude</TT>="mask"</B></P></TD>
-    <TD class=main>
-      <P>Определяет маску файлов для исключения из распаковки. Параметр 
-      множественный, в каждом параметре указывается только одна маска.</P>
-      <P>Поддерживается только один тип префиксов - платформа операционной 
-      системы (x64 или x86). Например:</P><PRE class=pre40>ExtractMaskExclude="x86:*_x64.sfx"</PRE>
-      <P>- исключит из распаковки все 64-битные модули, если запуск произведен в 
-      32-битной операционной системы</P><PRE class=pre40>ExtractMaskExclude="*.sfx"</PRE>
-      <P>- исключит из распаковки все модули, независимо от системы, остальные 
-      файлы будут распакованы</P>
-      <P>Если параметр не указан и указан MiscFlags=32, то автоматически 
-      используется:</P><PRE class=pre40>ExtractMaskExclude="*"</PRE></TD></TR>
-  <TR id=ExtractMaskInclude>
-    <TD class=main>
-      <P><B><TT>ExtractMaskInclude</TT>="mask"</B></P></TD>
-    <TD class=main>
-      <P>Определяет маску файлов для распаковки. Параметр множественный, в 
-      каждом параметре указывается только одна маска.</P>
-      <P>Поддерживается только один тип префиксов - платформа операционной 
-      системы (x64 или x86). Например:</P><PRE class=pre40>ExtractMaskInclude="x64:*_x64.sfx"</PRE>
-      <P>- распакует только 64-битные модули, если запуск произведен в 64-битной 
-      операционной системы</P><PRE class=pre40>ExtractMaskInclude="%%P:%%P\\*"</PRE>
-      <P>- распакует папку (%%P), соответствующую разрядности системы в которой 
-      запущен SFX и все ее содержимое, остальное пропустит</P>
-      <P>Если параметр не указан и не указан MiscFlags=32, то автоматически 
-      используется:</P><PRE class=pre40>ExtractMaskInclude="*"</PRE></TD></TR>
-  <TR id=InstallPath>
-    <TD class=main>
-      <P><B><TT>InstallPath</TT>="path_to_extract"</B></P></TD>
-    <TD class=main>
-      <P>Указывает использовать ОПРЕДЕЛЕННЫЙ путь для распаковки. Если 
-      '<TT>InstallPath</TT>' отсутствует (имеется в виду отсутствие параметра 
-      '<TT>InstallPath</TT>' в файле конфигурации, или InstallPath="", или 
-      стирание пути, в соответствующем поле редактирования, после запуска 
-      архива), то распаковка происходит во ВРЕМЕННУЮ папку, которая будет 
-      УДАЛЕНА после распаковки и выполнения всех команд установки.</P>
-      <P>Допустимы <A class=int href="variables.html#vars">переменные</A>, 
-      обрабатываемые модулем (за исключением %%T, а также переменных, 
-      определенных параметрами '<TT>SetEnvironment</TT>', если в них 
-      используется %%T). ОБЯЗАТЕЛЬНО используйте ДВОЙНЫЕ обратные слеши в путях. 
-      Например:</P><PRE class=pre40>InstallPath="C:\\Windows\\system32\\test"
-InstallPath="%PROGRAMFILES%\\test"</PRE>
-      <P>Допустимы <A class=int href="configinfo.html#paths">относительные</A> 
-      пути. Текущей папкой будет папка программы, из которой произведен запуск 
-      SFX архива. Например:</P><PRE class=pre40>InstallPath="test"</PRE>
-      <P>создаст папку с именем "test" в папке программы из которой, произведен 
-      запуск SFX архива и распаковка произойдет в нее,</P><PRE class=pre40>InstallPath="."</PRE>
-      <P>произведет распаковку прямо в папку программы, из которой произведен 
-      запуск SFX архива, а <PRE class=pre40>InstallPath="%%S"</PRE>
-      <P>произведет распаковку прямо в папку, где находится SFX архив.</P>
-      <P>Если создать папку или распаковать архив на носитель (например, CD-ROM) 
-      не удастся - будет выведена ошибка.</P>
-      <P>Если нужно просто распаковать архив, '<TT>InstallPath</TT>' должен 
-      присутствовать в файле конфигурации. При этом и '<TT>RunProgram</TT>', и 
-      '<TT>ExecuteFile</TT>' должны отсутствовать, а '<TT>AutoInstall</TT>' и 
-      '<TT>AutoInstallX</TT>' либо отсутствовать, либо присутствовать, но не 
-      должны быть запущены ([Shift]-ом или из командной строки). В противном 
-      случае будет запущен исполняемый файл из '<TT>RunProgram</TT>', 
-      '<TT>ExecuteFile</TT>', '<TT>AutoInstall</TT>' или 
-      '<TT>AutoInstallX</TT>'. Папка установки с распакованными данными в любом 
-      случае НЕ УДАЛЯЕТСЯ.</P></TD></TR>
-  <TR id=OverwriteMode>
-    <TD class=main>
-      <P><B><TT>OverwriteMode</TT>="x"</B></P></TD>
-    <TD class=main>
-      <P>Набор флагов, определяющий режим перезаписи файлов, где "x" число, 
-      равное сумме числовых значений флагов, либо выражение "2+8". Порядок 
-      числовых значений в выражении может быть любой (обязательно в 
-      кавычках).</P>
-      <UL>
-        <LI>0 - перезаписывать все файлы (режим по умолчанию) 
-        <LI>1 - не перезаписывать существующие файлы 
-        <LI>2 - перезаписывать только те файлы, которые старее, чем в 
-        архиве/установке<BR>&nbsp; 
-        <LI>8 - пропускать файлы заблокированные системой </LI></UL>
-      <P>Из значений 0, 1, 2 можно использовать только одно, но его можно 
-      комбинировать с флагом 8 по тому же принципу, как в <A 
-      href="#GUIFlags">'GUIFlags'</A>.</P>
-      <P>Данный параметр может быть переопределен из командной строки ключом <A 
-      href="switches.html#omX">'-omX'</A>.</P></TD></TR>
-  <TR id=PreExtract>
-    <TD class=main>
-      <P><B><TT>PreExtract</TT>="command_for_executing"</B></P></TD>
-    <TD class=main>
-      <P>Команда для исполнения (множественная). Выполняется после вывода 
-      диалога '<TT>BeginPrompt</TT>', но перед распаковкой архива. При литерной 
-      установке команда не выполняется. Допустимы <A class=int 
-      href="variables.html#vars">переменные</A>, обрабатываемые модулем, а также 
-      <A class=int href="configinfo.html#paths">относительные</A> пути. 
-      Написание аналогично '<TT>RunProgram</TT>'</P></TD></TR>
-  <TR id=PreExtractX>
-    <TD class=main>
-      <P><B><TT>PreExtractX</TT>="command_for_executing"</B></P></TD>
-    <TD class=main>
-      <P>Где X - литера варианта соответствующей автоматической установки 
-      ('<TT>AutoInstallX</TT>'). В качестве X допустимы [0...9], [A...Z], 
-      [a...z]. Команда для исполнения (множественная). Выполняется после вывода 
-      диалога '<TT>BeginPrompt</TT>', но перед распаковкой архива. Команда 
-      является парной и выполняется только совместно с соответствующей командой 
-      '<TT>AutoInstallX</TT>'. Если соответствующая команда 
-      '<TT>AutoInstallX</TT>' отсутствует в файле конфигурации будет выведено 
-      сообщение об ошибке. Допустимы <A class=int 
-      href="variables.html#vars">переменные</A>, обрабатываемые модулем, а также 
-      <A class=int href="configinfo.html#paths">относительные</A> пути. 
-      Написание аналогично '<TT>RunProgram</TT>'</P></TD></TR>
-  <TR id=RunProgram>
-    <TD class=main>
-      <P><B><TT>RunProgram</TT>="command_executing"</B></P></TD>
-    <TD class=main>
-      <P>Команда для исполнения (множественная). <I>Параметр оригинального SFX 
-      модуля архиватора 7-Zip.</I></P>
-      <P>Содержит имя исполняемого файла. Дополнительно может содержать: путь к 
-      исполняемому файлу (допустимы <A class=int 
-      href="variables.html#vars">переменные</A>, обрабатываемые модулем, а также 
-      <A class=int href="configinfo.html#paths">относительные</A> пути), 
-      префиксы и ключи для исполняемого файла.<BR>Например:</P><PRE class=pre40>RunProgram="notepad.exe"
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Configuration file parameters</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link href="common/styles.css" type="text/css" rel=stylesheet>
+		<script language="javascript" src="common/scripts.js" type="text/javascript"></script>
+		<script language="javascript" src="misc/menu.js" type="text/javascript"></script>
+	</head>
+
+<body onLoad="OnLoadBody(1)">
+
+<h2>Configuration file parameters</h2><br>
+
+<table class="main"><tbody>
+	<tr>
+		<th class="main" width="20%"><p>Parameter="Value"</p></th>
+		<th class="main"><p>Parameter description and allowed values</p></th>
+	</tr>
+
+	<tr>
+		<th class="main" colspan="2"><p>Extraction and execution (commands and paths)</p></th>
+	</tr>
+
+	<tr id="AutoInstall">
+		<td class="main">
+			<p><b><tt>AutoInstall</tt>="command_auto_install"</b></p>
+		</td>
+		<td class="main">
+			<p>Execution command (multiple instances are allowed). There are two modes: the usual '<tt>RunProgram</tt>'
+			   or '<tt>ExecuteFile</tt>' mode, and automated '<tt>AutoInstall</tt>' mode.</p>
+			<p>AUTOMATED installation mode will be invoked if you:</p>
+			<ul>
+				<li>Specify <a href="switches.html#ai">'-ai'</a> command line switch</li>
+				<li>Click "Yes/OK" in '<tt>BeginPrompt</tt>' dialog window (if it was specified)
+				    WHILE HOLDING DOWN the [SHIFT] key</li>
+			</ul>
+			<p>If you do not do anything mentioned above, '<tt>RunProgram</tt>' or '<tt>ExecuteFile</tt>'
+			   will be used as a default command.</p>
+			<p>Environment <a href="configinfo.html#vars" class="int">variables</a> supported by the module
+			   are allowed as well as <a href="configinfo.html#paths" class="int">relative</a> paths.
+			   The syntax is the same as for '<tt>RunProgram'</tt>.</p>
+		</td>
+	</tr>
+
+	<tr id="AutoInstallX">
+		<td class="main">
+			<p><b><tt>AutoInstallX</tt>="command_auto_install"</b></p>
+		</td>
+		<td class="main">
+			<p>Where X is the scenario number (from 0 to 9) you wish to complete. You can have up to 10
+			   scenarios for automated installations. You can select one of them from the command line
+			   ONLY with <a href="switches.html#aiX">'-aiX'</a> switch.</p>
+			<p>If you are planning to use several automated scenarios, you do not have to follow a numeric
+			   order than setting the X in '<tt>AutoInstallX</tt>' parameters. You can have multiple
+			   instances of each '<tt>AutoInstallX</tt>' command. For example, for a specific scenario you
+			   may need to complete three tasks for '<tt>AutoInstall3</tt>':</p>
+<blockquote><pre>
+AutoInstall3="setup.exe"
+AutoInstall3="regedit /s cleanup.reg"
+AutoInstall3="cleanup.cmd"
+AutoInstall7="setup.exe"
+AutoInstall7="regedit /s tweaks.reg"
+</pre></blockquote>
+			<p>While for '<tt>AutoInstall7</tt>' you may need only the first two commands.</p>
+			<p>Environment <a href="configinfo.html#vars" class="int">variables</a> supported by the module
+			   are allowed as well as <a href="configinfo.html#paths" class="int">relative</a> paths.
+			   The syntax is the same as for '<tt>RunProgram'.</tt></p>
+		</td>
+	</tr>
+
+	<tr id="Delete">
+		<td class="main">
+			<p><b><tt>Delete</tt>="file_or_folder_name"</b></p>
+		</td>
+		<td class="main">
+			<p>Deletes the specified file or folder AFTER the installation.</p>
+			<p>If the folder name is specified, the entire folder is deleted including all subfolders and
+			   their content.</p>
+			<p>ATTENTION! Make sure you don't specify something like "C:\Windows"
+			   <img src="misc/wink.gif" alt="" class="inlineimg"></p>
+			<p>Environment <a href="configinfo.html#vars" class="int">variables</a> supported by the module
+			   are allowed as well as <a href="configinfo.html#paths" class="int">relative</a> paths.
+			   For this command the current directory is the one where the SFX resides (for other commands
+			   that would be the extraction directory).</p>
+			<p>You can specify as many '<tt>Delete</tt>' strings as you wish. They will be processed in the
+			   order listed in the config file.</p>
+		</td>
+	</tr>
+
+	<tr id="Directory">
+		<td class="main">
+			<p><b><tt>Directory</tt>="path_to_command"</b></p>
+		</td>
+		<td class="main">
+			<p>The path to the '<tt>RunProgram</tt>' execution folder (do not confuse with the current
+			   folder). <em>Native 7-zip SFX parameter.</em></p>
+
+			<p>Can be used for the first '<tt>RunProgram</tt>' only. Environment
+			   <a href="configinfo.html#vars" class="int">variables</a> supported by the module are allowed
+			   as well as <a href="configinfo.html#paths" class="int">relative</a> paths. This is an
+			   optional parameter, because both the path and the command can be specified within
+			   '<tt>RunProgram</tt>' value. For example,</p>
+<blockquote><pre>
+RunProgram="notepad.exe"
+Directory="C:\\Windows\\system32\\"
+</pre></blockquote>
+			<p>is equivalent to</p>
+<blockquote><pre>
 RunProgram="C:\\Windows\\system32\\notepad.exe"
-RunProgram="fm0:nowait:7z_RU.chm"
+</pre></blockquote>
+		</td>
+	</tr>
+
+	<tr id="ExecuteFile">
+		<td class="main">
+			<p><b><tt>ExecuteFile</tt>="command_for_executing"</b></p>
+		</td>
+		<td class="main">
+			<p>Execution command. <em>Native 7-zip SFX parameter.</em></p>
+			<p>Environment <a href="configinfo.html#vars" class="int">variables</a> supported by the module
+			   are allowed as well as <a href="configinfo.html#paths" class="int">relative</a> paths.
+			   The syntax is the same as for '<tt>RunProgram</tt>', with the exeption of the switches
+			   (they are not allowed). If needed, you can substitute the switches for the executable
+			   into '<tt>ExecuteParameters</tt>'.</p>
+		</td>
+	</tr>
+
+	<tr id="ExecuteParameters">
+		<td class="main">
+			<p><b><tt>ExecuteParameters</tt>="keys_command"</b></p>
+		</td>
+		<td class="main">
+			<p>Execution command. <em>Native 7-zip SFX parameter.</em></p>
+			<p>This is an optional parameter. You use it whenever you need to pass a parameter to
+			   '<tt>ExecuteFile</tt>' via the command line.</p>
+		</td>
+	</tr>
+
+	<tr id="InstallPath">
+		<td class="main">
+			<p><b><tt>InstallPath</tt>="path_to_extract"</b></p>
+		</td>
+		<td class="main">
+			<p>Sets the extraction path. The extraction folder will not be deleted after the extraction.</p>
+			<p>If the '<tt>InstallPath</tt>' value is not present in the config file or the path was deleted
+			   from the interactive extraction dialog, the archive will be extracted to a temporary folder.
+			   This temporary folder will be deleted after the extraction and execution of all commands.</p>
+			<p>Environment <a href="configinfo.html#vars" class="int">variables</a> are allowed (with the
+			   exception of %%T and variables defined in '<tt>SetEnvironment</tt>', if %%T is used in any
+			   of them). You MUST use DOUBLE backslashes in paths. For example:</p>
+				<blockquote><pre>InstallPath="C:\\Windows\\system32\\test"</pre></blockquote>
+				or
+				<blockquote><pre>InstallPath="%PROGRAMFILES%\\test"</pre></blockquote>
+			<p><a href="configinfo.html#paths" class="int">Relative</a> paths are allowed. The current
+			   folder is the one from which the program launching SFX archive was executed. For example,</p>
+				<blockquote><pre>InstallPath="test"</pre></blockquote>
+			<p>creates a folder with the name of "test" in the folder from which the program launching SFX
+			   archive was executed. All files will be extracted to the "test" folder. On the other hand,</p>
+				<blockquote><pre>InstallPath="."</pre></blockquote>
+			<p>extracts the archive content to the folder from which the program launching SFX archive was
+			   executed. Also, </p>
+				<blockquote><pre>InstallPath="%%S"</pre></blockquote>
+			<p>extracts the archive content to the folder where the SFX is located.</p>
+			<p>If all you need is to extract the archive content to a certain folder, you need to specify
+			   a value for '<tt>InstallPath</tt>' in the config file. In this case you should not specify
+			   '<tt>RunProgram</tt>' or '<tt>ExecuteFile</tt>' in the config file. '<tt>AutoInstall</tt>'
+			   or '<tt>AutoInstallX</tt>' may be specified in the config file, but should not be invoked
+			   via the command line or with the [SHIFT] key. If you specify '<tt>RunProgram</tt>' or
+			   '<tt>ExecuteFile</tt>' or invoke '<tt>AutoInstall</tt>' and '<tt>AutoInstallX</tt>', the
+			   specified executable will be launched after the extraction.</p>
+		</td>
+	</tr>
+
+	<tr id="OverwriteMode">
+		<td class="main">
+			<p><b><tt>OverwriteMode</tt>="x"</b></p>
+		</td>
+		<td class="main">
+			<p>Where x = 0, 1 or 2 (must be enclosed in quotes)</p>
+			<ul>
+				<li>0 - overwrite all files (default mode)</li>
+				<li>1 - do not overwrite the existing files</li>
+				<li>2 - overwrite only the older files</li>
+			</ul>
+			<p>You can alter the config file parameter from the command line by using
+			   <a href="switches.html#omX">'-omX'</a> switch.</p>
+		</td>
+	</tr>
+
+	<tr id="RunProgram">
+		<td class="main">
+			<p><b><tt>RunProgram</tt>="command_executing"</b></p>
+		</td>
+		<td class="main">
+			<p>Execution command (multiple instances are allowed). <em>Native 7-zip SFX parameter.</em></p>
+			<p>Contains the executable file name. Can also contain: the executable file path (environment
+			<a href="configinfo.html#vars" class="int">variables</a> supported by the module are allowed
+			as well as <a href="configinfo.html#paths" class="int">relative</a> paths), prefixes and
+			switches for the executable file.</p>
+			<p>For example,</p>
+<blockquote><pre>
+RunProgram="notepad.exe"
+RunProgram="C:\\Windows\\system32\\notepad.exe"
+RunProgram="%Path%\\notepad.exe"
+RunProgram="fm0:nowait:7z_EN.chm"
 RunProgram="\"%%T\\Reader7Rus.msi\" /qn"
-RunProgram="hidcon:fm0:\"%%S\\install.cmd\" /Q"</PRE>
-      <P>В двух последних случаях, при наличии ключей для исполняемого файла, 
-      <B>путь и имя исполняемой программы</B> заключаются в дополнительные 
-      кавычки. Префиксы и ключи для исполняемого файла при этом в дополнительные 
-      кавычки не включаются.</P></TD></TR>
-  <TR id=SelfDelete>
-    <TD class=main>
-      <P><B><TT>SelfDelete</TT>="1"</B></P></TD>
-    <TD class=main>
-      <P>Удаляет SFX архив по окончании процесса.<BR>В файле конфигурации 
-      допустимое значение только "1", другие игнорируются. Данный параметр 
-      работает ТОЛЬКО В ТОМ СЛУЧАЕ, если запуск SFX архива был произведен с 
-      жесткого диска. Для остальных устройств (CD-ROM, дискеты, Flash, сетевые 
-      диски и т.д.) - игнорируется.</P>
-      <P>Данный параметр может быть переопределен из командной строки ключом <A 
-      href="switches.html#sdX">'-sdX'</A>.</P></TD></TR>
-  <TR id=SetEnvironment>
-    <TD class=main>
-      <P><B><TT>SetEnvironment</TT>="<TT>variable</TT>=<TT>string</TT>"</B></P></TD>
-    <TD class=main>
-      <P>Команда создания переменной (множественная).</P>
-      <P><B>'<TT>variable</TT>'</B> - имя переменной, которое не должно 
-      совпадать с именами <A class=int 
-      href="variables.html#vars">переменных</A>, обрабатываемых модулем. Имена 
-      переменных модуля НЕ зависят от регистра.</P>
-      <P><B>'<TT>string</TT>'</B> - значение переменной. Допустимы <A class=int 
-      href="variables.html#vars">переменные</A>, обрабатываемые модулем, которые 
-      могут быть и частью '<TT>string</TT>'.</P>
-      <P>Примеры написания:</P><PRE class=pre40>SetEnvironment="Var1=E:\\totalcmd"
-SetEnvironment="Var2=E:\\totalcmd\\"
+RunProgram="hidcon:fm0:\"%%S\\install.cmd\" /Q"
+</pre></blockquote>
+			<p>In the last two cases the <b>executable file path and name</b> are enclosed in additional
+			   quotes because of the switches for the executable file. Prefixes and switches do not need
+			   to be enclosed in additional quotes.</p>
+		</td>
+	</tr>
+
+	<tr id="SelfDelete">
+		<td class="main">
+			<p><b><tt>SelfDelete</tt>="1"</b></p>
+		</td>
+		<td class="main">
+			<p>Deletes the SFX when the process is over.</p>
+			<p>"1" is the only acceptable value; others will be ignored. This function works IF AND ONLY IF
+			   the SFX was launched from the hard drive. The function will not work if the SFX was launched
+			   from other devices (CD-ROM, Floppy, Flash, Network drive, etc).</p>
+			<p>You can alter the config file parameter from the command line by using
+			   <a href="switches.html#sdX">'-sdX'</a> switch.</p>
+		</td>
+	</tr>
+
+	<tr id="SetEnvironment">
+		<td class="main">
+			<p><b><tt>SetEnvironment</tt>="<tt>variable</tt>=<tt>string</tt>"</b></p>
+		</td>
+		<td class="main">
+			<p>Environment variable creation command (multiple instances are allowed).</p>
+			<p><b>'<tt>variable</tt>'</b> -  variable name. It should not match the
+			   <a class="int" href="configinfo.html#vars">variables</a> already supported by the module.
+			   Variable names are NOT case sensitive.</p>
+			<p><b>'<tt>string</tt>'</b> - variable value. Environment
+			   <a class="int" href="configinfo.html#vars">variables</a> already supported by the module
+			   can be used as a part of '<tt>string</tt>'.</p><br>
+			   <p>Examples:</p>
+<blockquote><pre>
+SetEnvironment="Var1=E:\\totalcmd"
+SetEnvironment="Var2=E:\\totalcmd\\\"
 SetEnvironment="Var3=\"E:\\totalcmd\""
 SetEnvironment="Var4=\"E:\\totalcmd\\\""
 SetEnvironment="TC=\"%ProgramFiles%\\totalcmd\""
@@ -328,461 +250,353 @@ SetEnvironment="Var5=%%S\\TOOLS\\Total Commander"
 SetEnvironment="PathTC=%ProgramFiles%\\totalcmd"
 SetEnvironment="Var7=%PathTC%\\"
 SetEnvironment="Var8=\"%PathTC%\""
-SetEnvironment="Timer=30"</PRE>
-      <P>После создания переменной ее можно будет использовать так, 
-например:</P><PRE class=pre40>AutoInstall="hidcon:cmd /c copy rdm.txt %Var2%DOC"
+SetEnvironment="Timer=30"
+</pre></blockquote>
+			<p>After creating a variable, it can be used in the following ways:</p>
+<blockquote><pre>
+AutoInstall="hidcon:cmd /c copy rdm.txt %Var2%DOC"
 RunProgram="cmd /c xcopy \"%%T\" %TC% /s /e /i /y"
 RunProgram="fm%timer%:hidcon:cmd /c echo"
 AutoInstall2="cmd /c xcopy Lang \"%Var8%Lang\" /s"
-AutoInstall2="hidcon:cmd /c copy ReadMe.txt %Var8%"
-AutoInstall2="hidcon:cmd /c copy Hist.txt %VAR8%"
-AutoInstall2="hidcon:cmd /c copy Keyb.txt %var8%"</PRE>
-      <P>Созданные переменные могут использоваться как в параметрах модуля, так 
-      и в других программах (.cmd, .bat файлах) запущенных из модуля.</P></TD></TR>
-  <TR id=Shortcut>
-    <TD class=main>
-      <P><B><TT>Shortcut</TT>="<TT>type</TT>,{<TT>src_file_path</TT>},<BR>{<TT>command_line_for_file</TT>},<BR>{<TT>folder_for_shortcut</TT>},{<TT>decription</TT>},<BR>{<TT>shortcut_name</TT>},{<TT>working_directory</TT>},<BR>{<TT>icon_file</TT>},{<TT>icon_index</TT>}"</B></P></TD>
-    <TD class=main>
-      <P>Команда создания ярлыка (множественная).</P>
-      <P>Каждый параметр, исключая '<TT>type</TT>', должен быть заключен в 
-      фигурные скобки, параметры разделяются запятыми. Обязательными параметрами 
-      являются только '<TT>type</TT>' и '<TT>src_file_path</TT>'. Если какой-то 
-      параметр ярлыка не нужен - используйте пустые фигурные скобки '{}'. 
-      Неиспользуемые параметры, после ПОСЛЕДНЕГО ИСПОЛЬЗУЕМОГО, можно не 
-      указывать.</P>
-      <P>Только <A class=int href="variables.html#vars">переменные среды модуля 
-      и переменные модуля</A>, а также переменные, определяемые пользователем в 
-      параметрах '<TT>SetEnvironment</TT>', разбираются и подставляются (будут 
-      подставлены ЗНАЧЕНИЯ этих переменных) во всех параметрах команды 
-      '<TT>Shortcut</TT>'. Но реально их можно/нужно использовать только в трех 
-      параметрах: '<TT>src_file_path</TT>', '<TT>working_directory</TT>' и 
-      '<TT>icon_file</TT>'.</P>
-      <P>Пути в параметрах заключать в кавычки не надо, но не забывайте про 
-      двойные обратные слеши.</P>
-      <P>Если вам потребуется указать где-нибудь фигурную скобку (например, в 
-      '<TT>decription</TT>') используйте двойную, т.е. {"Это описание со 
-      {{скобками}}"} даст результат "Это описание со {скобками}".</P>
-      <P><B>'<TT>type</TT>'</B> одно или двухсимвольное поле, которое может 
-      принимать следующие значения:</P>
-      <UL>
-        <LI>D - Создать ярлык на Рабочем столе 
-        <LI>S - Создать ярлык в меню кнопки "Пуск" 
-        <LI>P - Создать ярлык в меню "Пуск -&gt; Программы" 
-        <LI>T - Создать ярлык в папке "Автозагрузка" </LI></UL>
-      <P>Ярлыки создаются ДЛЯ ВСЕХ пользователей. Для того, чтобы создать ярлык 
-      для текущего пользователя, к указанным символам надо добавить 'u', т.е. 
-      Shortcut="Du,{cmd.exe}" создаст ярлык на Рабочем столе текущего 
-      пользователя.</P>
-      <P><B>'<TT>src_file_path</TT>'</B> - имя (или путь и имя) файла для 
-      которого надо создать ярлык.</P>
-      <P><B>'<TT>command_line_for_file</TT>'</B> - ключи командной строки для 
-      запуска этого файла.</P>
-      <P><B>'<TT>folder_for_shortcut</TT>'</B> - папка, в которой будет создан 
-      ярлык, т.е. Shortcut="Pu,{cmd.exe},{/?},{test}" создаст в меню "Пуск -&gt; 
-      Программы" текущего пользователя папку "test", а в ней ярлык с именем 
-      "cmd.lnk" и параметрами запуска "cmd.exe /?".</P>
-      <P><B>'<TT>description</TT>'</B> - описание ярлыка.</P>
-      <P><B>'<TT>shortcut_name</TT>'</B> - имя ярлыка БЕЗ РАСШИРЕНИЯ. Если не 
-      указано - используется имя исходного файла, к которому добавляется .lnk. 
-      Т.е. Shortcut="P,{cmd.exe},{/?},{test},{Run cmd},{Run Command Line Help}" 
-      создаст в меню "Пуск -&gt; Программы" для всех пользователей папку "test", 
-      а в ней ярлык с именем "Run Command Line Help.lnk" и параметрами запуска 
-      "cmd.exe /?"</P>
-      <P><B>'<TT>working_directory</TT>'</B> - рабочая папка программы (т.е. 
-      текущая для нее при запуске). В свойствах ярлыка это параметр "Рабочая 
-      папка".</P>
-      <P><B>'<TT>icon_file</TT>'</B> - путь и имя файла, в котором содержится 
-      иконка для ярлыка.</P>
-      <P><B>'<TT>icon_index</TT>'</B> - номер иконки в файле, указанном в 
-      '<TT>icon_file</TT>'.</P>
-      <P>Выполнение параметра '<TT>Shortcut</TT>' может быть изменено префиксом 
-      <A href="prefixes.html#shcX">'shcX'</A>. </P></TD></TR>
-  <TR id=ShortcutX>
-    <TD class=main>
-      <P><B><TT>ShortcutX</TT>="<TT>type</TT>,{<TT>src_file_path</TT>},<BR>{<TT>command_line_for_file</TT>},<BR>{<TT>folder_for_shortcut</TT>},{<TT>decription</TT>},<BR>{<TT>shortcut_name</TT>},{<TT>working_directory</TT>},<BR>{<TT>icon_file</TT>},{<TT>icon_index</TT>}"</B></P></TD>
-    <TD class=main>
-      <P>Где X - литера варианта соответствующей автоматической установки 
-      ('<TT>AutoInstallX</TT>'). В качестве X допустимы [0...9], [A...Z], 
-      [a...z]. Команда создания ярлыка (множественная).</P>
-      <P>Синтаксис команды аналогичен команде '<TT>Shortcut</TT>'.</P>
-      <P>Если для автоматической установки не указано создание ярлыков, будет 
-      использован параметр по умолчанию, то есть, '<TT>Shortcut</TT>'. Например, 
-      создан SFX архив с файлом конфигурации, содержащим следующие записи:</P><PRE class=pre40>RunProgram="setup.exe"
-AutoInstall="setup.exe /S"
-AutoInstall1="setup1.exe /S"
-AutoInstall2="setup2.exe /S"
-AutoInstall3="setup3.exe /S"
-Shortcut="Du,{%%T\\mp.exe},{},{},{Play},{Player}"
-Shortcut1="Pu,{%%T\\mp.exe},{},{},{Play},{Player}"
-Shortcut2="Tu,{%%T\\mp.exe},{},{},{Play},{Player}"</PRE>
-      <P>После запуска этого SFX архива:</P>
-      <UL>
-        <LI>без ключей - сработает параметр '<TT>Shortcut</TT>' 
-        <LI>без ключей с удерживанием клавиши [Shift] - сработает параметр 
-        '<TT>Shortcut</TT>' 
-        <LI>с ключом '<TT>-ai1</TT>' - сработает параметр '<TT>Shortcut1</TT>' 
-        <LI>с ключом '<TT>-ai2</TT>' - сработает параметр '<TT>Shortcut2</TT>' 
-        <LI>с ключом '<TT>-ai3</TT>' - сработает параметр '<TT>Shortcut</TT>' 
-        <LI>с ключом '<TT>-ai12</TT>' - сработают параметры '<TT>Shortcut1</TT>' 
-        и '<TT>Shortcut2</TT>' 
-        <LI>с ключом '<TT>-ai13</TT>' - сработает параметр '<TT>Shortcut1</TT>' 
-        <LI>с ключом '<TT>-ai123</TT>' - сработают параметры 
-        '<TT>Shortcut1</TT>' и '<TT>Shortcut2</TT>' </LI></UL>
-      <P>Выполнение параметра '<TT>ShortcutX</TT>' может быть изменено префиксом 
-      <A href="prefixes.html#shcX">'shcX'</A>.</P></TD></TR>
-  <TR id=VolumeNameStyle>
-    <TD class=main>
-      <P><B><TT>VolumeNameStyle</TT>="x"</B></P></TD>
-    <TD class=main>
-      <P>Определяет схему имён многотомного SFX архива. Если параметр 
-      отсутствует в файле конфигурации или его значение равно "0", то работает 
-      только такая схема:</P><PRE class=pre40>name.7z.001.exe - имя SFX архива (сделан из первого тома)
-name.7z.002     - второй том
-name.7z.003     - третий том
-...</PRE>
-      <P>Если параметр равен "1", то к первой схеме добавляется вторая и может 
-      использоваться любая из схем:</P><PRE class=pre40>name.exe	- имя SFX архива (сделан из первого тома)
-name.001	- второй том (переименован)
-name.002	- третий том (переименован)
-...</PRE></TD></TR>
-  <TR>
-    <TH class=main colSpan=2>
-      <P>Внешний вид</P></TH></TR>
-  <TR id=ExtractDialogWidth>
-    <TD class=main>
-      <P><B><TT>ExtractDialogWidth</TT>="x"</B></P></TD>
-    <TD class=main>
-      <P>МИНИМАЛЬНАЯ ширина окна диалога процесса распаковки, где "x" - ширина 
-      окна в пикселях.</P></TD></TR>
-  <TR id=ExtractPathWidth>
-    <TD class=main>
-      <P><B><TT>ExtractPathWidth</TT>="x"</B></P></TD>
-    <TD class=main>
-      <P>МИНИМАЛЬНАЯ ширина окон диалогов для ввода пути распаковки (отдельный 
-      <A class=int href="#ExtractPath">'ExtractPath'</A> и совмещенный <A 
-      class=int href="#ExtractPathText">'BeginPrompt' + 'ExtractPath'</A>), где 
-      "x" - ширина окна в пикселях. Если после форматирования текста ширина окна 
-      получается меньше этого значения, оно расширяется до этой 
-  величины.</P></TD></TR>
-  <TR id=GUIFlags>
-    <TD class=main>
-      <P><B><TT>GUIFlags</TT>="x"</B></P></TD>
-    <TD class=main>
-      <P>Набор флагов, изменяющий внешний вид диалоговых окон, где "x" число, 
-      равное сумме числовых значений флагов, либо выражение "2+4+128+1024". 
-      Порядок числовых значений в выражении может быть любой. Числовые значения 
-      определяют следующее:</P>
-      <UL>
-        <LI>1 - отображать процент распаковки в заголовке окна процесса 
-        распаковки справа (по умолчанию - слева) 
-        <LI>2 - не отображать процент распаковки в заголовке окна процесса 
-        распаковки 
-        <LI>4 - отображать процент распаковки под индикатором процесса 
-        (ProgressBar'ом) 
-        <LI>8 - использовать стили (схемы) Windows XP 
-        <LI>16 - использовать жирный шрифт для процента распаковки (действует 
-        только, если он отображается под индикатором процесса (ProgressBar'ом), 
-        т.е. флаг 4 присутствует) 
-        <LI>32 - отображать иконку в окне процесса распаковки 
-        <LI>64 - использовать для указания пути распаковки совмещенный диалог <A 
-        class=int href="#ExtractPathText">'BeginPrompt' + 'ExtractPath'</A> 
-        (данный флаг имеет приоритет над флагом 128 и флагом 1024) 
-        <LI>128 - использовать для указания пути распаковки отдельный диалог <A 
-        class=int href="#ExtractPath">'ExtractPath'</A> (действует только, если 
-        флаг 64 отсутствует; данный флаг имеет приоритет над флагом 1024) 
-        <LI>256 - подтверждать отмену установки/распаковки (текст диалога отмены 
-        можно назначить параметром <A href="#CancelPrompt">'CancelPrompt'</A>) 
-        <LI>512 - не отображать иконку в заголовке всех окон и по [Alt+Tab] 
-        <LI>1024 - отображать иконку в окне указания пути распаковки (действует 
-        только в отдельном диалоге <A class=int 
-        href="#ExtractPath">'ExtractPath'</A>, т.е. флаг 64 отсутствует, а флаг 
-        128 присутствует) 
-        <LI>2048 - отображать иконку модуля в диалоге <A 
-        href="#BeginPrompt">'BeginPrompt'</A> и в совмещенном диалоге <A 
-        class=int href="#ExtractPathText">'BeginPrompt' + 'ExtractPath'</A>, 
-        вместо иконки со знаком вопроса или иконки с буквой "i"; при отсутствии 
-        параметра '<TT>BeginPrompt</TT>' флаг игнорируется 
-        <LI>4096 - изменить в диалоге <A href="#BeginPrompt">'BeginPrompt'</A> и 
-        в совмещенном диалоге <A class=int href="#ExtractPathText">'BeginPrompt' 
-        + 'ExtractPath'</A> названия кнопок и иконку: вместо "Да"-"Нет" будет 
-        "ОК"-"Отмена", а вместо иконки со знаком вопроса будет иконка с буквой 
-        "i" (в части иконок флаг 2048 имеет приоритет и если он установлен, то 
-        будет отображаться иконка модуля); при отсутствии параметра 
-        '<TT>BeginPrompt</TT>' флаг игнорируется 
-        <LI>8192 - не отображать прогресс-бар на значке SFX архива в панели 
-        задач для Windows 7 
-        <LI>16384 - отображать символ '&amp;' в текстах диалогов </LI></UL>
-      <P>Например, чтобы не отображать проценты в заголовке, но отображать под 
-      индикатором, использовать указание пути распаковки в отдельном диалоге и 
-      отображать в нем иконку, нужно указать GUIFlags="2+4+128+1024" или 
-      GUIFlags="1158"&nbsp; (2+4+128+1024=1158).</P>
-      <P>Попытки сбросить неустановленный флаг или добавить уже установленный 
-      флаг - ИГНОРИРУЮТСЯ.<BR>Т.е., если пользователь укажет (по 
-      ошибке):<BR>GUIFlags="16...+16", то модуль +16 проигнорирует, т.к. этот 
-      флаг УЖЕ УСТАНОВЛЕН и не сделает GUIFlags="32...", а 
-      при<BR>GUIFlags="137+1" ("1+8+128+1") не сделает GUIFlags="138", а 
-      проигнорирует +1, т.к. флаг 1 УЖЕ УСТАНОВЛЕН.</P>
-      <P>Данный параметр может быть переопределен из командной строки ключом <A 
-      href="switches.html#gfX">'-gfX'</A>.</P></TD></TR>
-  <TR id=GUIMode>
-    <TD class=main>
-      <P><B><TT>GUIMode</TT>="x"</B></P></TD>
-    <TD class=main>
-      <P>Где x = 0, 1 или 2 (обязательно в кавычках, т.е. GUIMode="2")</P>
-      <UL>
-        <LI>0 - стандартный режим - <I>родной режим архиватора 7-Zip</I> (режим 
-        по умолчанию), т.е. с кнопками "Отмена" и "Закрыть" (которая в правом 
-        верхнем углу окна) 
-        <LI>1 - отображать процесс распаковки, но скрыть кнопку "Отмена", 
-        блокировать кнопку "Закрыть" (которая в правом верхнем углу окна) и 
-        клавишу [Esc] на клавиатуре 
-        <LI>2 - не отображать диалог процесса распаковки (т.е. "тихий" режим) 
-        </LI></UL>
-      <P>Данный параметр может быть переопределен из командной строки ключом <A 
-      href="switches.html#gmX">'-gmX'</A>.</P></TD></TR>
-  <TR id=MiscFlags>
-    <TD class=main>
-      <P><B><TT>MiscFlags</TT>="x"</B></P></TD>
-    <TD class=main>
-      <P>Набор флагов, разрешающий проверки и вывод диалоговых окон 
-      предупреждений ('<TT>WarningTitle</TT>'), где "x" число, равное сумме 
-      числовых значений флагов, либо выражение "1+2". Порядок числовых значений 
-      в выражении может быть любой. Числовые значения определяют следующее:</P>
-      <UL>
-        <LI>1 - не проверять свободное место на диске необходимое для процесса 
-        распаковки 
-        <LI>2 - не проверять размер физической памяти необходимой для процесса 
-        распаковки 
-        <LI>4 - запрашивать права администратора для всех операций текущего SFX, 
-        если таких прав нет у пользователя запустившего SFX 
-        <LI>8 - запрос пароля (диалог '<TT>PasswordTitle</TT>') <B>после</B> 
-        диалогов '<TT>BeginPrompt</TT>' и '<TT>ExtractPath</TT>' или 
-        '<TT>BeginPrompt</TT>' + '<B>ExtractPath</B>', без этого флага диалог 
-        '<TT>PasswordTitle</TT>' будет появляться <B>до</B> диалогов 
-        '<TT>BeginPrompt</TT>' и '<TT>ExtractPath</TT>' или 
-        '<TT>BeginPrompt</TT>' + '<B>ExtractPath</B>' 
-        <LI>16 - отключает вывод сообщения об ошибке "отменено пользователем" 
-        <LI>32 - сменить порядок обработки параметров 
-        '<TT>ExtractMaskExclude</TT>', '<TT>ExtractMaskInclude</TT>'. 
-        <P>Без MiscFlgs=32 обработка идет так: Проверяем 
-        '<TT>ExtractMaskExclude</TT>'. Файл попадает в маску - НЕ распаковываем, 
-        переходим к следующему файлу. Тут файл не попал в маску 
-        '<TT>ExtractMaskExclude</TT>', поэтому проверяем 
-        '<TT>ExtractMaskInclude</TT>', если файл попадает в маску - распаковываем</P>
-        <P>С MiscFlags=32. Проверяем '<TT>ExtractMaskInclude</TT>'. Файл 
-        попадает в маску - распаковываем, переходим к следующему файлу. Тут файл 
-        не попал в маску '<TT>ExtractMaskInclude</TT>', поэтому проверяем 
-        '<TT>ExtractMaskExclude</TT>', если файл попадает в маску - НЕ 
-        распаковываем</P>
-        <LI>64 - отключает использование дополнительных файлов конфигурации 
-        <LI>128 - отключает SfxAPI </LI></UL>
-      <P>Данный параметр может быть переопределен из командной строки ключом <A 
-      href="switches.html#mfX">'-mfX'</A>.</P></TD></TR>
-  <TR id=Progress>
-    <TD class=main>
-      <P><B><TT>Progress</TT>="x"</B></P></TD>
-    <TD class=main>
-      <P>Где x = yes или no (обязательно в кавычках, т.е. Progress="no") 
-      <I>Параметр оригинального SFX модуля архиватора 7-Zip.</I></P>
-      <P>Progress="no" равнозначен GUIMode="2". Если в файле конфигурации вместе 
-      с '<TT>Progress</TT>' будет указан '<TT>GUIMode</TT>', или '<TT>-gmX</TT>' 
-      в командной строке, то '<TT>Progress</TT>' будет проигнорирован, т.к. 
-      '<TT>GUIMode</TT>', и '<TT>-gmX</TT>' имеют приоритет.</P></TD></TR>
-  <TR>
-    <TH class=main colSpan=2>
-      <P>Текст</P></TH></TR>
-  <TR id=Title>
-    <TD class=main>
-      <P><B><TT>Title</TT>="new_title"</B></P></TD>
-    <TD class=main>
-      <P>Изменяет заголовок (по умолчанию "7z SFX") следующих окон: 
-      '<TT>BeginPrompt</TT>', '<TT>CancelPrompt</TT>', '<TT>FinishMessage</TT>' 
-      и '<TT>HelpText</TT>'. <I>Параметр оригинального SFX модуля архиватора 
-      7-Zip.</I></P>
-      <P>Если параметр отсутствует, то вместо '<TT>Title</TT>' везде будет 
-      выводится имя SFX архива без расширения. Если имя SFX архива "не удалось 
-      определить", то будет выводиться значение по умолчанию.</P></TD></TR>
-  <TR id=BeginPrompt>
-    <TD class=main>
-      <P><B><TT>BeginPrompt</TT>="some_text"<BR>&nbsp;</B></P><IMG alt=BeginPrompt src="misc/BeginPrompt1.png"></TD>
-    <TD class=main>
-      <P>Вывод диалога с сообщением при запуске SFX архива.<I> Параметр 
-      оригинального SFX модуля архиватора 7-Zip.</I></P>
-      <P>В зависимости от флага 64 параметра '<TT>GUIFlags</TT>' может принимать 
-      разный вид.<BR>Здесь приведен рисунок, если флаг 64 отсутствует.</P>
-      <P>Если флаг 64 присутствует - диалог '<TT>BeginPrompt</TT>' объединен с 
-      полем редактирования пути распаковки как показано на рисунке ниже.</P>
-      <P>Подавляют вывод окна (если оно указано) ключи командной строки: <A 
-      href="switches.html#ai">'-ai'</A>, <A href="switches.html#aiX">'-aiX'</A> 
-      и <A href="switches.html#y">'-y'</A>.</P></TD></TR>
-  <TR id=BeginPromptTimeout>
-    <TD class=main>
-      <P><B><TT>BeginPromptTimeout</TT>="x"</B></P></TD>
-    <TD class=main>
-      <P>Определяет время отображения диалога '<TT>BeginPrompt</TT>' или 
-      совмещенного диалога '<TT>BeginPrompt</TT>' + '<B>ExtractPath</B>' (как 
-      показано на рисунке ниже) и кнопку по умолчанию, где X: 
-      <UL>
-        <LI>1...999 - отображать окно 1...999 секунд; обратный отсчет времени 
-        отображается на кнопке "Да" ("OK"), и по его истечении она будет нажата 
-        автоматически. 
-        <LI>-1...-999 - отображать окно 1...999 секунд; обратный отсчет времени 
-        отображается на кнопке "Нет" ("Отмена"), и по его истечении она будет 
-        нажата автоматически. 
-        <LI>0 - игнорируется </LI></UL>
-      <P>Данный параметр может быть переопределен из командной строки ключом <A 
-      href="switches.html#bptX">'-bptX'</A>. Командная строка имеет 
-      приоритет.</P></TD></TR>
-  <TR id=ExtractPathText>
-    <TD class=main>
-      <P><B><TT>ExtractPathText</TT>="some_text"<BR>&nbsp;</B></P><IMG alt="BeginPrompt + ExtractPath" src="misc/BeginPrompt2.png"></TD>
-    <TD class=main>
-      <P>Сообщение над полем редактирования пути распаковки (по умолчанию "Путь 
-      распаковки:").</P>
-      <P>На рисунке показан совмещенный диалог '<TT>BeginPrompt</TT>' + 
-      '<B>ExtractPath</B>' (отсутствует флаг 128 параметра '<TT>GUIFlags</TT>'). 
-      Отображаемый на кнопке "Да" обратный отсчет времени, определен параметром 
-      '<TT>BeginPromptTimeout</TT>'.</P>
-      <P>Путь в поле редактирования берется из <A 
-      href="#InstallPath">'InstallPath'</A>, но он может быть изменен 
-      пользователем. Отсутствие пути (имеется в виду отсутствие параметра 
-      '<TT>InstallPath</TT>' в файле конфигурации, или InstallPath="", или 
-      стирание пути, в соответствующем поле редактирования, после запуска 
-      архива) повлечет распаковку во временную папку и удаление распакованных 
-      файлов по окончании работы.</P></TD></TR>
-  <TR id=ExtractPath>
-    <TD class=main>
-      <P><B><TT>ExtractPathTitle</TT>="title_text"<BR>&nbsp;</B></P><IMG alt=ExtractPath src="misc/ExtractPath.png"></TD>
-    <TD class=main>
-      <P>Изменяет заголовок диалога указания пути распаковки (по умолчанию "Путь 
-      распаковки"). Используется только в отдельном диалоге <B>'ExtractPath'</B> 
-      (показанном на рисунке) для указания пути распаковки (флаг 128 параметра 
-      '<TT>GUIFlags</TT>'). Если флаг 128 отсутствует, параметр 
-      '<TT>ExtractPathTitle</TT>' игнорируется.<BR>Для совмещенного диалога 
-      (флаг 64 параметра '<TT>GUIFlags</TT>') значение берется из 
-      '<TT>Title</TT>' как показано на рисунке выше.<BR>Флаг 1024 параметра 
-      '<TT>GUIFlags</TT>' заставляет отображать иконку в диалоге указания пути 
-      распаковки, как показано на рисунке. Действует только вместе с флагом 128, 
-      если флаг 128 отсутствует, то флаг 1024 игнорируется.<BR>Путь в поле 
-      редактирования берется из <A href="#InstallPath">'InstallPath'</A>, но он 
-      может быть изменен пользователем.</P>
-      <P><B>'ExtractPath'</B> не является параметром модуля, а используется в 
-      справке только для обозначения диалога, показанного на рисунке.</P></TD></TR>
-  <TR id=ExtractTitle>
-    <TD class=main>
-      <P><B><TT>ExtractTitle</TT>="new_title"<BR>&nbsp;</B></P><IMG alt=Progress src="misc/ExtractDialog.png"></TD>
-    <TD class=main>
-      <P>Изменяет заголовок окна распаковки (по умолчанию "Распаковка"). Можно 
-      указать что-нибудь вроде "Подготовка к установке".<BR>Флаг 32 параметра 
-      '<TT>GUIFlags</TT>' заставляет отображать иконку в диалоге распаковки, как 
-      показано на рисунке.<BR>Параметр GUIMode="1" скроет кнопку "Отмена" и 
-      заблокирует кнопку "Закрыть" (в правом верхнем углу окна).<BR>Параметр 
-      GUIMode="2" полностью скроет окно распаковки.</P></TD></TR>
-  <TR id=ExtractDialogText>
-    <TD class=main>
-      <P><B><TT>ExtractDialogText</TT>="text"</B></P></TD>
-    <TD class=main>
-      <P>Выводит указанный текст НАД индикатором процесса распаковки 
-      (ProgressBar-ом). Если не указан - текста просто не будет.</P></TD></TR>
-  <TR id=ExtractCancelText>
-    <TD class=main>
-      <P><B><TT>ExtractCancelText</TT>="button_text"</B></P></TD>
-    <TD class=main>
-      <P>Изменяет текст кнопки (по умолчанию "Отмена") в диалоге распаковки на 
-      указанный.<BR>Параметр GUIMode="1" скроет эту кнопку.</P></TD></TR>
-  <TR id=PasswordTitle>
-    <TD class=main>
-      <P><B><TT>PasswordTitle</TT>="new_title"<BR>&nbsp;</B></P><IMG alt=Password src="misc/PasswordText.png"></TD>
-    <TD class=main>
-      <P>Изменяет заголовок окна ввода пароля, по умолчанию имя SFX архива (без 
-      расширения). Можно указать что-нибудь вроде "Архив зашифрован".</P>
-      <P>Отображение диалога происходит всегда, если исходный 7z архив 
-      зашифрован, и не зависит от прочих параметров.</P>
-      <P>Если указан неверный пароль, то появится окно сообщения об ошибке.</P>
-      <P>Подавить вывод окна, если исходный 7z архив зашифрован, можно из 
-      командной строки только ключом <A 
-  href="switches.html#pX">'-pX'</A>.</P></TD></TR>
-  <TR id=PasswordText>
-    <TD class=main>
-      <P><B><TT>PasswordText</TT>="text"</B></P></TD>
-    <TD class=main>
-      <P>Выводит указанный текст НАД полем ввода пароля (по умолчанию "Введите 
-      пароль").</P></TD></TR>
-  <TR id=CancelPrompt>
-    <TD class=main>
-      <P><B><TT>CancelPrompt</TT>="cancel_dialog_text"<BR>&nbsp;</B></P><IMG alt=Cancel src="misc/CancelPrompt.png"></TD>
-    <TD class=main>
-      <P>Выводит диалог с текстом (по умолчанию "Вы действительно хотите 
-      отменить установку?") для подтверждения отмены (из любого диалога). Если 
-      флаг 256 параметра <A href="#GUIFlags">'GUIFlags'</A> отсутствует параметр 
-      '<TT>CancelPrompt</TT>' игнорируется и окно не выводится. В противном 
-      случае окно выводится с тестом указанным в '<TT>CancelPrompt</TT>', а если 
-      '<TT>CancelPrompt</TT>' отсутствует, используется текст по умолчанию.</P>
-      <P>Подавить вывод окна, если указано, можно из командной строки ключом <A 
-      href="switches.html#y">'-y'</A>.</P></TD></TR>
-  <TR id=WarningTitle>
-    <TD class=main>
-      <P><B><TT>WarningTitle</TT>="title_for_warnings"<BR>&nbsp;</B></P><IMG alt=Error src="misc/WarningTitle.png"></TD>
-    <TD class=main>
-      <P>Заголовок окна предупреждения (по умолчанию: "7z SFX: 
-      предупреждение").</P>
-      <P>Если параметр отсутствует, то вместо '<TT>WarningTitle</TT>' в окне 
-      предупреждения будет выводиться имя SFX архива (без расширения) с 
-      добавление ": предупреждение". Если имя SFX архива "не удалось 
-      определить", то будет выводиться значение по умолчанию.</P><BR>
-      <P>Текст предупреждения определяет модуль:</P><PRE class=pre40>Недостаточно физической памяти.
-Распаковка может занять продолжительное время.</PRE>
-      <P>или</P><PRE class=pre40>На диске недостаточно места для распаковки.</PRE>
-      <P>Окна предупреждений могут быть скрыты флагами в параметре <A 
-      href="#MiscFlags">'MiscFlags'</A>.</P>
-      <P>Подавить вывод окна, если указано, можно из командной строки ключом <A 
-      href="switches.html#mfX">'-mfX'</A>.</P></TD></TR>
-  <TR id=ErrorTitle>
-    <TD class=main>
-      <P><B><TT>ErrorTitle</TT>="title_for_errors"<BR>&nbsp;</B></P><IMG alt=Error src="misc/ErrorTitle.png"></TD>
-    <TD class=main>
-      <P>Заголовок окна сообщения об ошибке, надеюсь, Вы его ни когда не увидите 
-      <IMG class=inlineimg alt="" src="misc/wink.gif">, (по умолчанию: "7z SFX: 
-      ошибка").</P>
-      <P>Если параметр отсутствует, то вместо '<TT>ErrorTitle</TT>' в окне 
-      сообщения об ошибке будет выводиться имя SFX архива (без расширения) с 
-      добавление ": ошибка". Если имя SFX архива "не удалось определить", то 
-      будет выводиться значение по умолчанию.<BR>Текст сообщений об ошибках <IMG class=inlineimg alt="" src="misc/sad.gif"> определяет сам 
-модуль.</P></TD></TR>
-  <TR id=FinishMessage>
-    <TD class=main>
-      <P><B><TT>FinishMessage</TT>="finish_message"<BR>&nbsp;</B></P><IMG alt=Finish src="misc/FinishMessage.png"></TD>
-    <TD class=main>
-      <P>После всех операций (распаковка, запуск программ, удаление файлов, 
-      создание ярлыков и т.д.) будет выведен диалог с текстом, содержащимся в 
-      '<TT>FinishMessage</TT>'. При любой автоматической установке 
-      ('<TT>AutoInstall</TT>' или '<TT>AutoInstallX</TT>') вывод диалога 
-      блокируется.</P>
-      <P>Можно указать принудительное отображение '<TT>FinishMessage</TT>' из 
-      командной строки ключом '<TT>-fm1</TT>' или '<TT>-fmN</TT>'. Подавить 
-      вывод окна можно ключами <A href="switches.html#fmX">'-fm0'</A> или <A 
-      href="switches.html#y">'-y'</A>.<BR>Так же для конкретного варианта 
-      (например, определенного '<TT>AutoInstall</TT>', '<TT>RunProgram</TT>' или 
-      '<TT>ExecuteFile</TT>') можно указать то же самое префиксом <A 
-      href="prefixes.html#fmXp">'fmX'</A>.</P><PRE class=pre40>AutoInstall="hidcon:fm1:install.bat"</PRE>
-      <P>отобразит сообщение, хотя это и автоматическая установка, а</P><PRE class=pre40>RunProgram="nowait:fm0:setup.exe"</PRE>
-      <P>наоборот - запретит вывод '<TT>FinishMessage</TT>'.</P>
-      <P>Ключи командной строки имеют приоритет.</P>
-      <P>Подставив в ключ '<TT>-fmX</TT>' или в префикс '<TT>fmX</TT>' вместо X 
-      число 2...999, можно определить время отображения окна 
-      '<TT>FinishMessage</TT>'. Обратный отсчет времени отображается на кнопке 
-      "OK", и по его истечении окно закрывается, и работа модуля 
-      прекращается.</P></TD></TR>
-  <TR id=HelpText>
-    <TD class=main>
-      <P><B><TT>HelpText</TT>="some_text"<BR>&nbsp;</B></P><IMG alt=Help src="misc/HelpText.png"></TD>
-    <TD class=main>
-      <P>Позволяет указать справочный текст, который можно вызвать, указав в 
-      командной строке ключ <A href="switches.html#h">'-h'</A> или <A 
-      href="switches.html#h">'-?'</A>.</P>
-      <P>Будет выведен диалог с текстом, содержащимся в '<TT>HelpText</TT>' и 
-      кнопкой "OK". После закрытия данного диалога работа модуля будет прервана 
-      (т.е. ничего не будет распаковываться и устанавливаться).</P>
-      <P>Здесь можно указать тонкости установки данного SFX архива, ключи 
-      установки или все что захотите.</P></TD></TR></TBODY></TABLE>
-<P>&nbsp;</P></BODY></HTML>
+AutoInstall2="hidcon:cmd /c copy ReadMe.txt %Var9%"
+AutoInstall2="hidcon:cmd /c copy Hist.txt %VAR9%"
+AutoInstall2="hidcon:cmd /c copy Keyb.txt %var9%"
+</pre></blockquote>
+			<p>The variables created with '<tt>SetEnvironment</tt>' parameter can be used in other module
+			   parameters as well as in programs (.cmd, .bat files) launched from the module.</p>
+		</td>
+	</tr>
+
+	<tr id="Shortcut">
+		<td class="main">
+			<p><b><tt>Shortcut</tt>="<tt>type</tt>,{<tt>src_file_path</tt>},<br>
+				{<tt>command_line_for_file</tt>},<br>
+				{<tt>folder_for_shortcut</tt>},{<tt>description</tt>},<br>
+				{<tt>shortcut_name</tt>},{<tt>working_directory</tt>},<br>
+				{<tt>icon_file</tt>},{<tt>icon_index</tt>}"</b></p>
+		</td>
+		<td class="main">
+			<p>Shortcut creation command (multiple instances are allowed).</p>
+			<p>Each value (except for '<tt>type</tt>') must be enclosed in curly brackets aka braces.
+			   The values are separated by commas. The required values are 'type' and 'src_file_path'.
+			   Use the empty braces '{}' for the values you don't need, although you can omit all empty
+			   braces after the last value specified.</p>
+			<p>If you need to include braces in the text (e.g. in the shortcut description), use double
+			   braces. For example, {"This is a description {{with braces}}"} results in "This is a
+			   description {with braces}".</p>
+			<p>Paths '<tt>src_file_path</tt>' and  '<tt>icon_file</tt>' parameters do not need to be
+			   enclosed in quotes; however, remember about double backslashes.</p>
+			<p><b>'<tt>type</tt>'</b> - one or two symbol field that can take the following values:</p>
+			<ul>
+				<li>D - Creates shortcut on the Desktop</li>
+				<li>S - Creates shortcut in the "Start" menu</li>
+				<li>P - Creates shortcut in the "Start-&gt;Programs" menu</li>
+				<li>T - Creates shortcut in the "Startup" folder</li>
+			</ul>
+			<p>The shortcuts are created for ALL USERS. In order to create a shortcut for the current user
+			   only, add 'u' to the values listed above. For example, Shortcut="Du, {cmd.exe}" creates
+			   shortcut on the current user's Desktop only.</p>
+			<p><b>'<tt>src_file_path</tt>'</b> - name (and may be the path) of the file for which the
+			   shortcut is created. Do not forget to use DOUBLE backslashes when specifying the path.</p>
+			<p><b>'<tt>command_line_for_file</tt>'</b> - command line parameters for the file.</p>
+			<p><b>'<tt>folder_for_shortcut</tt>'</b> - folder in which the shortcut is created.
+			   Shortcut="Pu, {cmd.exe}, {/?}, {test}" creates the shortcut by the name of "cmd.lnk" and
+			   the parameters "cmd.exe /?" in the "test" folder of the current user's "Start-&gt;Programs"
+			   menu.</p>
+			<p><b>'<tt>description</tt>'</b> - shortcut description.</p>
+			<p><b>'<tt>shortcut_name</tt>'</b>- the shortcut name WITHOUT EXTENSION. If the value is not
+			   specified, the source file name is used and the 'lnk' extension is added to it. For example,
+			   Shortcut="P, {cmd.exe}, {/?}, {test}, {Run cmd}, {Run Command Line Help}" creates the
+			   shortcut by the name of "Run Command Line Help.lnk" and the command line parameter
+			   "cmd.exe /?" in the "test" folder of All Users' Start/Programs menu.</p>
+			<p><b>'<tt>working_directory</tt>'</b>- fills in the shortcut's "Start in:" field.</p>
+			<p><b>'<tt>icon_file</tt>'</b> - path and name of the file containing the shortcut icon.</p>
+			<p><b>'<tt>icon_index</tt>'</b> - icon number in file specified in '<tt>icon_file</tt>'.</p>
+			<p>You can specify as many '<tt>Shortcut</tt>' strings as you wish. They will be processed in
+			   the order of appearance in the config file.</p>
+		</td>
+	</tr>
+
+	<tr>
+		<th class="main" colspan="2"><p>Appearance</p></th>
+	</tr>
+
+	<tr id="ExtractDialogWidth">
+		<td class="main">
+			<p><b><tt>ExtractDialogWidth</tt>="x"</b></p>
+		</td>
+		<td class="main">
+			<p>Specifies the MINIMUM extraction dialog window width, where "x" is the window width in pixels.</p>
+		</td>
+	</tr>
+
+	<tr id="ExtractPathWidth">
+		<td class="main">
+			<p><b><tt>ExtractPathWidth</tt>="x"</b></p>
+		</td>
+		<td class="main">
+			<p>Specifies the MINIMUM width for the extraction path dialog windows (stand-alone
+			   <a href="#ExtractPath" class="int">'ExtractPath'</a> and combined
+			   <a href="#ExtractPathText" class="int">'BeginPrompt' + 'ExtractPath'</a>), where "x" is the
+			   window width in pixels. If after text formatting the window width is smaller than the
+			   specified value, the width is adjusted according to the value.</p>
+		</td>
+	</tr>
+
+	<tr id="GUIFlags">
+		<td class="main">
+			<p><b><tt>GUIFlags</tt>="x"</b></p>
+		</td>
+		<td class="main">
+			<p>A set of flags for changing the extraction dialog appearance, where "x" is a sum of the
+			   numeric values or a summation expression like "2+4+128+1024". You can use any order of
+			   numeric values in the summation expression. The numeric values define the following
+			   properties:</p>
+			<ul>
+				<li>1 - display the extraction percentage on the right of the window title (it is on the
+					left by default)</li>
+				<li>2 - do not display the extraction percentage in the window title</li>
+				<li>4 - display the extraction percentage under the Progress bar</li>
+				<li>8 - use Windows XP styles</li>
+				<li>16 - use bold font for the percentage indicator (works only if displayed under the
+					Progress bar, i.e. flag 4 is present)</li>
+				<li>32 - display the icon in the extraction dialog window</li>
+				<li>64 - use combined dialog <a href="#ExtractPathText" class="int">'BeginPrompt' + 'ExtractPath'</a>
+					for displaying the extraction path (the flag overrides flags 128 and 1024)</li>
+				<li>128 - use separate dialog <a href="#ExtractPath" class="int">'ExtractPath'</a> for
+					displaying the extraction path (works only if flag 64 is present).
+					This flag overrides flag 1024. </li>
+				<li>256 - confirm canceling installation/extraction process (the dialog text can be
+					customized with <a href="#CancelPrompt">'CancelPrompt'</a> parameter)</li>
+				<li>512 - do not display the icon in all windows (including the [ALT]+[TAB] window)</li>
+				<li>1024 - display the icon in the extraction path dialog (works only for the separate dialog
+					<a href="#ExtractPath" class="int">'ExtractPath'</a>, i.e. flag 64 is not present while
+					flag 128 is present)</li>
+				<li>2048 - display the icon in both <a href="#BeginPrompt">'BeginPrompt'</a> and combined
+					<a href="#ExtractPathText" class="int">'BeginPrompt' + 'ExtractPath'</a> dialog windows
+					instead of the "question mark" system icon. The flag is ignored, if '<tt>BeginPrompt</tt>'
+					parameter is not present in the config file.</li>
+				<li>4096 - change the button titles in both <a href="#BeginPrompt">'BeginPrompt'</a> dialog
+					and combined <a href="#ExtractPathText" class="int">'BeginPrompt' + 'ExtractPath'</a>
+					dialog from "Yes" - "No" to "OK" - "Cancel". The flag is ignored, if '<tt>BeginPrompt</tt>'
+					parameter is not present in the config file.</li>
+			</ul>
+			<p>For example, in order to display the extraction percentage under the progress bar instead of
+			   the window title, display the extraction path in a separate dialog window and display the
+			   icon in this window, you need to specify GUIFlags="2+4+128+1024" or GUIFlags="1158"
+			   (because 2+4+128+1024=1158).</p>
+			<p>Attempts to add an already set filag are ignored. For example, if you try to specify </p>
+			<p>GUIFlags="137+1" ("1+8+128+1") </p>
+			<p>that will not make GUIFlags="138". Instead, the last "+1" will be ignored, because flag 1
+			   has already been set.</p>
+			<p>This parameter can be altered from the command line with
+			   <a href="switches.html#gfX">'-gfX'</a> switch.</p>
+		</td>
+	</tr>
+
+	<tr id="GUIMode">
+		<td class="main">
+			<p><b><tt>GUIMode</tt>="x"</b></p>
+		</td>
+		<td class="main">
+			<p>Where x = 1 or 2 (always in double quotes, i.e. GUIMode="2")</p>
+			<ul>
+				<li>1 - shows the extraction process, but hides the "Cancel" button and disables the
+					"Close" button (in the window title bar) and [ESC] key on the keyboard.</li>
+				<li>2 - hides the extraction dialog completely (silent mode)</li>
+			</ul>
+			<p>You can override this parameter from the command line by specifying the
+			   <a href="switches.html#gmX">'-gmX'</a> switch.</p>
+		</td>
+	</tr>
+
+	<tr id="Progress">
+		<td class="main">
+			<p><b><tt>Progress</tt>="x"</b></p>
+		</td>
+		<td class="main">
+			<p>Where x = "yes" or "no" (must be enclosed in quotes, i. e. Progress="no").
+			   <em>Native 7-zip SFX parameter.</em></p>
+			<p>Progress="no" is equivalent to GUIMode="2". If the config file contains '<tt>GUIMode</tt>'
+			   (or '<tt>-gmX</tt>' is used in the command line) along with '<tt>Progress</tt>', the latter
+			   will be ignored. This is because '<tt>GUIMode</tt>' and '<tt>-gmX</tt>' override
+			   <tt>'Progress</tt>' parameter.</p>
+		</td>
+	</tr>
+
+	<tr>
+		<th class="main" colspan="2"><p>Text</p></th>
+	</tr>
+
+	<tr id="Title">
+		<td class="main">
+			<p><b><tt>Title</tt>="new_title"</b></p>
+		</td>
+		<td class="main">
+			<p>Changes the default title ("7-zip SFX") for the following dialog windows '<tt>BeginPrompt</tt>',
+			   '<tt>CancelPrompt</tt>', '<tt>FinishMessage</tt>' and '<tt>HelpText</tt>'.
+			   <em>Native 7-zip SFX parameter.</em></p>
+			<p>If this parameter is missing, the SFX archive name without extension is displayed instead.
+			   If the SFX archive name can not be determined, the default value is displayed.</p>
+		</td>
+	</tr>
+
+	<tr id="BeginPrompt">
+		<td class="main">
+			<p><b><tt>BeginPrompt</tt>="some_text"</b><br>&nbsp;</p><img alt="BeginPrompt" src="misc/beginprompt1.png">
+		</td>
+		<td class="main">
+			<p>Displays a message in a dialog window when SFX is launched.
+			   <em>Native 7-zip SFX parameter.</em></p>
+			<p>Depending on the presence of flag 64 in '<tt>GUIFlags</tt>' parameter the window may look
+			   differently. The screen shot on the left is taken with flag 64 absent.</p>
+			<p>If flag 64 is present, the '<tt>BeginPrompt</tt>' dialog window is combined with the editable
+			   extraction path field, as shown on the screen shot below.</p>
+			<p>You can suppress this window (if specified) with the following command line switches:
+			   <a href="switches.html#ai">'-ai'</a>, <a href="switches.html#aiX">'-aiX'</a> and
+			   <a href="switches.html#y">'-y'</a>.</p>
+		</td>
+	</tr>
+
+	<tr id="ExtractPathText">
+		<td class="main">
+			<p><b><tt>ExtractPathText</tt>="some_text"</b><br>&nbsp;</p><img alt="BeginPrompt with ExtractPath" src="misc/beginprompt2.png">
+		</td>
+		<td class="main">
+			<p>The text above the editable extraction path field  (which is "Extraction path:" by defult).</p>
+			<p>The screen shot on the left demonstrates the combined '
+			   <tt>BeginPrompt</tt>' + '<b>ExtractPath</b>' dialog window (flag 128 of '<tt>GUIFlags</tt>'
+			   parameter is absent).</p>
+			<p>The path in the extraction field is retrieved from
+			   <a href="#InstallPath">'InstallPath'</a> parameter, but it can be altered by user. If the
+			   '<tt>InstallPath</tt>' value is not present in the config file or the path was deleted by
+			   user  from the interactive extraction dialog, the archive will be extracted to a temporary
+			   folder. This temporary folder will be deleted after the extraction and execution of all
+			   commands.</p>
+		</td>
+	</tr>
+
+	<tr id="ExtractPath">
+		<td class="main">
+			<p><b><tt>ExtractPathTitle</tt>="title_text"</b><br>&nbsp;</p><img alt="ExtractPath" src="misc/extractpath.png">
+		</td>
+		<td class="main">
+			<p>Changes the extraction path dialog window title (which is "Extraction path" by defult).
+			   This parameter is used only for the stand-alone extraction path dialog window (invoked with
+			   flag 128 of '<tt>GUIFlags</tt>' parameter) for specifying the extraction path, as shown on
+			   the left. If flag 128 is absent, '<tt>ExtractPathTitle</tt>' parameter will be ignored.</p>
+			<p>For the combined dialog window (flag 64 of '<tt>GUIFlags</tt>' parameter) the value is
+			   retrieved from '<tt>Title</tt>' parameter, as shown on the screen shot above.</p>
+			<p>Flag 1024 of '<tt>GUIFlags</tt>' parameter forces the icon appearance in the extraction path
+			   dialog window, as shown on the left. It only works together with flag 128. If flag 128 is
+			   absent, flag 1024 is ignored.</p>
+		</td>
+	</tr>
+
+	<tr id="ExtractTitle">
+		<td class="main">
+			<p><b><tt>ExtractTitle</tt>="new_title"</b><br>&nbsp;</p><img alt="Progress" src="misc/extractdialog.png">
+		</td>
+		<td class="main">
+			<p>Changes the extraction dialog window title (which is "Extracting" by default). You can
+			   specify something like "Preparing the installation". Flag 32 of '<tt>GUIFlags</tt>' parameter
+			   forces the icon appearance in the extraction dialog window, as shown on the left.</p>
+			<p>By specifying GUIMode="1" you can hide the "Cancel" button and disable the "Close" button
+			   (in the window title bar).</p>
+			<p>By specifying GUIMode="2" you can completely hide the extraction window.</p>
+		</td>
+	</tr>
+
+	<tr id="ExtractDialogText">
+		<td class="main">
+			<p><b><tt>ExtractDialogText</tt>="text"</b></p>
+		</td>
+		<td class="main">
+			<p>Displays the specified text ABOVE the extraction progress indicator (Progress Bar).
+			   If this parameter is not specified, the text will not be displayed.<br></p>
+		</td>
+	</tr>
+
+	<tr id="ExtractCancelText">
+		<td class="main">
+			<p><b><tt>ExtractCancelText</tt>="button_text"</b></p>
+		</td>
+		<td class="main">
+			<p>Changes the button text in the extraction dialog window from "Cancel" (default) to the
+			   specified one.<br><b>Note</b>. You can hide this button by specifying GUIMode="1".</p>
+		</td>
+	</tr>
+
+	<tr id="CancelPrompt">
+		<td class="main">
+			<p><b><tt>CancelPrompt</tt>="cancel_dialog_text"</b><br>&nbsp;</p><img alt="Cancel" src="misc/cancelprompt.png">
+		</td>
+		<td class="main">
+			<p>Displays a dialog window with the text of your choice (by default: "Really cancel installation?")
+			   in order to confirm the cancellation from any dialog window. If flag 256 of
+			   <a href="#GUIFlags">'GUIFlags'</a> parameter is absent, '<tt>CancelPrompt</tt>' parameter is
+			   ignored and the window is not displayed. Otherwise, the window is displayed with the text
+			   specified in '<tt>CancelPrompt</tt>' or default text.</p>
+			<p>You can suppress the window from the command line with <a href="switches.html#y">'-y'</a> switch.</p>
+		</td>
+	</tr>
+
+	<tr id="ErrorTitle">
+		<td class="main">
+			<p><b><tt>ErrorTitle</tt>="title_for_errors_windows"</b><br>&nbsp;</p><img alt="Error" src="misc/errortitle.png">
+		</td>
+		<td class="main">
+			<p>The error window title. Hopefully, you won't see any <img src="misc/wink.gif" alt="" class="inlineimg">.
+			   The default title is "7-Zip SFX: error".</p>
+			<p>If this parameter is not specified, the SFX archive name (without the extension) is displayed
+			   with ":error" appended to it. If the SFX archive name can not be determined, the default
+			   value is displayed.</p>
+			<p>The actual text of error messages is defined by the module itself.</p>
+		</td>
+	</tr>
+
+	<tr id="FinishMessage">
+		<td class="main">
+			<p><b><tt>FinishMessage</tt>="finish_message"</b><br>&nbsp;</p><img alt="Finish" src="misc/finishmessage.png">
+		</td>
+		<td class="main">
+			<p>After finishing all operations (extraction, program execution, file deletion, shortcut
+			   creation, etc) a dialog window with '<tt>FinishMessage</tt>' text is displayed. Note that
+			   invoking any automated installation ('<tt>AutoInstall</tt>' or '<tt>AutoInstallX</tt>')
+			   automatically (this module is very unattended-oriented <img src="misc/wink.gif" alt="" class="inlineimg">)
+			   blocks the completion message.</p>
+			<p>You can force the '<tt>FinishMessage</tt>' appearance from the command line with two
+			   switches: '<tt>-fm1</tt>' or '<tt>-fmN</tt>'. You can suppress the window with
+			   <a href="switches.html#fmX">-'fm0'</a> or <a href="switches.html#y">'-y'</a> switch.</p>
+			<p>Also, for a specific scenario (for example, for a certain '<tt>AutoInstall</tt>',
+			  '<tt>RunProgram</tt>' or '<tt>ExecuteFile</tt>' parameter) you can use
+			  <a href="prefixes.html#fmXp">'fmX'</a> prefix. For instance,</p>
+				<blockquote><pre>AutoInstall="hidcon:fm1:install.bat"</pre></blockquote>
+			<p>displays the message, even though this is an automated installation. On the other hand,</p>
+				<blockquote><pre>RunProgram="nowait:fm0:setup.exe"</pre></blockquote>
+			<p>blocks the '<tt>FinishMessage</tt>' appearance.</p>
+			<p>Command line switches override the config file parameters.</p>
+			<p>You can substitute a number 2...999 instead of X y into the '<tt>-fmX</tt>' switch or
+			  '<tt>fmX</tt>' prefix. The countdown is displayed on the "OK" button. When time expires,
+			  the window closes and the module finishes its operation.</p>
+		</td>
+	</tr>
+
+	<tr id="HelpText">
+		<td class="main">
+			<p><tt><b>HelpText</b></tt><b>="some_text"</b><br>&nbsp;</p><img alt="Help" src="misc/helptext.png">
+		</td>
+		<td class="main">
+			<p>Lets you specify the help text that can be displayed by invoking the SFX archive with
+			   <a href="switches.html#h">'-h'</a> or <a href="switches.html#h">'-?'</a> switches.</p>
+			<p>The dialog window with the '<tt>HelpText</tt>' and the "OK" button appears. Closing the
+			   window completes the module operation (i.e. nothing will be unpacked or executed). </p>
+			<p>You can use this message for listing the installation scenarios, command line switches
+			   and any other information.</p>
+		</td>
+	</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+</body>
+</html>

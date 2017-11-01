@@ -1,123 +1,170 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<HTML><HEAD><title>Ссылки для загрузки</title>
-<META http-equiv=Content-Type content="text/html; charset=Windows-1251">
-<LINK href="misc/styles.css" type="text/css" rel=stylesheet>
+<HTML><HEAD><TITLE>Downloads</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=ISO-8859-1">
+		<link href="common/styles.css" type="text/css" rel=stylesheet>
+		<script language="javascript" src="common/scripts.js" type="text/javascript"></script>
+		<script language="javascript" src="misc/menu.js" type="text/javascript"></script>
 </HEAD>
-<BODY>
+<BODY onLoad="OnLoadBody()">
 
-<H2>Ссылки для загрузки</H2>
-<P>К загрузке предлагаются несжатые модули. О том, как сжать их и о возможных последствиях читайте <A class=int href="firststeps.html#upx">здесь</A>.</P>
-<P>Все версии модулей (<b>7zSD</b>) для инсталляторов использует MSVCRT.dll (MSVCRT.dll - Microsoft Visual C runtime library). Т.е. часть функций/подпрограмм языка вынесена в отдельный файл MSVCRT.dll, что позволило значительно уменьшить размер модулей. Этот файл есть во всех системам поддерживаемых модулем. Старые версии модулей (<b>7zS</b>), для которых не требовался этот файл, более не поддерживаются.</P>
-<P>Большинство файлов, предложенных для скачивания в таблице этой страницы, упаковано в 7z архивы, поэтому, позаботьтесь, чтобы у Вас было чем их распаковать.</P>
-<P>Другие версии файлов можно найти <A class=ext href="https://github.com/OlegScherbakov/7zSFX/tree/master/Archive" target=_blank>здесь</A>.</P>
+<H2>Download Links</H2>
+<P>You can download only uncompressed modules from this page. Instructions on 
+compressing them as well as the implications are <A href="firststeps.html#upx" class="int">
+here</A>.</P>
+<P>All module versions (<b>7zSD</b>) for installers use MSVCRT.dll (Microsoft 
+Visual C runtime library). In other words, some functions are performed via this 
+dynamic library, and this helps reduce the module size. This file is present in 
+all operating systems supported by the module. Old module versions (<b>7zS</b>) 
+that did not require MSVCRT.dll are no longer supported.</P>
+<P>Most files on this page are packed in 7z archives. Ensure that you have the 
+latest version of 7-Zip, or other software capable of unpacking 7z.
 <P>&nbsp;</P>
 <TABLE>
-<TBODY class="main"><!-- -->
+<TBODY class="main">
+<!-- -->
 	<TR id="beta">
-		<TH class="main" colspan="4"><P>Бета версии</P></TH></TR>
+		<TH class="main" colspan="4"><P>Beta Versions</P></TH></TR>
 	<TR>
-		<TH class="main" width="106"><P>Ссылка</P></TH>
-		<TH class="main" width="62"><P>Объем</P></TH>
-		<TH class="main" width="154"><P>Версия/Дата</P></TH>
-		<TH class="main"><P>Описание</P></TH></TR>
+		<TH class="main" width="149"><P>Link</P></TH>
+		<TH class="main" width="75"><P>File Size</P></TH>
+		<TH class="main" width="195"><P>Version/Date</P></TH>
+		<TH class="main"><P>Description</P></TH></TR>
 	<TR>
-		<TD class="main"><P><A class=ext href="https://raw.githubusercontent.com/OlegScherbakov/7zSFX/master/files/7zsd_lzma2_170_3900.7z" target=_blank>7zSD</A></P></TD>
-		<TD class="main"><P>60 кб</P></TD>
-		<TD class="main"><P>1.7 develop<br>
-		(сборка 3900)<br>
-		от 1 апреля 2016 г.</P></TD>
-		<TD class="main"><P>Модифицированный 32-х битный модуль (для метода сжатия LZMA2).</P></TD></TR>
+		<TD class="main"><P><A href="files/7zsd_160_2712.7z" target="_blank" class="ext">
+		7zSD</A></P></TD>
+		<TD class="main"><P>45 KB</P></TD>
+		<TD class="main"><P>1.6 develop (build 2712)<br>
+		December 30, 2012</P></TD>
+		<TD class="main"><P>Modified 32-bit module (for LZMA compression method 
+		that 7-Zip uses by default).</P></TD></TR>
 	<TR>
-		<TD class="main"><P><A class=ext href="https://raw.githubusercontent.com/OlegScherbakov/7zSFX/master/files/7zsd_extra_170_3900.7z" target=_blank>7zSD extra</P></A></TD>
-		<TD class="main"><P>261 кб</P></TD>
-		<TD class="main"><P>1.7 develop <br>
-		(сборка 3900)<br>
-		от 1 апреля 2016 г.</P></TD>
-		<TD class="main"><P>Состав:12 модифицированных модулей (шесть 32-х битных и шесть 64-х битных). Для каждого метода сжатия (LZMA, LZMA2, Deflate, PPMd) имеется отдельные модули, а так же модули, способные работать с любым из этих методов. Дополнительно имеется модули с добавленными диалогами и баннером</P></TD></TR>
+		<TD class="main"><P><A href="files/7zsd_extra_160_2712.7z" target="_blank" class="ext">
+		7zSD extra</P></A></TD>
+		<TD class="main"><P>235 KB</P></TD>
+		<TD class="main"><P>1.6 develop (build 2712)<br>
+		December 30, 2012</P></TD>
+		<TD class="main"><P>Contains 12 modified modules (six 32-bit modules and 
+		six 64-bit ones). There is a separate module for each compression method 
+		(LZMA, LZMA2, Deflate, PPMd), as well as universal modules that support 
+		any of these methods. Additionally, there are modules with extra dialogs 
+		and a banner.</P></TD></TR>
 	<TR>
-		<TD class="main"><P><A class=ext href="https://raw.githubusercontent.com/OlegScherbakov/7zSFX/master/files/7zsd_chm_170_3900_ru.7z" target=_blank>Документация</A><br>(CHM формат)</P></TD>
-		<TD class="main"><P>343&nbsp;кб</P></TD>
-		<TD class="main"><P>1.7 develop<br>
-		(сборка 3900)<br>
-		от 1 апреля 2016 г.</P></TD>
-		<TD class="main"><P>Справочный файл для модифицированного модуля. Описывает параметры модуля, используемые при написании файла конфигурации, с примерами их использования.</P></TD></TR>
+		<TD class="main" style="text-decoration:line-through"><P><A href="files/7zsd_chm_160_2712_en.7z" target="_blank" class="ext">
+		Documentation</A><br>(CHM Format)</P></TD>
+		<TD class="main" style="text-decoration:line-through"><P>240 KB</P></TD>
+		<TD class="main" style="text-decoration:line-through"><P>1.6 develop (build 2712)</P></TD>
+		<TD class="main"><P style="text-decoration:line-through">Help file for the modified module. It describes the 
+		configuration file parameters and provides usage examples.
+		<b><br>
+		Note</b>. The English help file has not been updated for a while, so it 
+		does not cover the latest features.</P>
+		<P style="color:red"><B>Only Russian help file is available</B></P></TD></TR>
 	<TR>
-		<TD class="main"><P><A class=ext href="https://raw.githubusercontent.com/OlegScherbakov/7zSFX/master/files/7zsd_tools_170_3900.7z" target=_blank>7z SFX Tools</A><br>(7z SFX архив)</P></TD>
-		<TD class="main"><P>881 кб</P></TD>
-		<TD class="main"><P>1.7 develop<br>
-		(сборка 3900)<br>
-		от 1 апреля 2016 г.</P></TD>
-		<TD class="main"><P>Набор для работы с 7z SFX архивами. Состав: 12 модифицированных модулей (2 из них с добавленными диалогами и баннером, один из который использовался для создания этого архива), 7z SFX Archive Splitter, 2 справочных файла (русский и английский).<br>
-		Двуязычный (русский и английский) самораспаковывающийся 7z архив - является отличной демонстрацией возможностей модифицированного модуля и их (возможностей) изучения. Язык установки и устанавливаемой справки определяется языком системы или ключом <A class=int href="switches.html#sfxlang">-sfxlang</A>.</P></TD></TR>
-	<TR>
-		<TD class="main"><P><A class=ext href="https://raw.githubusercontent.com/OlegScherbakov/7zSFX/master/files/7zsd_src_170_3900.7z" target=_blank>Исходный код</A><br>(7z архив)</P></TD>
-		<TD class="main"><P>1068 кб</P></TD>
-		<TD class="main"><P>1.7 develop<br>
-		(сборка 3900)<br>
-		от 1 апреля 2016 г.</P></TD>
-		<TD class="main"><P>Исходный код модифицированного модуля и используемого архиватора 7-Zip (версия 15.14).</P></TD></TR>
+		<TD class="main"><P><A href="files/7zsd_src_160_2712.7z" target="_blank" class="ext">
+		Source</A><br>(7z Archive)</P></TD>
+		<TD class="main"><P>710 KB</P></TD>
+		<TD class="main"><P>1.6 develop (build 2712)<br>
+		December 30, 2012</P></TD>
+		<TD class="main"><P>The source code of the modified module and the 7-zip 
+		archiver used (version 9.22).</P></TD></TR>
 
 	<TR id="stable">
-		<TH class="main" colspan="4"><P>Стабильные версии</P></TH></TR>
+		<TH class="main" colspan="4"><P>Stable Versions</P></TH></TR>
 
  	<TR>
-		<TH class="main" width="106"><P>Ссылка</P></TH>
-		<TH class="main" width="62"><P>Объем</P></TH>
-		<TH class="main" width="154"><P>Версия/Дата</P></TH>
-		<TH class="main"><P>Описание</P></TH></TR>
-
+		<TH class="main" width="149"><P>Link</P></TH>
+		<TH class="main" width="75"><P>File Size</P></TH>
+		<TH class="main" width="195"><P>Version/Date</P></TH>
+		<TH class="main"><P>Description</P></TH></TR>
 	<TR>
-		<TD class="main"><P><A class=ext href="https://raw.githubusercontent.com/OlegScherbakov/7zSFX/master/files/7zsd_lzma2_162_3888.7z" target=_blank>7zSD</A></P></TD>
-		<TD class="main"><P>58 кб</P></TD>
-		<TD class="main"><P>1.6.2 Release<br>
-		(сборка 3888)<br>
-		от 20 марта 2016 г.</P></TD>
-		<TD class="main"><P>Модифицированный модуль (для метода сжатия LZMA2).</P></TD></TR>
+		<TD class="main"><P><A href="files/7zsd_150_2712.7z" target="_blank" class="ext">
+		7zSD</A></P></TD>
+		<TD class="main"><P>43 KB</P></TD>
+		<TD class="main"><P>1.5 Release (build 2712)<br>
+		December 30, 2012</P></TD>
+		<TD class="main"><P>Modified 32-bit module (for LZMA compression method 
+		that 7-Zip uses by default).</P></TD></TR>
 	<TR>
-		<TD class="main"><P><A class=ext href="https://raw.githubusercontent.com/OlegScherbakov/7zSFX/master/files/7zsd_extra_162_3888.7z" target=_blank>7zSD extra</A></P></TD>
-		<TD class="main"><P>256 кб</P></TD>
-		<TD class="main"><P>1.6.2 Release<br>
-		(сборка 3888)<br>
-		от 20 марта 2016 г.</P></TD>
-		<TD class="main"><P>Состав:12 модифицированных модулей (шесть 32-х битных и шесть 64-х битных). Для каждого метода сжатия (LZMA, LZMA2, Deflate, PPMd) имеется отдельные модули, а так же модули, способные работать с любым из этих методов. Дополнительно имеется модули с добавленными диалогами и баннером</P></TD></TR>
+		<TD class="main"><P><A href="files/7zsd_extra_150_2712.7z" target="_blank" class="ext">
+		7zSD extra</A></P></TD>
+		<TD class="main"><P>225 KB</P></TD>
+		<TD class="main"><P>1.5 Release (build 2712)<br>
+		December 30, 2012</P></TD>
+		<TD class="main"><P>Contains 12 modified modules (six 32-bit modules and 
+		six 64-bit ones). There is a separate module for each compression method 
+		(LZMA, LZMA2, Deflate, PPMd), as well as universal modules that support 
+		any of these methods. Additionally, there are modules with extra dialogs 
+		and a banner.</P></TD></TR>
 	<TR>
-		<TD class="main"><P><A class=ext href="https://raw.githubusercontent.com/OlegScherbakov/7zSFX/master/files/7zsd_chm_170_3900_ru.7z" target=_blank>Документация</A><br>(CHM формат)</P></TD>
-		<TD class="main"><P>343&nbsp;кб </P></TD>
-		<TD class="main"><P>1.7 develop<br>
-		(сборка 3900)<br>
-		от 1 апреля 2016 г.</P></TD>
-		<TD class="main"><P>Справочный файл для модифицированного модуля. Описывает параметры модуля, используемые при написании файла конфигурации, с примерами их использования.</P></TD></TR>
+		<TD class="main" style="text-decoration:line-through"><P><A href="files/7zsd_chm_150_2712_en.7z" target="_blank" class="ext">
+		Documentation</A><br>(CHM Format)</P></TD>
+		<TD class="main" style="text-decoration:line-through"><P>240 KB</P></TD>
+		<TD class="main" style="text-decoration:line-through"><P>1.5 Release (build 2712)</P></TD>
+		<TD class="main"><P style="text-decoration:line-through">Help file for the modified module. It describes the 
+		configuration file parameters and provides usage examples.
+		<b><br>
+		Note</b>. The English help file has not been updated for a while, so it 
+		does not cover the latest features.</P>
+		<P style="color:red"><B>Only Russian help file is available</B></P></TD></TR>
 	<TR>
-		<TD class="main"><P><A class=ext href="https://raw.githubusercontent.com/OlegScherbakov/7zSFX/master/files/7z_splitter_1017.7z" target=_blank>7z SFX Archive splitter</A></P></TD>
-		<TD class="main"><P>4 кб</P></TD>
-		<TD class="main"><P>0.2 <br>
-		(сборка 1017)<br>
-		от 25 апреля 2008 г.</P></TD>
-		<TD class="main"><P>Утилита позволяющая извлекать из SFX архива его компоненты (7z архив, файл конфигурации и SFX модуль), либо все разом, либо любую их комбинацию.</P></TD></TR>
+		<TD class="main"><P><A href="files/7z_splitter_1017.7z" target="_blank" class="ext">
+		7z SFX Archive splitter</A></P></TD>
+		<TD class="main"><P>4 KB</P></TD>
+		<TD class="main"><P>0.2 (build 1017)<br>
+		April 25, 2008</P></TD>
+		<TD class="main"><P>The utility can extract 7z archive and configuration file as well as SFX module from 7z SFX archive.</P></TD></TR>
 	<TR>
-		<TD class="main"><P><A class=ext href="https://raw.githubusercontent.com/OlegScherbakov/7zSFX/master/files/7zsd_tools_162_3888.7z" target=_blank>7z SFX Tools</A><br>(7z архив)</P></TD>
-		<TD class="main"><P>781 кб</P></TD>
-		<TD class="main"><P>1.6.2 Release<br>
-		(сборка 3888)<br>
-		от 20 марта 2016 г.</P></TD>
-		<TD class="main"><P>Набор для работы с 7z SFX архивами. Состав: 12 модифицированных модулей (2 из них с добавленными диалогами и баннером, один из который использовался для создания этого архива), 7z SFX Archive Splitter, 2 справочных файла (русский и английский). Набор упакован в 7z архив.</P></TD></TR>
+		<TD class="main"><P><A href="files/7zsd_tools_150_2712.7z" target="_blank" class="ext">
+		7z SFX Tools</A><br>(7z Archive)</P></TD>
+		<TD class="main"><P>730 KB</P></TD>
+		<TD class="main"><P>1.5 Release (build 2712)<br>
+		December 30, 2012</P></TD>
+		<TD class="main"><P>Set of tools for 7z SFX archives. It contains:<br>
+		&#8226; 12 modified modules (two of them with extra dialogs and banners; you 
+		can see one when you run the installer)<br>
+		&#8226; 7z SFX Archive Splitter<br>
+		&#8226; two help files (EN, RU)
+<br>
+		This bilingual (EN, RU) archive is an excellent demonstration of the 
+		modified module capabilities. The installer language is defined by the 
+		system language, or you can set it manually with <A href="switches.html#sfxlang" class="int">
+		-sfxlang</A> parameter.</P></TD></TR>
 	<TR>
-		<TD class="main"><P><A class=ext href="https://raw.githubusercontent.com/OlegScherbakov/7zSFX/master/files/7zsd_src_161_3873.7z" target=_blank>Исходный код</A><br>(7z архив)</P></TD>
-		<TD class="main"><P>1060 кб</P></TD>
-		<TD class="main"><P>1.6.1 Release<br>
-		(сборка 3873)<br>
-		от 5 марта 2016 г.</P></TD>
-		<TD class="main"><P>Исходный код модифицированного модуля и используемого архиватора 7-Zip (версия 15.14).</P></TD></TR>
+		<TD class="main"><P><A href="files/7zsd_tools_150_2712.exe" target="_blank" class="ext">
+		7z SFX Tools</A><br>(7z SFX Archive)</P></TD>
+		<TD class="main"><P>862 KB</P></TD>
+		<TD class="main"><P>1.5 Release (build 2712)<br>
+		December 30, 2012</P></TD>
+		<TD class="main"><P>Set of tools for 7z SFX archives. It contains:<br>
+		&#8226; 12 modified modules (two of them with extra dialogs and banners; you 
+		can see one when you run the installer)<br>
+		&#8226; 7z SFX Archive Splitter<br>
+		&#8226; two help files (EN, RU)
+<br>
+		This bilingual (EN, RU) archive is an excellent demonstration of the 
+		modified module capabilities. The installer language is defined by the 
+		system language, or you can set it manually with <A href="switches.html#sfxlang" class="int">
+		-sfxlang</A> parameter.</P></TD></TR>
+	<TR>
+		<TD class="main"><P><A href="files/7zsd_src_150_2712.7z" target="_blank" class="ext">
+		Source</A><br>(7z Archive)</P></TD>
+		<TD class="main"><P>694 KB</P></TD>
+		<TD class="main"><P>1.5 Release (build 2712)<br>
+		December 30, 2012</P></TD>
+		<TD class="main"><P>The source code of the modified module and the 7-zip 
+		archiver used (version 9.20).</P></TD></TR>
 
 </TBODY></TABLE><p>&nbsp;</p>
-<P>Некоторые дополнительные ссылки, которые помогут Вам использовать модифицированный модуль в своих разработках:</P>
+<P>Helpful links:</P>
 <UL>
-	<LI><A href="http://www.7-zip.org/" target="_blank" class="ext">Архиватор 7-Zip</A> (автор - Игорь Павлов)
-	<LI><A class=ext href="https://github.com/OlegScherbakov/7zSFX" target=_blank>GitHub репозиторий</A> ("только чтение")
-	<LI><a href="http://forum.oszone.net/thread-83838.html" target="_blank" class="ext">Кнопка для создания и работы с 7z SFX архивами</a> (автор - 
-	    <a href="http://forum.oszone.net/member.php?userid=8802" target="_blank" class="ext">gora</a>) 
-                     <LI><A class=ext href="https://github.com/CryptoNickSoft/7z-SFX-Constructor" target=_blank>Программа для создания и редактирования 7zSFX архивов</A> 
-  (автор - CryptoNick/Joker-2013)</LI>   
+	<LI><A href="http://www.7-zip.org/ru/" target="_blank" class="ext">7-Zip 
+	Archiver</A> (Author - Igor Pavlov)
+	<LI><a href="http://tools.oszone.net/7zsfx/conf/" target="_blank" class="ext">
+	Config File Generator (Online)</a> (Author - <a href="http://forum.oszone.net/member.php?userid=33178" target="_blank" class="ext">
+	Sham</a>)
+	<LI><a href="http://forum.oszone.net/thread-83838.html" target="_blank" class="ext">
+	Button for Total Commander that helps create 7z SFX </a>(Author - <a href="http://forum.oszone.net/member.php?userid=8802" target="_blank" class="ext">
+	gora</a>)
 </UL>
 <p>&nbsp;</p>
 </BODY></HTML>
