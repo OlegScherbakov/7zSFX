@@ -1,269 +1,133 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-	<head>
-		<title>Command line switches</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<link href="common/styles.css" type="text/css" rel=stylesheet>
-		<script language="javascript" src="common/scripts.js" type="text/javascript"></script>
-		<script language="javascript" src="misc/menu.js" type="text/javascript"></script>
-	</head>
+<HTML><HEAD><meta http-equiv="Content-Language" content="en">
+<TITLE>Command line</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=Windows-1251">
+<LINK href="misc/styles.css" type="text/css" rel=stylesheet>
+</HEAD>
+<BODY>
 
-<body onLoad="OnLoadBody(2)">
-
-<h2>Command line switches</h2>
-
+<H2>Command line</H2>
 <ul>
-	<li>The module supports command line switches. The switches are NOT case sensitive. Multiple switches
-		can be passed to the SFX archive sequentially. For example, "sfx.exe -ai -fm1 -gf+256-8" or
-		"sfx.exe /ai /fm1 /gf+256-8" and even like "sfx.exe /Ai -fM1 /GF+256-8".</li>
-	<li>The module can pass switches to the executable program inside the SFX archive. The module looks for
-		its native switches (listed on this page) in the command line until it finds the first unsupported
-		switch. If such a switch found, the remaining switches are passed to the executable program inside
-		the archive. For example, you have the following line in the config file:
-		RunProgram="some_program.exe". If you launch the SFX with the command line like
-		"sfx.exe -gm2 /key=1 /silent", the module recognizes its native switch '<tt>-gm2</tt>' and performs
-		silent extraction of the archive content. The unsupported switches are passed "as is" to the
-		executable in the archive, and therefore the program is invoked with the following parameters:
-		"some_program.exe /key=1 /silent"<br></li>
-	<li>If you need to pass any natively supported switch to the executable inside the archive, you can use
-		'<tt>-!</tt>' switch. </li>
-	<li>All switches passed to the executable inside the archive will be passed only to the FIRST program of
-		the installation scenario you invoke. For example, you have the following lines in the config file:</li>
+	<li>The Module Supports The Command-line. Keys Module Is Not Case Sensitive. There May BeFew And They Are Written Sequentially. For Example Both &quot;sfx.exe -ai -fm1 -gf+256-8&quot; Or So &quot;sfx.exe /ai /fm1 /gf+256-8&quot; And Even So &quot;sfx.exe /Ai -fM1 /GF+256-8&quot;.
+	<li>It Can Give The Keys Of The Executable Program Inside The Archive. If You Need To Pass The Executable Program Keys Used By The Module Should Be In Front Of Them Use The Key '<tt>-!</tt>'.
+	<li>The Module Is Looking For &quot;their&quot; (Listed On This Page) Keys On The Command line Before The First Unknown Key. After That, Everything Else (Key Parameters) Is Transmitted To The Calling Program. For Example In The Configuration File RunProgram=&quot;some_program.exe&quot; After The Launch Of SFX Archive: &quot;sfx.exe -gm2 /key=1 /silent&quot; Executed: &quot;some_program.exe /key=1 /silent&quot;. At The Same Time, The Module Will Treat The Key '<tt>-gm2</tt>' And Make &quot;Slow&quot; Unpacking. In This Case, Use The Key '<tt>-!</tt>' Not Necessarily.
+	<li>All Keys Are Passed To An Executable Program Inside The Archive Will Be Transferred Only To The First Program Executed In The Moment Type Of Commands Run. For Example In The Configuration File Is Line:
+<pre>RunProgram=&quot;\&quot;%ProgramFiles%\\Setup.exe\&quot;&quot;
+RunProgram=&quot;\&quot;regedit\&quot; settings.reg&quot;
+AutoInstall=&quot;\&quot;%ProgramFiles%\\Setup.exe\&quot;&quot;
+AutoInstall=&quot;\&quot;regedit\&quot; settings.reg&quot;</pre>
+	<p>After Launching SFX Archive &quot;sfx.exe -gm2 -s -y&quot;, Keys &quot;-s -y&quot; Will Be Transferred To The First Row And Executed</p>
+<pre>RunProgram="\"%ProgramFiles%\\Setup.exe\" -s -y"
+RunProgram="\"regedit\" settings.reg".</pre>
+	<p>If This SFX Archive To Launch So, &quot;sfx.exe -ai -s -y&quot;, Then The Keys &quot;-s -y&quot; Will Be Transferred To The Third Line And Executed</p>
+<pre>AutoInstall=&quot;\&quot;%ProgramFiles%\\Setup.exe\&quot; -s -y&quot;
+AutoInstall=&quot;\&quot;regedit\&quot; settings.reg&quot;</pre>
+	<li><p>Most Parameters Can Be Used As a Command-line Parameters When Launching SFX Archive. Exceptions Are These Multiple Parameters:<br>
+	<p><tt>AutoInstall<br>AutoInstallX<br>Delete<br>DeleteX<br>RunProgram<br>Shortcut<br>ShortcutX</tt></p>
+	<p>Parameters of The Same Name in The Configuration File When It Will Be Reassigned (The Parameters In The Command line Take Precedence), Missing - Will Be Added. Possible Recording Parameters In The Command line:</p>
+<pre>sfx.exe -InstallPath=&quot;%ProgramFiles%\\IEPro&quot;
+sfx.exe -SetEnvironment=&quot;Var1=E:\\totalcmd&quot; -SetEnvironment=&quot;Var2=%%T\\&quot;
+sfx.exe -FinishMessage=&quot;new_finish_message&quot;
+sfx.exe -InstallPath=&quot;%Path7z%\\7zSFX_Tools&quot; -FinishMessage=&quot;7z SFX Tools Installed!&quot; -ai -gm2 -fm20
+</pre>
 </ul>
-<blockquote>
-	<pre>
-RunProgram="\"%ProgramFiles%\\Setup.exe\""
-RunProgram="\"regedit\" settings.reg"
-AutoInstall="\"%ProgramFiles%\\Setup.exe\""
-AutoInstall="\"regedit\" settings.reg"
-	</pre>
-	<p>After launching the SFX archive as "sfx.exe -gm2 -s -y", switches "-s -y" are passed to the first
-	   line, and the following commands are executed: </p>
-	<pre>
-RunProgram="\"%ProgramFiles%\\Setup.exe\" -s -y"
-RunProgram="\"regedit\" settings.reg".
-	</pre>
-	<p>If you invoke an automated scenario by launching the same SFX archive as "sfx.exe -ai -s -y",
-	   switches "-s -y" are passed to the third line, and the following commands are executed: </p>
-    <pre>
-AutoInstall="\"%ProgramFiles%\\Setup.exe\" -s -y"
-AutoInstall="\"regedit\" settings.reg"
-	</pre>
-</blockquote>        
-
-<table class="main"><tbody>
-	<tr>
-		<th class="main" width="86"><p>Switch</p></th>
-		<th class="main"><p>Description</p></th>
-	</tr>
-
-	<tr id="breakcmdline">
-		<td class="main"><tt><b>-!</b></tt></td>
-		<td class="main">
-			<p>Stops the command line parsing. All switches that appear in the command line after '<tt>-!</tt>'
-			   are passed to the first executable program (
-			   <a href="parameters.html#RunProgram">'RunProgram'</a>,
-			   <a href="parameters.html#ExecuteFile">'ExecuteFile'</a>,
-			   <a href="parameters.html#AutoInstall">'AutoInstall'</a> or
-			   <a href="parameters.html#AutoInstallX">'AutoInstallX'</a>).</p>
-
-			<p>In certain scenarios you may need to pass a switch that matches one of the native module switches.
-			   For example, you have "RunProgram="setup.exe -s" in the config file while you need to execute
-			   "setup.exe -s -y" (note,  <a href="switches.html#y">'-y'</a> is a native module switch).
-			   In order to pass this switch to the executable, you need to use the following command line:
-			   "sfx.exe -gm2 -! -y". As a result,  '<tt>-y</tt>' switch will be ignored by the module and
-			   passed to the executable inside the archive, so you get the command you need. Meanwhile,
-			   the module recognizes its native switch '<tt>-gm2</tt>' and performs silent extraction
-			   of the archive content.</p>
-		</td>
-	</tr>
-
-	<tr id="ai">
-		<td class="main"><tt><b>-ai</b></tt></td>
-		<td class="main">
-			<p>Automated installation.</p>
-			<p>Specifies that the config file <a href="parameters.html#AutoInstall">'AutoInstall</a>'
-			   parameter will be used instead of <a href="parameters.html#RunProgram">'RunProgram'</a>,
-			   <a href="parameters.html#ExecuteFile">'ExecuteFile'</a> or
-			   <a href="parameters.html#AutoInstallX">'AutoInstallX'</a> If 'AutoInstall' is not specified,
-			   this switch will be ignored.</p>
-			<p>This switch automatically suppresses <a href="parameters.html#BeginPrompt">'BeginPrompt'</a>
-			   dialog window (i. e. you do not need to specify <a href="switches.html#y">'-y'</a> switch.</p>
-		</td>
-	</tr>
-
-	<tr id="aiX">
-		<td class="main"><tt><b>-aiX</b></tt></td>
-		<td class="main">
-			<p>Automated installation by the specified scenario. X can take the values from 0 to 9.
-			   You must have the invoked scenario in the config file
-			   (<a href="parameters.html#AutoInstallX">AutoInstallX</a> parameter).
-			   In other words, you must have a line like AutoInstall7="auto_install.exe params for scenario 7"
-			   for the -ai7 switch to work. Otherwise, the error message is displayed.</p>
-			<p>Batch mode is possible for automated installation. You need to specify numbers of automated
-			   installations after '<tt>-ai</tt>'. For example, launching "sfx.exe -ai372" consequently
-			   invokes '<tt>AutoInstall3</tt>' first, then '<tt>AutoInstall7</tt>', and finally
-			   '<tt>AutoInstall2</tt>'. If either '<tt>AutoInstallX</tt>' contains multiple commands,
-			   they are run consequently before moving on to the next '<tt>AutoInstallX</tt>'. </p>
-			<p>This switch automatically suppresses <a href="parameters.html#BeginPrompt">'BeginPrompt'</a>
-			   dialog window (i. e. you do not need to specify <a href="switches.html#y">'-y'</a> switch).</p>
-		</td>
-	</tr>
-
-	<tr id="fmX">
-		<td class="main"><tt><b>-fmX</b></tt></td>
-		<td class="main">
-			<p>Appearance mode and display duration for
-			   <a href="parameters.html#FinishMessage">'FinishMessage'</a> dialog window, where X is:</p>
-				<ul>
-					<li>0 - do not display the window</li>
-					<li>1 - display the window</li>
-					<li>N (N= 2...999) - display the window for N seconds. The countdown is displayed on the "OK"
-						button. When time expires, the window closes and the module finishes its operation.</li>
-				</ul>
-			<p>This switch OVERRIDES <a href="prefixes.html#fmXp">'fmX'</a> prefixes in the config file.
-			   If '<tt>FinishMessage</tt>' is not present in the config file, '<tt>-fmX</tt>' are ignored.</p>
-		</td>
-	</tr>
-
-	<tr id="gfX">
-		<td class="main"><tt><b>-gfX</b></tt></td>
-		<td class="main">
-			<p>Dialog windows display mode. You can alter or completely replace '<tt>GUIFlags</tt>'
-			   parameter specified in the config file.</p>
-			<p>The minus sign (-) removes flags, while the plus sign (+) adds flags. Examples of ALTERING flags:</p>
-				<ul>
-					<li>-gf-8  - removes XP styles (minus in front of 8); the rest is taken from the config file</li>
-					<li>-gf+256  - adds confirmation dialog window when canceling installation or execration
-						process; the rest is taken from the config file</li>
-					<li>-gf-8+256<br>OR</li>
-					<li>-gf+256-8  - removes XP styles, adds confirmation dialog window when canceling
-						installation, and the rest is taken from the config file</li>
-				</ul>
-			<p>The module ignores attempts to remove a flag that is not set or add a flag that is already added.
-			   For example, in the config file you have GUIFlags="136" (8+128), and the SFX archive is launched
-			   as follows: "-gf-8+128-256+1024". As a result, flag 8 is removed, flag 1024 is added, and other
-			   flags are ignored (because flag 128 is already present in '<tt>GUIFlags</tt>' parameter, while
-			   flag 256 is absent and therefore can not be removed). Thus, the SFX archive is launched with
-			   GUIFlags="128+1024".</p>
-			<p>If you do not precede the first flag with the plus (+) or minus (-) sign, you can completely
-			   REPLACE '<tt>GUIFlags</tt>' parameter in the config file.</p>
-				<ul>
-					<li>-gf64+8  - '<tt>GUIFlags</tt>' is made equal to 72 regardless of what specified in the config file</li>
-				</ul>
-			<p>This switch ALTERS or REPLACES <a href="parameters.html#GUIFlags">'GUIFlags'</a> in the config file.</p>
-		</td>
-	</tr>
-
-	<tr id="gmX">
-		<td class="main"><tt><b>-gmX</b></tt></td>
-		<td class="main">
-			<p>Extraction display mode, where X is:</p>
-				<ul>
-					<li>0 - the standard mode (native 7-Zip mode) with "Cancel" and "Close" buttons
-						(the latter is in the upper right corner of the window)</li>
-					<li>1 - display the extraction process, but hide the "Cancel" button and block the
-						"Close" button as well the [ESC] key on the keyboard</li>
-					<li>2 - hides the extraction dialog completely (silent mode)</li>
-				</ul>
-			<p>This switch OVERRIDES <a href="parameters.html#GUIMode">'GUIMode'</a> in the config file.
-			   This switch does not suppress <a href="parameters.html#BeginPrompt">'BeginPrompt'</a> dialog
-			   window; you will need to use  <a href="switches.html#ai">'-ai'</a>,
-			   <a href="switches.html#aiX">'-aiX'</a> or <a href="switches.html#y">'-y'</a> switches for this.</p>
-		</td>
-	</tr>
-
-	<tr id="h">
-		<td class="main"><tt><b>-h</b></tt> or <b><tt>-?</tt></b></td>
-		<td class="main">
-			<p>Displays a dialog window with '<tt>HelpText</tt>' and the "OK" button. If '<tt>HelpText</tt>'
-			   is not present in the config file, the following message is displayed: "No "HelpText" in the
-			   configuration file".</p>
-			<p>Closing the window completes the module operation (i. e. nothing will be unpacked or executed).</p>
-		</td>
-	</tr>
-
-	<tr id="nr">
-		<td class="main"><tt><b>-nr</b></tt></td>
-		<td class="main">
-			<p>"No Run" mode. Disallows running executables specified in
-			   <a href="parameters.html#RunProgram">'RunProgram'</a>,
-			   <a href="parameters.html#ExecuteFile">'ExecuteFile'</a>,
-			   <a href="parameters.html#AutoInstall">'AutoInstall'</a> or
-			   <a href="parameters.html#AutoInstallX">'AutoInstallX'</a>,
-			   i.e. only the extraction is performed. In addition, shortcuts are not created,
-			   files are not deleted as well as the SFX archive, i. e. '<tt>Shortcut</tt>',
-			   '<tt>Delete</tt>' and '<tt>SelfDelete</tt>' are not executed.</p>
-			<p>This switch is disabled when the SFX archive is extracted to a temporary folder.</p>
-		</td>
-	</tr>
-
-	<tr id="omX">
-		<td class="main"><tt><b>-omX</b></tt></td>
-		<td class="main">
-			<p>Overrides <a href="parameters.html#OverwriteMode">'OverwriteMode'</a> parameter in the config file.</p>
-				<ul>
-					<li>0 - overwrite all files (default mode)</li>
-					<li>1 - do not overwrite the existing files</li>
-					<li>2 - overwrite only older files</li>
-				</ul>
-		</td>
-	</tr>
-
-	<tr id="sdX">
-		<td class="main"><tt><b>-sdX</b></tt></td>
-		<td class="main">
-			<p>Overrides <a href="parameters.html#SelfDelete">'SelfDelete'</a> parameter in the config file.</p>
-				<ul>
-					<li>0 - DO NOT DELETE SFX, even if SelfDelete="1" is specified in the config file</li>
-					<li>1 - DELETE SFX, regardless of whether SelfDelete="1" is specified in the config file</li>
-			</ul>
-		</td>
-	</tr>
-
-	<tr id="sfxconfig">
-		<td class="main"><tt><b>-sfxconfig</b></tt></td>
-		<td class="main">
-			<p>Lets you extract the config file from the SFX archive and save the file in the folder of your
-			   choice. The switch is followed by a space and the file name (or the file path and name). File
-			   name and extension can be arbitrary. <a href="configinfo.html#paths" class="int">Relative</a>
-			   paths are allowed. If the folder does not exist, it will be created. If an attempt to create
-			   a folder or write on a medium (such as CD) fails, the error message is displayed. </p>
-			<p>Usage examples:</p>
-				<ul>
-					<li>-sfxconfig config.txt  - saves "config.txt" file in the current folder*</li>
-					<li>-sfxconfig \config.txt  - saves "config.txt" file in the current folder disk root*</li>
-					<li>-sfxconfig ..\config.txt  - saves "config.txt" file in a folder one level above the current folder*</li>
-					<li>-sfxconfig D:\DISTRIBUT\7-Zip\Folder name with spaces\setup.cfg  - saves file "setup.cfg" file in "D:\DISTRIBUT\7-Zip\Folder name with spaces" folder</li>
-				</ul>
-			<p>* See <a href="configinfo.html#paths" class="int">relative</a> paths regarding the current folder.</p>
-		</td>
-	</tr>
-
-	<tr id="sfxversion">
-		<td class="main"><tt><b>-sfxversion</b></tt></td>
-		<td class="main">
-			<p>Displays a dialog window with the SFX module version and creation date.</p>
-			<p>Useful when the module resources have been modified by somebody.</p>
-		</td>
-	</tr>
-
-	<tr id="y">
-		<td class="main"><tt><b>-y</b></tt></td>
-		<td class="main">
-			<p>Hides the following dialog windows: <a href="parameters.html#BeginPrompt">'BeginPrompt'</a>,
-			   <a href="parameters.html#ExtractPath" class="int">'ExtractPath'</a>, combined
-			   <a href="parameters.html#ExtractPathText" class="int">'BeginPrompt' + 'ExtractPath'</a> and
-			   <a href="parameters.html#FinishMessage">'FinishMessage'</a>. The extraction window will be
-			   displayed (unless it is blocked by <a href="parameters.html#GUIMode">'GUIMode'</a> parameter
-			   or '<tt>-gm2</tt>' switch). If the extraction or installation process is interrupted, no
-			   <a href="parameters.html#CancelPrompt">'CancelPrompt'</a> confirmation window is displayed.
-			   Should errors occur, error message windows are displayed regardless of this switch.
-			   <em>Native 7-zip SFX switch.</em></p>
-		</td>
-	</tr>
-</tbody></table>
-
-<p>&nbsp;</p>
-</body>
-</html>
+<TABLE><TBODY class="main">
+	<TR>
+		<TH width="86" class="main"><P>Key</P></TH>
+		<TH class="main"><P>Description</P></TH></TR>
+	<TR id="breakcmdline">
+		<TD class="main"><tt><b>-!</b></tt></TD>
+		<TD class="main"><P>Terminates Parsing Command line. All Keys Listed After It Can Be Transferred (As Is) Only In The First Executed Program (<a href="parameters.html#RunProgram">'RunProgram'</a>, <a href="parameters.html#ExecuteFile">'ExecuteFile'</a>, <a href="parameters.html#AutoInstall">'AutoInstall'</a> Or <a href="parameters.html#AutoInstallX">'AutoInstallX'</a>). It May Be Necessary If You Want To Specify The KeyThat Is Used In The SFX Module And Performed Programme.Naprimer.<br>In The Configuration File RunProgram=&quot;setup.exe -s&quot;, And Must Comply With &quot;setup.exe -s -y&quot; (Key <a href="#y">'-y'</a> Is Used By Module). To Send It To The 'RunProgram' Need To Perform &quot;sfx.exe -gm2 -! -y". Key '<tt>-y</tt>' Will Be Ignored By a Module Referred To The Command Prompt And Execute &quot;setup.exe -s -y&quot;. At The Same Time, The Module Will Treat The Key '<tt>-gm2</tt>' And Make &quot;quiet&quot; Unpacking.</P></TD></TR>
+	<TR id="ai">
+		<TD class="main"><tt><B>-ai</b></tt></TD>
+		<TD class="main"><P>Unattended.</P>
+		<P>Use The Option <A href="parameters.html#AutoInstall">'AutoInstall'</A> Instead Of <A href="parameters.html#RunProgram">'RunProgram'</A>, <A href="parameters.html#ExecuteFile">'ExecuteFile'</A> Or <A href="parameters.html#AutoInstallX">'AutoInstallX'</A> From The Configuration File. If 'AutoInstall' Is Not Specified - This Key Is Ignored.</P>
+		<P>Key Automatically Suppresses Dialog <A href="parameters.html#BeginPrompt">'BeginPrompt'</A>, I.e. You Can Not Specify The Key <A href="#y">'-y'</A>.</P></TD></TR>
+	<TR id="aiX">
+		<TD class="main"><tt><B>-aiX</b></tt></TD>
+		<TD class="main"><P>Automatic Installation Of a (Literal) Option. As The Letters X Allowed [0...9], [A...Z], [a...z]. For Options To Be Caused By The Corresponding Row In The Configuration File (Parameter <A href="parameters.html#AutoInstallX">'AutoInstallX'</A>), I.e., If You Specify '<tt>-ai7</tt>', Something In The Configuration File Must Be Present Line Of The Form AutoInstall7=&quot;auto_install.exe Parameters For Scenario 7&quot;, Otherwise It Will Display an Error Message.</P>
+		<P>Batch Mode Automatic Installations As Possible. After '<tt>-ai</tt>' Letters Indicate Automatic Installations For Example If You Execute &quot;sfx.exe -ai3R2&quot;, It Will Be Implemented Consistently '<tt>AutoInstall3</tt>', Then '<tt>AutoInstallR</tt>', And Then '<tt>AutoInstall2</tt>'. If Some Of The '<tt>AutoInstallX</tt>' Plants a Few Commands - They Are Carried Out Consistently, And only Then Proceed To The Next Execution Of The Said '<tt>AutoInstallX</tt>'.<br>For Each Option Called '<tt>AutoInstallX</tt>', Letters After '<tt>-ai</tt>', Be The Corresponding Line In The Configuration File (Parameter '<tt>AutoInstallX</tt>'). Thus If you Specify '<tt>-ai37</tt>', In The Configuration File Must Be Present At Least One Line Of The Form AutoInstall3=&quot;auto_install3.exe Switches For Program3&quot; And AutoInstall7=&quot;auto_install7.exe Switches For Program7&quot;, Otherwise It Wll Display An Error Message.</P>
+		<P>Key Automatically Suppresses Dialog <A href="parameters.html#BeginPrompt">'BeginPrompt'</A>, I.e. You Can Not Specify The Key <A href="#y">'-y'</A>.</P></TD></TR>
+	<TR id="fmX">
+		<TD class="main"><tt><B>-fmX</b></tt></TD>
+		<TD class="main"><P>Mode / Time Display Window 'FinishMessage' Where X: Mode/Time Display Window <A href="parameters.html#FinishMessage">'FinishMessage'</A>, Where X:</P>
+<UL>
+	<LI>0 - Do Not Display Window
+	<LI>1 - Display Box
+	<LI>(N= 2...999) - Display a Window For N Seconds Countdown Is Displayed On The Button &quot;OK&quot;, And On Its Expiry Window '<tt>FinishMessage</tt>' Is Cosed AndThe Work Of The Module Stops
+</UL>
+		<P>Key Override Prefixes <A href="prefixes.html#fmXp">'fmX'</A> In The Configuration File. Command line Has Prioritet.<br> no '<tt>FinishMessage</tt>' In The Configuration File Keys '<tt>-fmX</tt>' Ignored. </P></TD></TR>
+	<TR id="gfX">
+		<TD class="main"><tt><B>-gfX</b></tt></TD>
+		<TD class="main"><P>Display Mode Dialog.<br>okon.Iz Command line, You Can Change Some Flags In The '<tt>GUIFlags</tt>' Configuration File:</P>
+<ul>
+	<li>-gf-8&nbsp; - Would Remove The XP Style (Minus The Front Of Eight), Will Take The Rest Of The Configuration File
+	<li>-gf+256&nbsp; - Add Confirmation Cancel The Installation, The Rest Will Take From The Configuration File
+	<li>-gf-8+256&nbsp; Or
+	<li>-gf+256-8&nbsp; - Would Remove The XP Style Will Add a Confirmation Cancel The Installation And The Rest Will Take From The Configuration File
+</ul>
+		<P>Attempts To Reset The Flag Is Not Set, Or Add An Already Installed Flag - Ignorantly.<br>Naprimer If The Configuration File Was GUIFlags=&quot;136&quot; (8+128), And Run The SFX Archive With The Key &quot;-gf-8+128-256+1024&quot;, It Only Resets Flag 8 And Add The Flag In 1024, And Ignore The Rest (In '<tt>GUIFlags</tt>' Flag 128 Has Already Been Installed And The Flag 256 Is Not Reset And Nothing). As a Result Of SFX Archive To Run For GUIFlags=&quot;128+1024&quot;.</P>
+		<P>If You Do Not Specify Anticipatory Sign (+ Or -), You Can Completely Replace '<tt>GUIFlags</tt>' Configuration File:</P>
+<ul>
+	<li>-gf64+8&nbsp; - '<tt>GUIFlags</tt>' Will Be Equal To &quot;72&quot;, Regardless Of What Is Stated In The Configuration File.
+</ul>
+		<P>Key Parameter Was Varied <A href="parameters.html#GUIFlags">'GUIFlags'</A> In The Configuration File. </P></TD></TR>
+	<TR id="gmX">
+		<TD class="main"><tt><B>-gmX</b></tt></TD>
+		<TD class="main"><P>Display Mode Unpack Where X:</P>
+<UL>
+	<LI>0 - Normal Mode - <i>Native Mode 7-Zip Archiver</i>, I.E. With Buttons &quot;Cancel&quot; And &quot;Close&quot; (Which In The UpperRight Corner)
+	<LI>1 - Display The Process Of Unpacking But Hide The &quot;Cancel&quot;,  Button To Block The Close &quot;Button&quot; (Which Is In The Upper Right Corner Of The Window) And Press [Esc] Key On Your Keyboard
+	<LI>2 - Do Not Display The Extraction Dialog Completely (ie &quot;quiet&quot; Mode)
+</UL>
+		<P>Key Override Option <A href="parameters.html#GUIMode">'GUIMode'</A> In The Configuration File. Key Not Suppresses Dialog <A href="parameters.html#BeginPrompt">'BeginPrompt'</A>, It Needs To Use The Keys <A href="#ai">'-ai'</A>, <A href="#aiX">'-aiX'</A> Or <A href="#y">'-y'</A>.</P></TD></TR>
+	<TR id="h">
+		<TD class="main"><P><tt><B>-h</B></tt> Or <B><tt>-?</tt></b></TD>
+	<TD class="main"><P>Displays a Dialog With The Text Contained In <A href="parameters.html#HelpText">'HelpText'</A>, And Click 'OK'. If '<tt>HelpText</tt>' In The Configuration File It Will Display a Message: (Option &quot;HelpText&quot; Is Not Specified In The Configuration File)</P>
+		<P>After Closing This Dialog, Work Unit Will Be Interrupted (Ie Nothing Will Unpack/install).</P></TD></TR>
+	<TR id="nr">
+		<TD class="main"><tt><B>-nr</b></tt></TD>
+		<TD class="main"><P>Suppresses startup programs listed in <A href="parameters.html#RunProgram">'RunProgram'</A>, <A href="parameters.html#ExecuteFile">'ExecuteFile'</A>, <A href="parameters.html#AutoInstall">'AutoInstall'</A>or <A href="parameters.html#AutoInstallX">'AutoInstallX'</A>, ie. Performed Only Unpacking. Also do not create shortcuts not deleted files and SFX archive ('<tt>Delete</tt>' , '<tt>DeleteX</tt>'', '<tt>Shortcut</tt>', ''<tt>ShortcutX</tt> And '<tt>SelfDelete</tt>not implemented)</P>
+		<P>The Key Does Not Work When Unzipped To a Temporary Folder.</P></TD></TR>
+	<TR id="omX">
+		<TD class="main"><tt><B>-omX</b></tt></TD>
+		<TD class="main"><P>Overrides The <A href="parameters.html#OverwriteMode">'OverwriteMode'</A> Configuration File.</P>
+<UL>
+	<LI>0 - Overwrite All Files (Default)
+	<LI>1 - Do Not Overwrite Existing Files
+	<LI>2 - overwrite o&amp;nly the files that are older than in SFX archive&nbsp;
+	<LI>8 - To Skip The File Is Locked System
+</UL>
+		<P>From the values 0, 1, 2 can only use one but it can be combined with the flag of 8 on the same principle as in '-gfX'.</P>
+</TD></TR>
+	<TR id="sdX">
+		<TD class="main"><tt><B>-sdX</b></tt></TD>
+		<TD class="main"><P>Overrides the 'SelfDelete' configuration file.</P>
+<UL>
+	<LI>0 - NOT DELETE SFX archive, even if in the configuration file is present SelfDelete=&quot;1&quot;
+	<LI>1 - Remove SFX Archive, Regardless Of The Availability Of '<tt>SelfDelete</tt>' In The Configuration File
+</UL></TD></TR>
+	<TR id="sfxconfig">
+		<TD class="main"><tt><B>-sfxconfig</b></tt></TD>
+		<TD class="main"><P>Allows You To Retrieve From SFX Archive And Save The Configuration File. After The Key Through The Gap Indicates The Name (Or Path And File Name) File. Name And File Extension Can Be Any. Are Allowed In Both Absolute And <A href="configinfo.html#paths" class="int">Relative</A> Paths. If The Folder Does Not Exist - It Will Be Created. If You Create a Folder Or Write a File To Storage Media (eg, CD-ROM) Will Not - Will See An Error Message. Examples:
+<ul>
+	<li>-sfxconfig config.txt&nbsp; - save the file &quot;config.txt&quot; in the current folder*
+	<li>-sfxconfig \config.txt&nbsp; - save the file &quot;config.txt&quot; in the root directory that contains the current directory*
+	<li>-sfxconfig ..\config.txt&nbsp; - save the file &quot;config.txt&quot; in the folder level above the current folder *
+	<li>-sfxconfig D:\DISTRIBUT\7-Zip\folder with spaces and Cyrillic\konfiguratsiya.cfg&nbsp; - save the file &quot;Configuration.cfg&quot; in the folder &quot;D:\DISTRIBUT\7-Zip\folder with spaces and the Cyrillic alphabet&quot;
+</ul>
+		<p>* On The Current Folder cm. <A href="configinfo.html#paths" class="int">Relative</A> Paths.</TD></TR>
+	<TR id="sfxversion">
+		<TD class="main"><tt><B>-sfxversion</b></tt></TD>
+		<TD class="main"><P>Displays a window with information about:
+<ul>
+	<li>Version and Date of Creation of SFX Module
+	<li>Version of the Source Archiver 7-Zip Used in the Module
+	<li>Methods and Filters are Supported Compression Module
+</ul>
+		<P>It is useful when the information in the resource module was changed by someone.</P></TD></TR>
+	<TR id="y">
+		<TD class="main"><tt><B>-y</b></tt></TD>
+		<TD class="main"><P>Hides the dialog box 'BeginPrompt' 'ExtractPath' combined 'BeginPrompt' + 'ExtractPath' and 'FinishMessage' Window unpacking (if not hidden variables 'GUIMode' or key '-gm2') will be shown When you try to interrupt the unpacking/installing, it will be interrupted without user confirmation box 'CancelPrompt' Windows errors if any will be displayed regardless of this key. Key of the original SFX module archiver 7-Zip.</P></TD></TR>
+</TBODY></TABLE><p>&nbsp;</p>
+</BODY></HTML>
